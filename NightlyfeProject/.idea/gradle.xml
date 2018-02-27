@@ -8,8 +8,8 @@
         <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.14.1" />
         <option name="modules">
           <set>
-            <option value="/net/home/tdrichmond/NightLyfe/NightlyfeProject" />
-            <option value="/net/home/tdrichmond/NightLyfe/NightlyfeProject/app" />
+            <option value="/net/home/tdrichmond/Nightlyfe/NightlyfeProject" />
+            <option value="/net/home/tdrichmond/Nightlyfe/NightlyfeProject/app" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
