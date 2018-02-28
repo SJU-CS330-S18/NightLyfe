@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NightlyfeProject</string>
+    <string name="app_name">Nightlyfe</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -13,5 +13,4 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_homepage">Homepage</string>
 </resources>

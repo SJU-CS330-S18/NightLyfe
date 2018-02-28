@@ -1,4 +1,4 @@
-package edu.csbsju.ad.nightlyfeproject;
+package edu.csbsju.nightlyfe;
 
 import org.junit.Test;
 
