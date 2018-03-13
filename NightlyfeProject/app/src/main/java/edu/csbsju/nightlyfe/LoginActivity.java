@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.*;
 
 import android.database.sqlite.*;
 import android.database.*;
@@ -84,15 +85,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //how to querey from the table
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user3'",null);
 
-        //set cursor to first item in the table
-        resultSet.moveToFirst();
 
-        //retrieve values of item cursor points to
-        String username = resultSet.getString(0);
-        //String password = resultSet.getString(1);
+        if(resultSet.getCount() == 0) {
+            //set cursor to first item in the table
+            resultSet.moveToFirst();
 
-        //prints variables in Run tab below
-        System.out.println(username);
+            //retrieve values of item cursor points to
+            String username = resultSet.getString(0);
+            //String password = resultSet.getString(1);
+
+            //prints variables in Run tab below
+            System.out.println(username);
+        }
 
 
 
@@ -220,6 +224,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(username, password);
             mAuthTask.execute((Void) null);
+
+            //Intent used to reroute to new page, example from login to homepage
+            Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
+            startActivity(goToNextActivity);
         }
     }
 
@@ -228,9 +236,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //how to querey from the table
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+username+"'",null);
 
-        System.out.println();
-
-        if (resultSet == null){
+        if (resultSet.getCount() == 0){
             System.out.println("Result set null");
             return false;
         }
@@ -397,11 +403,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mEmail;
+        private final String mUsername;
         private final String mPassword;
 
-        UserLoginTask(String email, String password) {
-            mEmail = email;
+        UserLoginTask(String username, String password) {
+            mUsername = username;
             mPassword = password;
         }
 
@@ -418,7 +424,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
+                if (pieces[0].equals(mUsername)) {
                     // Account exists, return true if the password matches.
                     return pieces[1].equals(mPassword);
                 }
