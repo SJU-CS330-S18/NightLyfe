@@ -204,7 +204,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView = mUserView;
             cancel = true;
         } else if (!isValidCredentials(username, password)) {
-            mUserView.setError(getString(R.string.error_invalid_email));
+            //mUserView.setError(getString(R.string.error_invalid_email));
+            mUserView.setError("Invalid credentials");
             focusView = mUserView;
             cancel = true;
         }
@@ -227,14 +228,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //how to querey from the table
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+username+"'",null);
 
+        System.out.println();
+
         if (resultSet == null){
+            System.out.println("Result set null");
             return false;
         }
 
         //set cursor to first item in the table
         resultSet.moveToFirst();
 
-        if (username.equals(resultSet.getString(0)) && password.equals(resultSet.getString(0))){
+
+        System.out.println(resultSet.getString(0));
+
+        if (username.equals(resultSet.getString(0)) && password.equals(resultSet.getString(1))){
             return true;
         }
         else{
@@ -244,7 +251,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 3;
     }
 
     /**
