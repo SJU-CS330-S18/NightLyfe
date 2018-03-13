@@ -8,11 +8,4 @@
     tools:context="edu.csbsju.nightlyfe.Homescreen"
     tools:showIn="@layout/activity_homescreen">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account"
-        tools:layout_editor_absoluteX="288dp"
-        tools:layout_editor_absoluteY="7dp" />
 </android.support.constraint.ConstraintLayout>
