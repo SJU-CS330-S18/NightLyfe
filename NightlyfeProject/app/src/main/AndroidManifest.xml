@@ -26,6 +26,14 @@
         <activity
             android:name=".Homescreen"
             android:label="@string/title_activity_homescreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AdminHomescreen"
+            android:label="@string/title_activity_admin_homescreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OwnerHomescreen"
+            android:label="@string/title_activity_owner_homescreen"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
