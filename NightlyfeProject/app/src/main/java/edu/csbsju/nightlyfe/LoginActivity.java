@@ -207,7 +207,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mUserView.setError(getString(R.string.error_field_required));
             focusView = mUserView;
             cancel = true;
-        } else if (!isValidCredentials(username, password)) {
+        } else if (isValidCredentials(username, password) == -1) {
             //mUserView.setError(getString(R.string.error_invalid_email));
             mUserView.setError("Invalid credentials");
             focusView = mUserView;
@@ -225,20 +225,33 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = new UserLoginTask(username, password);
             mAuthTask.execute((Void) null);
 
+            Intent goToNextActivity;
+
             //Intent used to reroute to new page, example from login to homepage
-            Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
+            if (isValidCredentials(username, password) == 1) {
+                goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
+            }
+            else if (isValidCredentials(username, password) == 3) {
+                goToNextActivity = new Intent(getApplicationContext(), AdminHomescreen.class);
+            }
+            else if (isValidCredentials(username, password) == 2) {
+                goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
+            }
+            else{
+                goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);;
+            }
             startActivity(goToNextActivity);
         }
     }
 
-    private boolean isValidCredentials(String username, String password) {
+    private int isValidCredentials(String username, String password) {
 
         //how to querey from the table
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+username+"'",null);
 
         if (resultSet.getCount() == 0){
             System.out.println("Result set null");
-            return false;
+            return -1;
         }
 
         //set cursor to first item in the table
@@ -248,10 +261,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         System.out.println(resultSet.getString(0));
 
         if (username.equals(resultSet.getString(0)) && password.equals(resultSet.getString(1))){
-            return true;
+            int type = resultSet.getInt(2);
+            return type;
         }
         else{
-            return false;
+            return -1;
         }
     }
 
