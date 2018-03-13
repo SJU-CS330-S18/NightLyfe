@@ -74,23 +74,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //how to create a table
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS user(username VARCHAR,password VARCHAR);");
+        //mydatabase.execSQL("CREATE TABLE IF NOT EXISTS test(username VARCHAR,password VARCHAR);");
 
         // how to insert a value into the table
-        mydatabase.execSQL("INSERT INTO user VALUES('user1','pass1');");
+        //mydatabase.execSQL("INSERT INTO test VALUES('user1','pass1');");
+
+        populateDatabase();
 
         //how to querey from the table
-        Cursor resultSet = mydatabase.rawQuery("Select * from user where username = 'user1'",null);
+        Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user1'",null);
 
         //set cursor to first item in the table
         resultSet.moveToFirst();
 
         //retrieve values of item cursor points to
         String username = resultSet.getString(0);
-        String password = resultSet.getString(1);
+        //String password = resultSet.getString(1);
 
         //prints variables in Run tab below
-        System.out.println(username + password);
+        System.out.println(username);
 
 
 
@@ -223,7 +225,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private boolean isValidCredentials(String username, String password) {
 
         //how to querey from the table
-        Cursor resultSet = mydatabase.rawQuery("Select * from user where username = '"+username+"'",null);
+        Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+username+"'",null);
 
         if (resultSet == null){
             return false;
@@ -333,6 +335,53 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         int ADDRESS = 0;
         int IS_PRIMARY = 1;
+    }
+
+    //method to repopulate database with test information
+    private void populateDatabase(){
+
+        //drops tables to recreate and populate
+        mydatabase.execSQL("DROP TABLE IF EXISTS users;");
+        mydatabase.execSQL("DROP TABLE IF EXISTS businesses;");
+        mydatabase.execSQL("DROP TABLE IF EXISTS reviews;");
+        mydatabase.execSQL("DROP TABLE IF EXISTS friends;");
+        mydatabase.execSQL("DROP TABLE IF EXISTS plans;");
+        mydatabase.execSQL("DROP TABLE IF EXISTS specials;");
+        mydatabase.execSQL("DROP TABLE IF EXISTS users;");
+        mydatabase.execSQL("DROP TABLE IF EXISTS friendgroups;");
+
+        //creates table users
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30));");
+
+        //creates table users
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS businesses (name VARCHAR(20) PRIMARY KEY, owner VARCHAR(20) REFERENCES users(username), city VARCHAR(20), address VARCHAR(100), latitude FLOAT(9), longitude FLOAT(9));");
+
+        //creates table reviews
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS reviews (username VARCHAR(20) REFERENCES users(username), business VARCHAR(20) REFERENCES businesses(name), commenttext VARCHAR2(2000));");
+
+        //creates table friends
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friends (user1 VARCHAR(20) REFERENCES users(username), user2 VARCHAR(20) REFERENCES users(username), status INT);");
+
+        //creates table plans
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS plans (who VARCHAR(20), business VARCHAR(20) REFERENCES businesses(name), plantime DATE);");
+
+        //creates table specials
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS specials (business VARCHAR(20) REFERENCES businesses(name), special VARCHAR2(2000), starttime DATE, endtime DATE);");
+
+        //creates table friendgroups
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friendgroups (username VARCHAR(20) REFERENCES users(username), groupnumber INT);");
+
+        mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('owner1', 'pass', 2, 'Owner One');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'User One');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'User Two');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'User Three');");
+
+        mydatabase.execSQL("INSERT INTO businesses VALUES ('sals', 'owner1', 'saint joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
+
+        //how to querey from the table
+        Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user1'",null);
     }
 
     /**
