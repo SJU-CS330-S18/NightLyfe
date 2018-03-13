@@ -64,33 +64,33 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    public SQLiteDatabase mydatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
         //how to create a database
-        SQLiteDatabase mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
+        mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //how to create a table
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS customer(fname VARCHAR,lname VARCHAR);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS user(username VARCHAR,password VARCHAR);");
 
         // how to insert a value into the table
-        mydatabase.execSQL("INSERT INTO customer VALUES('bob','saget');");
-
+        mydatabase.execSQL("INSERT INTO user VALUES('user1','pass1');");
 
         //how to querey from the table
-        Cursor resultSet = mydatabase.rawQuery("Select * from customer",null);
+        Cursor resultSet = mydatabase.rawQuery("Select * from user where username = 'user1'",null);
 
         //set cursor to first item in the table
         resultSet.moveToFirst();
 
         //retrieve values of item cursor points to
-        String fname = resultSet.getString(0);
-        String lname = resultSet.getString(1);
+        String username = resultSet.getString(0);
+        String password = resultSet.getString(1);
 
         //prints variables in Run tab below
-        System.out.println(fname + lname);
+        System.out.println(username + password);
 
 
 
@@ -183,7 +183,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
+        String username = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -196,12 +196,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cancel = true;
         }
 
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        // Check that credentials are valid in database.
+        if (TextUtils.isEmpty(username)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        } else if (!isValidCredentials(username, password)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
@@ -215,14 +215,29 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(username, password);
             mAuthTask.execute((Void) null);
         }
     }
 
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
+    private boolean isValidCredentials(String username, String password) {
+
+        //how to querey from the table
+        Cursor resultSet = mydatabase.rawQuery("Select * from user where username = '"+username+"'",null);
+
+        if (resultSet == null){
+            return false;
+        }
+
+        //set cursor to first item in the table
+        resultSet.moveToFirst();
+
+        if (username.equals(resultSet.getString(0)) && password.equals(resultSet.getString(0))){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     private boolean isPasswordValid(String password) {
