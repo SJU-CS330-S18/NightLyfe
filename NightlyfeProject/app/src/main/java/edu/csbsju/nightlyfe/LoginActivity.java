@@ -9,6 +9,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
+import android.database.sqlite.*;
+import android.database.*;
+
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -64,6 +67,33 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        //how to create a database
+        SQLiteDatabase mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
+
+        //how to create a table
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS customer(fname VARCHAR,lname VARCHAR);");
+
+        // how to insert a value into the table
+        mydatabase.execSQL("INSERT INTO customer VALUES('bob','saget');");
+
+
+        //how to querey from the table
+        Cursor resultSet = mydatabase.rawQuery("Select * from customer",null);
+
+        //set cursor to first item in the table
+        resultSet.moveToFirst();
+
+        //retrieve values of item cursor points to
+        String fname = resultSet.getString(0);
+        String lname = resultSet.getString(1);
+
+        //prints variables in Run tab below
+        System.out.println(fname + lname);
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
