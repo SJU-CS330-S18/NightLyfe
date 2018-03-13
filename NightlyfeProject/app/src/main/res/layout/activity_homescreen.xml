@@ -7,10 +7,6 @@
     tools:context="edu.csbsju.nightlyfe.Homescreen">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,14 +22,5 @@
 
             </android.support.design.widget.AppBarLayout>
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/appBarLayout"
-            android:text="Account" />
-    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
