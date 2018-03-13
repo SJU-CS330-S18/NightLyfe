@@ -53,7 +53,7 @@ public class Restaurant {
         this.longitude = longitude;
     }
 
-    public void setLatitude(double lattitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 }
