@@ -16,4 +16,5 @@
     <string name="title_activity_homescreen">Homescreen</string>
     <string name="title_activity_admin_homescreen">AdminHomescreen</string>
     <string name="title_activity_owner_homescreen">OwnerHomescreen</string>
+    <string name="title_activity_user">UserActivity</string>
 </resources>
