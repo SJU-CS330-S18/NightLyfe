@@ -9,6 +9,15 @@ public class Restaurant {
     private String name, owner, city, address;
     private double longitude, latitude;
 
+    public Restaurant(String name, String owner, String city, String address, double longitude, double latitude) {
+        this.name = name;
+        this.owner = owner;
+        this.city = city;
+        this.address = address;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
     public String getName() {
         return this.name;
     }
