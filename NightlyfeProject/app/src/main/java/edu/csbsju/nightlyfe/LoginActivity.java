@@ -1,5 +1,15 @@
 package edu.csbsju.nightlyfe;
 
+import android.database.sqlite.*;
+import android.database.*;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.*;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -10,12 +20,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.*;
 
-import android.database.sqlite.*;
-import android.database.*;
-
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 
@@ -29,9 +33,6 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,20 +84,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //populateDatabase();
 
         //how to querey from the table
-        Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user3'",null);
+        //Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user3'",null);
 
 
-        if(resultSet.getCount() == 0) {
+        //if(resultSet.getCount() == 0) {
             //set cursor to first item in the table
-            resultSet.moveToFirst();
+        //    resultSet.moveToFirst();
 
             //retrieve values of item cursor points to
-            String username = resultSet.getString(0);
+        //    String username = resultSet.getString(0);
             //String password = resultSet.getString(1);
 
             //prints variables in Run tab below
-            System.out.println(username);
-        }
+        //    System.out.println(username);
+        //}
 
 
 
@@ -230,15 +231,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             //Intent used to reroute to new page, example from login to homepage
             if (isValidCredentials(username, password) == 1) {
                 goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
+                goToNextActivity.putExtra("username", username);
             }
             else if (isValidCredentials(username, password) == 3) {
                 goToNextActivity = new Intent(getApplicationContext(), AdminHomescreen.class);
+                goToNextActivity.putExtra("username", username);
             }
             else if (isValidCredentials(username, password) == 2) {
                 goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
+                goToNextActivity.putExtra("username", username);
             }
             else{
-                goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);;
+                goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);
             }
             startActivity(goToNextActivity);
         }

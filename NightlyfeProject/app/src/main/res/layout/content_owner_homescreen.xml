@@ -8,4 +8,32 @@
     tools:context="edu.csbsju.nightlyfe.OwnerHomescreen"
     tools:showIn="@layout/activity_owner_homescreen">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="60dp">
+
+        <Button
+            android:id="@+id/userBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Account" />
+
+        <TextView
+            android:id="@+id/userTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/userBtn"
+            android:layout_alignBottom="@+id/userBtn"
+            android:layout_marginEnd="31dp"
+            android:layout_marginRight="31dp"
+            android:layout_toLeftOf="@+id/userBtn"
+            android:layout_toStartOf="@+id/userBtn"
+            android:text="username"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
