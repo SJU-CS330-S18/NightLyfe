@@ -6,4 +6,104 @@
     android:layout_height="match_parent"
     tools:context="edu.csbsju.nightlyfe.Register">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <EditText
+            android:id="@+id/fnameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fname"
+            android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/lnameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/lname"
+            android:layout_alignStart="@+id/lname"
+            android:layout_alignTop="@+id/lname"
+            android:layout_marginTop="19dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/usernameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/username"
+            android:layout_alignStart="@+id/username"
+            android:layout_alignTop="@+id/username"
+            android:layout_marginTop="18dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/passwordTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/password"
+            android:layout_alignStart="@+id/password"
+            android:layout_below="@+id/password"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/passwordTxt"
+            android:layout_alignStart="@+id/passwordTxt"
+            android:layout_below="@+id/passwordTxt"
+            android:layout_marginTop="34dp"
+            android:text="Register Account" />
+
+        <TextView
+            android:id="@+id/fname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/fnameTxt"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/fnameTxt"
+            android:layout_marginTop="15dp"
+            android:text="First name:" />
+
+        <TextView
+            android:id="@+id/lname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/fnameTxt"
+            android:layout_alignStart="@+id/fnameTxt"
+            android:layout_below="@+id/fnameTxt"
+            android:layout_marginTop="18dp"
+            android:text="Last name:" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/lnameTxt"
+            android:layout_alignStart="@+id/lnameTxt"
+            android:layout_below="@+id/lnameTxt"
+            android:layout_marginTop="15dp"
+            android:text="Username:" />
+
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/usernameTxt"
+            android:layout_alignStart="@+id/usernameTxt"
+            android:layout_below="@+id/usernameTxt"
+            android:layout_marginTop="16dp"
+            android:text="Password:" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
