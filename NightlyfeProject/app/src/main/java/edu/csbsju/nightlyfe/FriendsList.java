@@ -4,6 +4,7 @@ import android.database.sqlite.*;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -55,14 +56,14 @@ public class FriendsList extends AppCompatActivity {
 
         int size = resultSet.getCount();
         resultSet.moveToFirst();
-        System.out.println(size);
 
         LinearLayout ll = (LinearLayout)findViewById(R.id.friendsLayout);
         LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         for (int i = 0; i < size ; i++) {
-            System.out.println("yes");
             String name = resultSet.getString(1);
             TextView mFriendView = new TextView(this);
+            mFriendView.setTextSize(20);
+            mFriendView.setTextColor(Color.BLACK);
             mFriendView.setText(name);
             ll.addView(mFriendView, lp);
             resultSet.moveToNext();

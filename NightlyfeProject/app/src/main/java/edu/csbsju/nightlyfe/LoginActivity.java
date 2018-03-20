@@ -431,7 +431,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'user1', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'tdrichmond', 1);");
-
         mydatabase.execSQL("INSERT INTO businesses VALUES ('sals', 'owner1', 'saint joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
 
         //how to querey from the table
