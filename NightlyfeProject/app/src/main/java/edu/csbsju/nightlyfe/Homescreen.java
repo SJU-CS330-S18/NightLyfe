@@ -79,5 +79,14 @@ public class Homescreen extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
+
+        Button mUser = (Button) findViewById(R.id.userBtn);
+        mUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), AccountActivity.class);
+                startActivity(goToNextActivity);
+            }
+        });
     }
 }
