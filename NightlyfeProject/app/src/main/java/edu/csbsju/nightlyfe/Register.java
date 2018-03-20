@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,6 +61,22 @@ public class Register extends AppCompatActivity {
 
         if (resultSet.getCount() != 0){
             mUsernameView.setError("This username has already been taken. Please choose another.");
+            return false;
+        }
+        if(TextUtils.isEmpty(password)) {
+            mPasswordView.setError("This field is required.");
+            return false;
+        }
+        if(TextUtils.isEmpty(fname)) {
+            mFnameView.setError("This field is required.");
+            return false;
+        }
+        if(TextUtils.isEmpty(lname)) {
+            mLnameView.setError("This field is required.");
+            return false;
+        }
+        if(TextUtils.isEmpty(username)) {
+            mUsernameView.setError("This field is required.");
             return false;
         }
         else{

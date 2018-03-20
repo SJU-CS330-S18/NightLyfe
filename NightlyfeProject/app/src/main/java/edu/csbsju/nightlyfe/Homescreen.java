@@ -1,5 +1,6 @@
 package edu.csbsju.nightlyfe;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -28,21 +29,10 @@ public class Homescreen extends AppCompatActivity {
 
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//              public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                      .setAction("Action", null).show();
-//          }
-//        });
 
         user = getIntent().getStringExtra("username");
 
@@ -51,6 +41,15 @@ public class Homescreen extends AppCompatActivity {
         mUsernameView.setText(user);
 
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+user+"'",null);
+
+        Button mLogout = (Button) findViewById(R.id.logoutBtn);
+        mLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(goToNextActivity);
+            }
+        });
 
     }
 
