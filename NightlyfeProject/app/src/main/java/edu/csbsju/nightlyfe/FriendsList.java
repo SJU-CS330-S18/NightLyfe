@@ -52,6 +52,18 @@ public class FriendsList extends AppCompatActivity {
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
         user = getIntent().getStringExtra("username");
 
+        Button mSearch = (Button) findViewById(R.id.searchBtn);
+        mSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView mSearchTerm = (TextView) findViewById(R.id.searchTxt);
+                String searchText =  mSearchTerm.getText().toString();
+                Intent goToNextActivity = new Intent(getApplicationContext(), FriendSearch.class);
+                goToNextActivity.putExtra("search",searchText);
+                startActivity(goToNextActivity);
+            }
+        });
+
         Cursor resultSet = mydatabase.rawQuery("Select * from friends where user1 = '"+user+"'",null);
 
         int size = resultSet.getCount();
