@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // how to insert a value into the table
         //mydatabase.execSQL("INSERT INTO test VALUES('user1','pass1');");
 
-        //populateDatabase();
+        // populateDatabase();
 
         //how to querey from the table
         //Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user3'",null);
