@@ -51,6 +51,31 @@ public class Homescreen extends AppCompatActivity {
             }
         });
 
-    }
+        Button mFriends = (Button) findViewById(R.id.friendsBtn);
+        mFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), FriendsList.class);
+                startActivity(goToNextActivity);
+            }
+        });
 
+        Button mBars = (Button) findViewById(R.id.barsBtn);
+        mBars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(goToNextActivity);
+            }
+        });
+
+        Button mFavorites = (Button) findViewById(R.id.favoriteBtn);
+        mFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), FriendsList.class);
+                startActivity(goToNextActivity);
+            }
+        });
+    }
 }

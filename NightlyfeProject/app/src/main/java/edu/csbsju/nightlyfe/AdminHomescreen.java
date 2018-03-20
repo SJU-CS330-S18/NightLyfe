@@ -51,5 +51,4 @@ public class AdminHomescreen extends AppCompatActivity {
             }
         });
     }
-
 }
