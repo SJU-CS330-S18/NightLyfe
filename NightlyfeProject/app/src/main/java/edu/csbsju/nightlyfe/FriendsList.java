@@ -50,7 +50,7 @@ public class FriendsList extends AppCompatActivity {
 
         //how to create a database
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
-        user = getIntent().getStringExtra("username");
+        user = getIntent().getStringExtra("user");
 
         Button mSearch = (Button) findViewById(R.id.searchBtn);
         mSearch.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +60,7 @@ public class FriendsList extends AppCompatActivity {
                 String searchText =  mSearchTerm.getText().toString();
                 Intent goToNextActivity = new Intent(getApplicationContext(), FriendSearch.class);
                 goToNextActivity.putExtra("search",searchText);
+                goToNextActivity.putExtra("user",user);
                 startActivity(goToNextActivity);
             }
         });
