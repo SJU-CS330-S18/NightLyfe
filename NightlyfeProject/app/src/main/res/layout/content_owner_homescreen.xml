@@ -18,8 +18,8 @@
             android:id="@+id/userBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:text="Account" />
 
@@ -29,11 +29,17 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/userBtn"
             android:layout_alignBottom="@+id/userBtn"
-            android:layout_marginEnd="31dp"
-            android:layout_marginRight="31dp"
-            android:layout_toLeftOf="@+id/userBtn"
-            android:layout_toStartOf="@+id/userBtn"
+            android:layout_centerHorizontal="true"
             android:text="username"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Logout" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
