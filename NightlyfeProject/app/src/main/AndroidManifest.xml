@@ -35,9 +35,10 @@
             android:name=".OwnerHomescreen"
             android:label="@string/title_activity_owner_homescreen"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Restaurant_Page"></activity>
+        <activity android:name=".Restaurant_Page" />
         <activity android:name=".Register" />
-        <activity android:name=".FriendsList"></activity>
+        <activity android:name=".FriendsList" />
+        <activity android:name=".AccountActivity"></activity>
     </application>
 
 </manifest>
