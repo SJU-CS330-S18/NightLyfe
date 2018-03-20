@@ -6,7 +6,7 @@ package edu.csbsju.nightlyfe;
  */
 
 public class Restaurant {
-    int id;
+    private int id;
     private String name, owner, city, address;
     private double longitude, latitude;
 
