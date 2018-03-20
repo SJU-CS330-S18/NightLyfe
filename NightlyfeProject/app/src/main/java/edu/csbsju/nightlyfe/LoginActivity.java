@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //mydatabase.execSQL("INSERT INTO test VALUES('user1','pass1');");
 
         // populateDatabase();
+        addToDB();
 
         //how to querey from the table
         //Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user3'",null);
@@ -432,6 +433,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         //how to querey from the table
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user1'",null);
+    }
+
+    private void addToDB(){
+        mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'user2', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'user1', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'tdrichmond', 1);");
     }
 
     /**

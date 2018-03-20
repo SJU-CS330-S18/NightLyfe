@@ -35,17 +35,6 @@ public class Homescreen extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-<<<<<<< HEAD
-
-//        fab.setOnClickListener(new View.OnClickListener() {
-//              public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                      .setAction("Action", null).show();
-//          }
-//        });
-
-=======
->>>>>>> 2df9de162112858699740ccd7f5902b1c417a923
         user = getIntent().getStringExtra("username");
 
         TextView mUsernameView = findViewById(R.id.userTxt);

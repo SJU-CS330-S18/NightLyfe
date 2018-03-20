@@ -35,16 +35,9 @@
             android:name=".OwnerHomescreen"
             android:label="@string/title_activity_owner_homescreen"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".TestActivity"
-            android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar" />
-<<<<<<< HEAD
         <activity android:name=".Restaurant_Page"></activity>
-=======
         <activity android:name=".Register" />
         <activity android:name=".FriendsList"></activity>
->>>>>>> 2df9de162112858699740ccd7f5902b1c417a923
     </application>
 
 </manifest>
