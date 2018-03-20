@@ -6,16 +6,22 @@ package edu.csbsju.nightlyfe;
  */
 
 public class Restaurant {
+    private int id;
     private String name, owner, city, address;
     private double longitude, latitude;
 
-    public Restaurant(String name, String owner, String city, String address, double longitude, double latitude) {
+    public Restaurant(int id, String name, String owner, String city, String address, double longitude, double latitude) {
+        this.id = id;
         this.name = name;
         this.owner = owner;
         this.city = city;
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public String getName() {
@@ -40,6 +46,10 @@ public class Restaurant {
 
     public double getLatitude() {
         return this.latitude;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {

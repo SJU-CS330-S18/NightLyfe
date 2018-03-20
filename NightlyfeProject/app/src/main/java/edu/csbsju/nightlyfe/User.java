@@ -6,15 +6,18 @@ package edu.csbsju.nightlyfe;
  */
 
 public class User {
+    private int id;
     private String username, name, password;
     private int type;
 
-    public User(String username, String name, String password, int type) {
+    public User(int id, String username, String name, String password, int type) {
         this.username = username;
         this.name = name;
         this.password = password;
         this.type = type;
     }
+
+    public int getId() { return this.id; }
 
     public String getUsername() {
         return this.username;
@@ -31,6 +34,8 @@ public class User {
     public int getType() {
         return this.type;
     }
+
+    public void setId(int id) {this.id = id; }
 
     public void setUsername(String username) {
         this.username = username;
