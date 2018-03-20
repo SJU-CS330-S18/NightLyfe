@@ -68,8 +68,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         //how to create a database
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
@@ -79,8 +77,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // how to insert a value into the table
         //mydatabase.execSQL("INSERT INTO test VALUES('user1','pass1');");
 
-        // populateDatabase();
-        addToDB();
+         populateDatabase();
+        //addToDB();
 
         //how to querey from the table
         //Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user3'",null);
@@ -411,7 +409,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS reviews (username VARCHAR(20) REFERENCES users(username), business VARCHAR(20) REFERENCES businesses(name), commenttext VARCHAR2(2000));");
 
         //creates table friends
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friends (user1 VARCHAR(20) REFERENCES users(username), user2 VARCHAR(20) REFERENCES users(username), status INT);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friends (user1 VARCHAR(20), user2 VARCHAR(20), status INT, FOREIGN KEY (user1) REFERENCES users(username),  FOREIGN KEY (user2) REFERENCES users(username), PRIMARY KEY (user1, user2));");
 
         //creates table plans
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS plans (who VARCHAR(20), business VARCHAR(20) REFERENCES businesses(name), plantime DATE);");
@@ -429,17 +427,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'User Two');");
         mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'User Three');");
 
-        mydatabase.execSQL("INSERT INTO businesses VALUES ('sals', 'owner1', 'saint joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
-
-        //how to querey from the table
-        Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user1'",null);
-    }
-
-    private void addToDB(){
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'user2', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'user1', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'tdrichmond', 1);");
+
+        mydatabase.execSQL("INSERT INTO businesses VALUES ('sals', 'owner1', 'saint joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
+
+        //how to querey from the table
+        Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user1'",null);
     }
 
     /**

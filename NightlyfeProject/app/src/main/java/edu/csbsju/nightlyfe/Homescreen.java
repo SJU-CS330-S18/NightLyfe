@@ -58,6 +58,7 @@ public class Homescreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), FriendsList.class);
+                goToNextActivity.putExtra("username", user);
                 startActivity(goToNextActivity);
             }
         });
