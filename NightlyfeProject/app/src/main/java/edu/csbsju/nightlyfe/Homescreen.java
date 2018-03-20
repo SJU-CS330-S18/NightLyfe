@@ -40,6 +40,7 @@ public class Homescreen extends AppCompatActivity {
         //System.out.println(user);
         mUsernameView.setText(user);
 
+        //access user info from database from passed variable 'user'
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+user+"'",null);
 
         Button mLogout = (Button) findViewById(R.id.logoutBtn);

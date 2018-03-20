@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/username"
+                    android:id="@+id/userTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Username"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/passTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"

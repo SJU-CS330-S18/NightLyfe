@@ -1,14 +1,12 @@
 package edu.csbsju.nightlyfe;
 
 import android.database.sqlite.*;
-import android.database.*;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.*;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -104,10 +102,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mUserView = (AutoCompleteTextView) findViewById(R.id.username);
+        mUserView = (AutoCompleteTextView) findViewById(R.id.userTxt);
         populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordView = (EditText) findViewById(R.id.passTxt);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
