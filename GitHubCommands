@@ -1,0 +1,14 @@
+add all files to be staged
+  git add . 
+
+commit changes that have been added
+  git commit -m "insert mandatory message about changes"
+  
+push the committed changes to the repository
+  git push
+  
+pull a current version of the repository
+  git pull
+  
+if you pull and it has conflict, commit all of your changes and pull again. This will cause the merge to occur, and you can fix any 
+problems that may have occurred, then push. 
