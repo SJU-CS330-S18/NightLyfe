@@ -72,6 +72,8 @@ public class FriendsList extends AppCompatActivity {
 
         LinearLayout ll = (LinearLayout)findViewById(R.id.friendsLayout);
         LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+
+        System.out.println(size);
         for (int i = 0; i < size ; i++) {
             String name = resultSet.getString(1);
             TextView mFriendView = new TextView(this);

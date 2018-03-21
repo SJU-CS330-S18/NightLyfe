@@ -38,7 +38,6 @@ public class Homescreen extends AppCompatActivity {
         user = getIntent().getStringExtra("username");
 
         TextView mUsernameView = findViewById(R.id.userTxt);
-        //System.out.println(user);
         mUsernameView.setText(user);
 
         //access user info from database from passed variable 'user'
