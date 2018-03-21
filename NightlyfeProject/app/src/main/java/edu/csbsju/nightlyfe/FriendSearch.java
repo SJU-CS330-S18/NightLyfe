@@ -1,10 +1,12 @@
 package edu.csbsju.nightlyfe;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -54,6 +56,7 @@ public class FriendSearch extends AppCompatActivity {
 
             //creates a button to either add or remove friend
             Button mAddFriend = new Button(this);
+            mAddFriend.setTag(user2);
             //mAddFriend.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
             Cursor resultSet2 = mydatabase.rawQuery("Select * from friends where user1 = '"+user+"' AND user2 = '"+user2+"'",null);
@@ -61,9 +64,21 @@ public class FriendSearch extends AppCompatActivity {
             //checks if the given user is already a friend or not
             if(resultSet2.getCount() == 0) {
                 mAddFriend.setText("Add");
+                mAddFriend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        addFriend((String) view.getTag());
+                    }
+                });
             }
             else{
                 mAddFriend.setText("Remove");
+                mAddFriend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        removeFriend((String) view.getTag());
+                    }
+                });
             }
 
             //sets the attributes of the search result name
@@ -77,5 +92,22 @@ public class FriendSearch extends AppCompatActivity {
             ll.addView(row,lp);
             resultSet.moveToNext();
         }
+
+    }
+
+    private void addFriend(String friend){
+        mydatabase.execSQL("INSERT INTO friends VALUES ('"+user+"', '"+friend+"', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('"+friend+"', '"+user+"', 1);");
+        Intent goToNextActivity = new Intent(getApplicationContext(), FriendsList.class);
+        goToNextActivity.putExtra("user", user);
+        startActivity(goToNextActivity);
+    }
+
+    private void removeFriend(String friend){
+        mydatabase.execSQL("DELETE FROM friends WHERE user1 = '"+user+"' AND user2 =  '"+friend+"';");
+        mydatabase.execSQL("DELETE FROM friends WHERE user1 = '"+friend+"' AND user2 =  '"+user+"';");
+        Intent goToNextActivity = new Intent(getApplicationContext(), FriendsList.class);
+        goToNextActivity.putExtra("user", user);
+        startActivity(goToNextActivity);
     }
 }

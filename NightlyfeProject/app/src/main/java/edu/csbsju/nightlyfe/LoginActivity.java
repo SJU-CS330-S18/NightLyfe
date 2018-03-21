@@ -71,32 +71,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //how to create a database
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
-        //how to create a table
-        //mydatabase.execSQL("CREATE TABLE IF NOT EXISTS test(username VARCHAR,password VARCHAR);");
-
-        // how to insert a value into the table
-        //mydatabase.execSQL("INSERT INTO test VALUES('user1','pass1');");
-
-         populateDatabase();
+        //populates database with default data
+        populateDatabase();
         //addToDB();
-
-        //how to querey from the table
-        //Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user3'",null);
-
-
-        //if(resultSet.getCount() == 0) {
-            //set cursor to first item in the table
-        //    resultSet.moveToFirst();
-
-            //retrieve values of item cursor points to
-        //    String username = resultSet.getString(0);
-            //String password = resultSet.getString(1);
-
-            //prints variables in Run tab below
-        //    System.out.println(username);
-        //}
-
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -413,9 +390,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One');");
         mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two');");
         mydatabase.execSQL("INSERT INTO users VALUES ('owner1', 'pass', 2, 'Owner One');");
-        mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'User One');");
-        mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'User Two');");
-        mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'User Three');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'John Doe');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'Jane Doe');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'Jerry Springer');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('tdrichmond', 'pass', 1, 'Tom Richmond');");
 
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'user2', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
