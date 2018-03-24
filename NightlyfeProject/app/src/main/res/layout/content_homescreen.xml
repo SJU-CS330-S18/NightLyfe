@@ -60,6 +60,15 @@
             android:layout_below="@+id/friendsBtn"
             android:text="Favorites" />
 
+        <Button
+            android:id="@+id/groupsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/favoriteBtn"
+            android:text="Groups" />
+
         <TextView
             android:id="@+id/userTxt"
             android:layout_width="wrap_content"

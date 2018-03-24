@@ -41,7 +41,9 @@
         <activity android:name=".AccountActivity" />
         <activity android:name=".FriendSearch" />
         <activity android:name=".BarsList" />
-        <activity android:name=".FavoritesList"></activity>
+        <activity android:name=".FavoritesList" />
+        <activity android:name=".GroupsList" />
+        <activity android:name=".NewGroupPage"></activity>
     </application>
 
 </manifest>

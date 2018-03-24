@@ -2,8 +2,6 @@ package edu.csbsju.nightlyfe;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,13 +9,8 @@ import android.widget.*;
 
 
 import android.database.sqlite.*;
-import android.database.*;
 
-import android.content.CursorLoader;
-import android.content.Loader;
 import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
 
 public class Homescreen extends AppCompatActivity {
 
@@ -76,6 +69,15 @@ public class Homescreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), FavoritesList.class);
+                startActivity(goToNextActivity);
+            }
+        });
+
+        Button mGroups = (Button) findViewById(R.id.groupsBtn);
+        mFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), GroupsList.class);
                 startActivity(goToNextActivity);
             }
         });
