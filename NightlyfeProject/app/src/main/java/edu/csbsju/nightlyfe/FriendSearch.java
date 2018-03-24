@@ -32,7 +32,7 @@ public class FriendSearch extends AppCompatActivity {
         user = getIntent().getStringExtra("user");
 
         //Finds all friends associated with active user
-        Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+search+"'",null);
+        Cursor resultSet = mydatabase.rawQuery("Select * from users where (username LIKE '%"+search+"%' OR name LIKE '%"+search+"%') AND NOT username = '"+user+"'",null);
 
         //gets number of friends and moves the cursor to the first entry in ResultSet
         int size = resultSet.getCount();
