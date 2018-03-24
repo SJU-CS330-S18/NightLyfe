@@ -35,7 +35,7 @@ public class Homescreen extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        user = getIntent().getStringExtra("username");
+        user = getIntent().getStringExtra("user");
 
         TextView mUsernameView = findViewById(R.id.userTxt);
         mUsernameView.setText(user);

@@ -31,6 +31,9 @@ public class FriendSearch extends AppCompatActivity {
         search = getIntent().getStringExtra("search");
         user = getIntent().getStringExtra("user");
 
+        TextView mResults = findViewById(R.id.resultsTxt);
+        mResults.setText("Results found for '"+search+"'");
+
         //Finds all friends associated with active user
         Cursor resultSet = mydatabase.rawQuery("Select * from users where (username LIKE '%"+search+"%' OR name LIKE '%"+search+"%') AND NOT username = '"+user+"'",null);
 
@@ -61,6 +64,16 @@ public class FriendSearch extends AppCompatActivity {
 
             //creates a button to either add or remove friend
             Button mAddFriend = new Button(this);
+
+            Button mHome = (Button) findViewById(R.id.homeBtn);
+            mHome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
+                    goToNextActivity.putExtra("user", user);
+                    startActivity(goToNextActivity);
+                }
+            });
 
             //sets the associated friend's username as a tag associated with the button for inner class use
             mAddFriend.setTag(user2);

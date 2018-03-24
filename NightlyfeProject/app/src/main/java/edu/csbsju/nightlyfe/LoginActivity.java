@@ -107,7 +107,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onClick(View view) {
                 String username = mUserView.getText().toString();
                 Intent goToNextActivity = new Intent(getApplicationContext(), Register.class);
-                goToNextActivity.putExtra("username", username);
+                goToNextActivity.putExtra("user", username);
                 startActivity(goToNextActivity);
             }
         });
@@ -216,15 +216,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             //Intent used to reroute to new page, example from login to homepage
             if (isValidCredentials(username, password) == 1) {
                 goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
-                goToNextActivity.putExtra("username", username);
+                goToNextActivity.putExtra("user", username);
             }
             else if (isValidCredentials(username, password) == 3) {
                 goToNextActivity = new Intent(getApplicationContext(), AdminHomescreen.class);
-                goToNextActivity.putExtra("username", username);
+                goToNextActivity.putExtra("user", username);
             }
             else if (isValidCredentials(username, password) == 2) {
                 goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
-                goToNextActivity.putExtra("username", username);
+                goToNextActivity.putExtra("user", username);
             }
             else{
                 goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);

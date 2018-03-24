@@ -68,6 +68,16 @@ public class FriendsList extends AppCompatActivity {
             }
         });
 
+        Button mHome = (Button) findViewById(R.id.homeBtn);
+        mHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+            }
+        });
+
         //receives resultSet for all friends associated with active user
         Cursor resultSet = mydatabase.rawQuery("Select * from friends where user1 = '"+user+"'",null);
 

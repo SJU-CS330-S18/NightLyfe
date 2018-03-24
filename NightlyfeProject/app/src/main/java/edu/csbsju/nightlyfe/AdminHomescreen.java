@@ -34,7 +34,7 @@ public class AdminHomescreen extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        user = getIntent().getStringExtra("username");
+        user = getIntent().getStringExtra("user");
 
         TextView mUsernameView = findViewById(R.id.userTxt);
         //System.out.println(user);

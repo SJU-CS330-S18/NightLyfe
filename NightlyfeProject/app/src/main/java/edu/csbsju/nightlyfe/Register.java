@@ -40,7 +40,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 if(registerUser()){
                     Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
-                    goToNextActivity.putExtra("username", mUsernameView.getText().toString());
+                    goToNextActivity.putExtra("user", mUsernameView.getText().toString());
                     startActivity(goToNextActivity);
                 }
             }

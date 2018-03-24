@@ -36,11 +36,21 @@
         <LinearLayout
             android:id="@+id/friendsLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/searchTxt"
             android:orientation="vertical">
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Return Home"
+            android:layout_below="@+id/friendsLayout" />
+
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
