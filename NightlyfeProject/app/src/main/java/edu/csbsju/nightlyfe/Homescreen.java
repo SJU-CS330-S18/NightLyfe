@@ -69,15 +69,17 @@ public class Homescreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), FavoritesList.class);
+                goToNextActivity.putExtra("user", user);
                 startActivity(goToNextActivity);
             }
         });
 
         Button mGroups = (Button) findViewById(R.id.groupsBtn);
-        mFavorites.setOnClickListener(new View.OnClickListener() {
+        mGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), GroupsList.class);
+                goToNextActivity.putExtra("user", user);
                 startActivity(goToNextActivity);
             }
         });
@@ -87,6 +89,7 @@ public class Homescreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), AccountActivity.class);
+                goToNextActivity.putExtra("user", user);
                 startActivity(goToNextActivity);
             }
         });

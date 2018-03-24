@@ -385,7 +385,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS specials (business VARCHAR(20) REFERENCES businesses(name), special VARCHAR2(2000), starttime DATE, endtime DATE);");
 
         //creates table friendgroups
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friendgroups (username VARCHAR(20) REFERENCES users(username), groupnumber INT);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friendgroups (groupID INT, groupName VARCHAR(20));");
+
+        //creates table groupmember
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmember (groupID INT REFERENCES friendgroups(groupID), username VARCHAR(20) REFERENCES user(username));");
 
         mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One');");
         mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two');");
@@ -399,6 +402,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'user1', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'tdrichmond', 1);");
+
+        mydatabase.execSQL("INSERT INTO friendgroups VALUES (1, 'St. Joe Bros');");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'tdrichmond');");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'user1');");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'user3');");
+
+
         mydatabase.execSQL("INSERT INTO businesses VALUES ('sals', 'owner1', 'saint joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
 
         //how to querey from the table
