@@ -66,7 +66,7 @@ public class Homescreen extends AppCompatActivity {
         mBars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent goToNextActivity = new Intent(getApplicationContext(), BarsList.class);
                 startActivity(goToNextActivity);
             }
         });
@@ -75,7 +75,7 @@ public class Homescreen extends AppCompatActivity {
         mFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), FriendsList.class);
+                Intent goToNextActivity = new Intent(getApplicationContext(), FavoritesList.class);
                 startActivity(goToNextActivity);
             }
         });
