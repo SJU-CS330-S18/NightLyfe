@@ -44,7 +44,8 @@
         <activity android:name=".FavoritesList" />
         <activity android:name=".GroupsList" />
         <activity android:name=".NewGroupPage" />
-        <activity android:name=".Group"></activity>
+        <activity android:name=".Group" />
+        <activity android:name=".AddMembers"></activity>
     </application>
 
 </manifest>

@@ -40,6 +40,18 @@ public class Group extends AppCompatActivity {
             }
         });
 
+        Button mAdd = (Button) findViewById(R.id.addBtn);
+        mAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), AddMembers.class);
+                goToNextActivity.putExtra("user", user);
+                goToNextActivity.putExtra("id", id);
+                startActivity(goToNextActivity);
+            }
+        });
+
+
         //Finds all data associated with group ID, including name and all members
         Cursor resultSet = mydatabase.rawQuery("Select * from friendgroups where groupID = "+id,null);
         Cursor resultSet2 = mydatabase.rawQuery("Select * from groupmember where groupID = "+id,null);
