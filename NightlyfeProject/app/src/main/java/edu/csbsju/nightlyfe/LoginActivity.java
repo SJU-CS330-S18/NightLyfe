@@ -210,7 +210,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(username, password);
             mAuthTask.execute((Void) null);
-
             Intent goToNextActivity;
 
             //Intent used to reroute to new page, example from login to homepage
