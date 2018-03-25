@@ -24,11 +24,17 @@
         <LinearLayout
             android:id="@+id/groupsLayout"
             android:layout_width="379dp"
-            android:layout_height="434dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/createBtn"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="17dp"
             tools:layout_editor_absoluteY="61dp"></LinearLayout>
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Return Home"
+            android:layout_below="@+id/groupsLayout" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

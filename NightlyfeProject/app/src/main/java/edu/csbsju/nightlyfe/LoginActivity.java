@@ -365,6 +365,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("DROP TABLE IF EXISTS specials;");
         mydatabase.execSQL("DROP TABLE IF EXISTS users;");
         mydatabase.execSQL("DROP TABLE IF EXISTS friendgroups;");
+        mydatabase.execSQL("DROP TABLE IF EXISTS groupmember;");
 
         //creates table users
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30));");
@@ -388,7 +389,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friendgroups (groupID INT, groupName VARCHAR(20));");
 
         //creates table groupmember
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmember (groupID INT REFERENCES friendgroups(groupID), username VARCHAR(20) REFERENCES user(username));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmember (groupID INT REFERENCES friendgroups(groupID),  username VARCHAR(20) REFERENCES user(username), PRIMARY KEY (groupID, username));");
 
         mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One');");
         mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two');");
