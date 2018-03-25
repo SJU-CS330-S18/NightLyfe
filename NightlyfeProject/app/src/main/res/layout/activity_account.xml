@@ -7,17 +7,14 @@
     tools:context="edu.csbsju.nightlyfe.AccountActivity">
 
     <RelativeLayout
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/mUserHeader"
             android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_height="64dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
             android:text="Hello!"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
@@ -26,67 +23,111 @@
             tools:text="Hello!"
             tools:textAlignment="center" />
 
-        <AutoCompleteTextView
-            android:id="@+id/fChangeName"
-            android:layout_width="75pt"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_below="@+id/mUserHeader"
-            android:layout_marginLeft="48dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="26dp"
-            android:hint="Change Name" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp">
 
-        <AutoCompleteTextView
-            android:id="@+id/fChangeLocation"
-            android:layout_width="75pt"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/fChangeName"
-            android:layout_alignStart="@+id/fChangeName"
-            android:layout_below="@+id/fChangeName"
-            android:layout_marginTop="31dp"
-            android:hint="Change Location" />
+            <AutoCompleteTextView
+                android:id="@+id/fChangeName"
+                android:layout_width="75pt"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="48dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="26dp"
+                android:hint="Change Name" />
 
-        <AutoCompleteTextView
-            android:id="@+id/fChangePassword"
-            android:layout_width="75pt"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/fChangeLocation"
-            android:layout_alignStart="@+id/fChangeLocation"
-            android:layout_below="@+id/fChangeLocation"
-            android:layout_marginTop="32dp"
-            android:hint="Change Password" />
+            <AutoCompleteTextView
+                android:id="@+id/fChangeLocation"
+                android:layout_width="75pt"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/fChangeName"
+                android:layout_alignStart="@+id/fChangeName"
+                android:layout_below="@+id/fChangeName"
+                android:layout_marginTop="31dp"
+                android:hint="n/a" />
 
-        <Button
-            android:id="@+id/changeNameBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/fChangeLocation"
-            android:layout_marginLeft="38dp"
-            android:layout_marginStart="38dp"
-            android:layout_toEndOf="@+id/fChangeName"
-            android:layout_toRightOf="@+id/fChangeName"
-            android:text="Submit" />
+            <AutoCompleteTextView
+                android:id="@+id/fChangePassword"
+                android:layout_width="75pt"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/fChangeLocation"
+                android:layout_alignStart="@+id/fChangeLocation"
+                android:layout_below="@+id/changeLocationBtn"
+                android:layout_marginTop="29dp"
+                android:hint="Change Password" />
 
-        <Button
-            android:id="@+id/changeLocationBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/fChangeLocation"
-            android:layout_alignBottom="@+id/fChangeLocation"
-            android:layout_alignLeft="@+id/changeNameBtn"
-            android:layout_alignStart="@+id/changeNameBtn"
-            android:text="Submit" />
+            <Button
+                android:id="@+id/changeNameBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/fChangeLocation"
+                android:layout_marginLeft="38dp"
+                android:layout_marginStart="38dp"
+                android:layout_toEndOf="@+id/fChangeName"
+                android:layout_toRightOf="@+id/fChangeName"
+                android:text="Submit" />
 
-        <Button
-            android:id="@+id/changePasswordBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/changeNameBtn"
-            android:layout_alignRight="@+id/changeNameBtn"
-            android:layout_alignTop="@+id/fChangePassword"
-            android:text="Submit" />
+            <Button
+                android:id="@+id/changeLocationBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/fChangeLocation"
+                android:layout_alignBottom="@+id/fChangeLocation"
+                android:layout_alignLeft="@+id/changeNameBtn"
+                android:layout_alignStart="@+id/changeNameBtn"
+                android:text="Submit" />
 
+            <Button
+                android:id="@+id/changePasswordBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/changeNameBtn"
+                android:layout_alignRight="@+id/changeNameBtn"
+                android:layout_alignTop="@+id/fChangePassword"
+                android:text="Submit" />
+
+            <TextView
+                android:id="@+id/labelName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/changeNameBtn"
+                android:layout_alignLeft="@+id/fChangeName"
+                android:layout_alignStart="@+id/fChangeName"
+                android:text="Change Name" />
+
+            <TextView
+                android:id="@+id/labelLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/changeLocationBtn"
+                android:layout_alignLeft="@+id/fChangeLocation"
+                android:layout_alignStart="@+id/fChangeLocation"
+                android:text="Change Location" />
+
+
+            <TextView
+                android:id="@+id/labelPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/changePasswordBtn"
+                android:layout_alignLeft="@+id/fChangePassword"
+                android:layout_alignStart="@+id/fChangePassword"
+                android:text="Change Password" />
+
+            <TextView
+                android:id="@+id/labelUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/changePasswordBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="57dp"
+                android:textSize="10pt"
+                android:text="TextView" />
+        </RelativeLayout>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

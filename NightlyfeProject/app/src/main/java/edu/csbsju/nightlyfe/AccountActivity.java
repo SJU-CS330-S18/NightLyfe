@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.content.Context;
 
 public class AccountActivity extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
@@ -25,6 +27,9 @@ public class AccountActivity extends AppCompatActivity {
         System.out.println(resultSet.getCount());
         String name = resultSet.getString(3);
 
+        TextView labelUsername = findViewById(R.id.labelUsername);
+        labelUsername.setText("Username: " + resultSet.getString(0));
+
         TextView mUserHeader = findViewById(R.id.mUserHeader);
         mUserHeader.setText("Hello, " + name + "!");
 
@@ -40,6 +45,12 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AutoCompleteTextView mSubmitName = findViewById(R.id.fChangeName);
                 changeName(mSubmitName.getText().toString());
+                Intent goToNextActivity = new Intent(getApplicationContext(), AccountActivity.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+                Context context = getApplicationContext();
+                Toast toastName = Toast.makeText(context,"Name Changed Successfully", Toast.LENGTH_LONG);
+                toastName.show();
             }
         });
 
@@ -49,6 +60,12 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AutoCompleteTextView mSubmitLocation = findViewById(R.id.fChangeLocation);
                 changeLocation(mSubmitLocation.getText().toString());
+                Intent goToNextActivity = new Intent(getApplicationContext(), AccountActivity.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+                Context context = getApplicationContext();
+                Toast toastLocation = Toast.makeText(context,"Name Location Successfully", Toast.LENGTH_LONG);
+                toastLocation.show();
             }
         });
 
@@ -58,6 +75,12 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AutoCompleteTextView mSubmitPassword = findViewById(R.id.fChangePassword);
                 changePassword(mSubmitPassword.getText().toString());
+                Intent goToNextActivity = new Intent(getApplicationContext(), AccountActivity.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+                Context context = getApplicationContext();
+                Toast toastPassword = Toast.makeText(context,"Password Changed Successfully", Toast.LENGTH_LONG);
+                toastPassword.show();
             }
         });
 
