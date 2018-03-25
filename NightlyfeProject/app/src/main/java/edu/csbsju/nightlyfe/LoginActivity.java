@@ -210,7 +210,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(username, password);
             mAuthTask.execute((Void) null);
-
+            Button mUser = (Button) findViewById(R.id.userBtn);
+            mUser.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), AccountActivity.class);
+                    startActivity(goToNextActivity);
+                }
+            });
             Intent goToNextActivity;
 
             //Intent used to reroute to new page, example from login to homepage
