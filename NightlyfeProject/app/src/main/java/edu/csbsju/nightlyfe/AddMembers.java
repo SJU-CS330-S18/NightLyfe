@@ -42,10 +42,11 @@ public class AddMembers extends AppCompatActivity {
         });
 
         //Finds all friends associated with active user
-        Cursor resultSet = mydatabase.rawQuery("Select f.user2 from friends f where f.user1 = '"+user+"' AND NOT EXISTS (Select * from groupmember g where g.groupID = "+id+" AND NOT g.username = f.user2)",null);
+        Cursor resultSet = mydatabase.rawQuery("Select f.user2 from friends f where f.user1 = '"+user+"' AND NOT EXISTS (Select * from groupmember g where g.groupID = "+id+" AND g.username = f.user2)",null);
 
         //gets number of friends and moves the cursor to the first entry in ResultSet
         int size = resultSet.getCount();
+        System.out.println(size);
         resultSet.moveToFirst();
 
         //pulls linearlayout for search results to appear, and creates a LayoutParams object to dictate entries
@@ -62,38 +63,31 @@ public class AddMembers extends AppCompatActivity {
             LinearLayout.LayoutParams rowp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1);
 
             //retrieves name of next user found via search
-            String name = resultSet.getString(3);
-            String user2 = resultSet.getString(0);
+            String username = resultSet.getString(0);
 
             //creates a view to display the search result's name
             TextView mFriendView = new TextView(this);
             mFriendView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
+            //sets the attributes of the search result name
+            mFriendView.setTextSize(20);
+            mFriendView.setTextColor(Color.BLACK);
+            mFriendView.setText(username);
+
             //creates a button to either add or remove friend
             Button mAddFriend = new Button(this);
 
             //sets the associated friend's username as a tag associated with the button for inner class use
-            mAddFriend.setTag(user2);
-            //mAddFriend.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            mAddFriend.setTag(username);
 
-            //queries to determine if there is a friend entry with the two users
-            Cursor resultSet2 = mydatabase.rawQuery("Select * from friends where user1 = '"+user+"' AND user2 = '"+user2+"'",null);
-
-            //adds a remove button if the user is already a friend, and an add button if they are not
-            if(resultSet2.getCount() == 0) {
-                mAddFriend.setText("Add");
-                mAddFriend.setOnClickListener(new View.OnClickListener() {
+            //adds an add button for friends not in group
+            mAddFriend.setText("Add");
+            mAddFriend.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //addFriend((String) view.getTag());
+                        addFriend((String) view.getTag());
                     }
                 });
-            }
-
-            //sets the attributes of the search result name
-            mFriendView.setTextSize(20);
-            mFriendView.setTextColor(Color.BLACK);
-            mFriendView.setText(name);
 
             //adds the name and button to a linear layouts
             row.addView(mFriendView, rowp);
@@ -103,5 +97,13 @@ public class AddMembers extends AppCompatActivity {
             //moves the resultSet to the next entry
             resultSet.moveToNext();
         }
+    }
+    public void addFriend(String username){
+        mydatabase.execSQL("INSERT INTO groupmember VALUES ("+id+", '"+username+"');");
+
+        Intent goToNextActivity = new Intent(getApplicationContext(), Group.class);
+        goToNextActivity.putExtra("user", user);
+        goToNextActivity.putExtra("id", id);
+        startActivity(goToNextActivity);
     }
 }
