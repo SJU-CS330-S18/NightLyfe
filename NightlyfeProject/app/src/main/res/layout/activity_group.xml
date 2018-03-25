@@ -51,5 +51,15 @@
             android:text="Return Home"
             android:layout_below="@+id/addBtn" />
 
+        <Button
+            android:id="@+id/leaveBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeBtn"
+            android:background="?attr/colorError"
+            android:text="Leave Group"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

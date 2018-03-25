@@ -51,6 +51,16 @@ public class Group extends AppCompatActivity {
             }
         });
 
+        Button mLeave = (Button) findViewById(R.id.leaveBtn);
+        mLeave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mydatabase.execSQL("DELETE FROM groupmember WHERE username = '"+user+"' AND groupID = "+id+";");
+                Intent goToNextActivity = new Intent(getApplicationContext(), GroupsList.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+            }
+        });
 
         //Finds all data associated with group ID, including name and all members
         Cursor resultSet = mydatabase.rawQuery("Select * from friendgroups where groupID = "+id,null);
