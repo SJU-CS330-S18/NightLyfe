@@ -27,6 +27,7 @@ public class AccountActivity extends AppCompatActivity {
         TextView mUserHeader = findViewById(R.id.mUserHeader);
         //mUserHeader.setText(name);
 
+        /*
         Button mChangeName = (Button) findViewById(R.id.changeNameBtn);
         mChangeName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +54,9 @@ public class AccountActivity extends AppCompatActivity {
                 changePassword(mSubmitPassword.getText().toString());
             }
         });
+        */
     }
+    /*
     private void changeName(String name) {
         Cursor resultSet = mydatabase.rawQuery("Update users set name = '" + name + "' where username = '"+user+"'",null);
         resultSet.moveToFirst();
@@ -66,4 +69,5 @@ public class AccountActivity extends AppCompatActivity {
         Cursor resultSet = mydatabase.rawQuery("Update users set password = '" + password + "' where username = '"+user+"'",null);
         resultSet.moveToFirst();
     }
+    */
 }
