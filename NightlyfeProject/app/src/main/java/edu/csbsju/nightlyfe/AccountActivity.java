@@ -19,15 +19,21 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
         mydatabase = openOrCreateDatabase("NightLyfe", MODE_PRIVATE, null);
-        user = getIntent().getStringExtra("username");
+        user = getIntent().getStringExtra("user");
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '" + user + "'", null);
         resultSet.moveToFirst();
         System.out.println(resultSet.getCount());
-        //String name = resultSet.getString(1);
-        TextView mUserHeader = findViewById(R.id.mUserHeader);
-        //mUserHeader.setText(name);
+        String name = resultSet.getString(3);
 
-        /*
+        TextView mUserHeader = findViewById(R.id.mUserHeader);
+        mUserHeader.setText("Hello, " + name + "!");
+
+        AutoCompleteTextView cName = findViewById(R.id.fChangeName);
+        AutoCompleteTextView cPass = findViewById(R.id.fChangePassword);
+
+        cName.setHint(resultSet.getString(3));
+        cPass.setHint(resultSet.getString(1));
+
         Button mChangeName = (Button) findViewById(R.id.changeNameBtn);
         mChangeName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,9 +60,9 @@ public class AccountActivity extends AppCompatActivity {
                 changePassword(mSubmitPassword.getText().toString());
             }
         });
-        */
+
     }
-    /*
+
     private void changeName(String name) {
         Cursor resultSet = mydatabase.rawQuery("Update users set name = '" + name + "' where username = '"+user+"'",null);
         resultSet.moveToFirst();
@@ -69,5 +75,5 @@ public class AccountActivity extends AppCompatActivity {
         Cursor resultSet = mydatabase.rawQuery("Update users set password = '" + password + "' where username = '"+user+"'",null);
         resultSet.moveToFirst();
     }
-    */
+
 }
