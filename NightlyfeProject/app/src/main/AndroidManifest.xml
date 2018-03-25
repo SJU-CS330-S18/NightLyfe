@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -39,7 +39,12 @@
         <activity android:name=".Register" />
         <activity android:name=".FriendsList" />
         <activity android:name=".AccountActivity" />
-        <activity android:name=".FriendSearch"></activity>
+        <activity android:name=".FriendSearch" />
+        <activity android:name=".BarsList" />
+        <activity android:name=".FavoritesList" />
+        <activity android:name=".GroupsList" />
+        <activity android:name=".NewGroupPage" />
+        <activity android:name=".Group"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.csbsju.nightlyfe.GroupsList">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/createBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/groupsLayout"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/groupsLayout"
+            android:text="Create Group"
+            tools:layout_editor_absoluteX="242dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <LinearLayout
+            android:id="@+id/groupsLayout"
+            android:layout_width="379dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/createBtn"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="17dp"
+            tools:layout_editor_absoluteY="61dp"></LinearLayout>
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Return Home"
+            android:layout_below="@+id/groupsLayout" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

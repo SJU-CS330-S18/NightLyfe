@@ -6,4 +6,96 @@
     android:layout_height="match_parent"
     tools:context="edu.csbsju.nightlyfe.Restaurant_Page">
 
+    <TextView
+        android:id="@+id/BusinessName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="Business Name"
+        android:textColor="@android:color/black"
+        android:textSize="45sp"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/BusinessAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Business Address"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="62dp" />
+
+    <Button
+        android:id="@+id/FavoritesBtn"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Add to Favorites"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="215dp" />
+
+    <Button
+        android:id="@+id/ReviewBtn"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Reviews"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="357dp" />
+
+    <Button
+        android:id="@+id/BulletinBtn"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Bulletin Board"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="143dp" />
+
+    <Button
+        android:id="@+id/PhotosBtn"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Photos"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="286dp" />
+
+    <TextView
+        android:id="@+id/BusinessHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="Business Hours"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="442dp" />
+
+    <TextView
+        android:id="@+id/BusinessPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Phone #"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="93dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="240dp"
+        android:layout_height="359dp"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="187dp"
+        tools:layout_editor_absoluteY="93dp" />
+
 </android.support.constraint.ConstraintLayout>
