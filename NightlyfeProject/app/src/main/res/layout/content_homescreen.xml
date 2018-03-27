@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/userBtn"
+            android:layout_below="@+id/destinationTxt"
             android:text="Find Bars" />
 
         <Button
@@ -80,6 +80,24 @@
             android:layout_alignBottom="@+id/logoutBtn"
             android:layout_centerHorizontal="true"
             android:text="username"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/destinationLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/userBtn"
+            android:text="My Destination:" />
+
+        <TextView
+            android:id="@+id/destinationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/destinationLbl"
+            android:layout_centerHorizontal="true"
+            android:text="No Destination Selected!"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

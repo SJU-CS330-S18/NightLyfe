@@ -367,7 +367,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("DROP TABLE IF EXISTS groupmember;");
         mydatabase.execSQL("DROP TABLE IF EXISTS favorites");
         //creates table users
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30), destination INT);");
 
         //creates table users
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS businesses (name VARCHAR(20) PRIMARY KEY, owner VARCHAR(20) REFERENCES users(username), city VARCHAR(20), address VARCHAR(100), latitude FLOAT(9), longitude FLOAT(9));");
@@ -393,13 +393,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //creates table favorites
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favorites (user VARCAR(20) REFERENCES users(username),  location VARCHAR(20) REFERENCES businesses(name), PRIMARY KEY (user, location));");
 
-        mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One');");
-        mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two');");
-        mydatabase.execSQL("INSERT INTO users VALUES ('owner1', 'pass', 2, 'Owner One');");
-        mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'John Doe');");
-        mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'Jane Doe');");
-        mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'Jerry Springer');");
-        mydatabase.execSQL("INSERT INTO users VALUES ('tdrichmond', 'pass', 1, 'Tom Richmond');");
+        mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('owner1', 'pass', 2, 'Owner One', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'John Doe', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'Jane Doe', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'Jerry Springer', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('tdrichmond', 'pass', 1, 'Tom Richmond', 0);");
 
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'user2', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
