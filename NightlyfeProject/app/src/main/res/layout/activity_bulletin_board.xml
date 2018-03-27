@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="edu.csbsju.nightlyfe.BulletinBoard"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/board" />
+    <TextView
+        android:id="@+id/BusinessName"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="Business Name"
+        android:textColor="@android:color/black"
+        android:textSize="45sp" />
+    <TextView
+        android:id="@+id/eventTextMiddle"
+        android:layout_width="202dp"
+        android:layout_height="46dp"
+        android:layout_alignLeft="@+id/eventTextTop"
+        android:layout_alignStart="@+id/eventTextTop"
+        android:layout_below="@+id/eventTextTop"
+        android:layout_marginTop="30dp"
+        android:text="No Post Yet"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="103dp" />
+
+    <TextView
+        android:id="@+id/eventTextBottom"
+        android:layout_width="202dp"
+        android:layout_height="46dp"
+        android:layout_alignLeft="@+id/eventTextMiddle"
+        android:layout_alignStart="@+id/eventTextMiddle"
+        android:layout_below="@+id/eventTextMiddle"
+        android:layout_marginTop="30dp"
+        android:text="No Post Yet"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="103dp" />
+
+    <TextView
+        android:id="@+id/eventTextTop"
+        android:layout_width="202dp"
+        android:layout_height="46dp"
+        android:layout_below="@+id/BusinessName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="No Post Yet"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="232dp" />
+
+
+</RelativeLayout>
