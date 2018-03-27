@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 public class Group extends AppCompatActivity {
 
+    //must still implement the group chat function
+    
     public SQLiteDatabase mydatabase;
     public int id;
     public String user;
