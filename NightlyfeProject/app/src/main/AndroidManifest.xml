@@ -39,6 +39,7 @@
         <activity android:name=".Register" />
         <activity android:name=".FriendsList" />
         <activity android:name=".AccountActivity" />
+        <activity android:name=".BulletinBoard" />
         <activity android:name=".FriendSearch" />
         <activity android:name=".BarsList" />
         <activity android:name=".FavoritesList" />

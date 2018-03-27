@@ -59,7 +59,8 @@ public class Homescreen extends AppCompatActivity {
         mBars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), BarsList.class);
+                Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+                goToNextActivity.putExtra("user", user);
                 startActivity(goToNextActivity);
             }
         });

@@ -369,7 +369,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //creates table users
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30));");
 
-        //creates table users
+        //creates table businesses
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS businesses (name VARCHAR(20) PRIMARY KEY, owner VARCHAR(20) REFERENCES users(username), city VARCHAR(20), address VARCHAR(100), latitude FLOAT(9), longitude FLOAT(9));");
 
         //creates table reviews
