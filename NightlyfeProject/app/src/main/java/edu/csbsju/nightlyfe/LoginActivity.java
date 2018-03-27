@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        //populateDatabase();
+        populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -365,7 +365,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("DROP TABLE IF EXISTS users;");
         mydatabase.execSQL("DROP TABLE IF EXISTS friendgroups;");
         mydatabase.execSQL("DROP TABLE IF EXISTS groupmember;");
-
+        mydatabase.execSQL("DROP TABLE IF EXISTS favorites");
         //creates table users
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30));");
 
@@ -390,6 +390,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //creates table groupmember
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmember (groupID INT REFERENCES friendgroups(groupID),  username VARCHAR(20) REFERENCES user(username), PRIMARY KEY (groupID, username));");
 
+        //creates table favorites
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favorites (user VARCAR(20) REFERENCES users(username),  location VARCHAR(20) REFERENCES businesses(name), PRIMARY KEY (user, location));");
+
         mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One');");
         mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two');");
         mydatabase.execSQL("INSERT INTO users VALUES ('owner1', 'pass', 2, 'Owner One');");
@@ -410,6 +413,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
         mydatabase.execSQL("INSERT INTO businesses VALUES ('sals', 'owner1', 'saint joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
+
+        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'sals')");
 
         //how to querey from the table
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user1'",null);
