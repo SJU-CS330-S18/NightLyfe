@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        //populateDatabase();
+        populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -366,6 +366,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("DROP TABLE IF EXISTS friendgroups;");
         mydatabase.execSQL("DROP TABLE IF EXISTS groupmember;");
         mydatabase.execSQL("DROP TABLE IF EXISTS favorites");
+        mydatabase.execSQL("DROP TABLE IF EXISTS groupmessage");
+
         //creates table users
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30), destination INT);");
 
@@ -392,6 +394,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         //creates table favorites
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favorites (user VARCAR(20) REFERENCES users(username),  location VARCHAR(20) REFERENCES businesses(name), PRIMARY KEY (user, location));");
+
+        //creates table groupmessage
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmessage (groupID INT REFERENCES friendgroups(groupID), username VARCHAR(20) REFERENCES users(username), time DATE, comment VARCHAR(100), PRIMARY KEY(groupID, username, time));");
+
 
         mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two', 0);");
