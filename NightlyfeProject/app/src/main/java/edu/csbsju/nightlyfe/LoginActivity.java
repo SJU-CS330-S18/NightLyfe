@@ -396,7 +396,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favorites (user VARCAR(20) REFERENCES users(username),  location VARCHAR(20) REFERENCES businesses(name), PRIMARY KEY (user, location));");
 
         //creates table groupmessage
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmessage (groupID INT REFERENCES friendgroups(groupID), username VARCHAR(20) REFERENCES users(username), time DATE, comment VARCHAR(100), PRIMARY KEY(groupID, username, time));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmessage (groupID INT REFERENCES friendgroups(groupID), username VARCHAR(20) REFERENCES users(username), time INT, comment VARCHAR(100), PRIMARY KEY(groupID, username, time));");
 
 
         mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One', 0);");
