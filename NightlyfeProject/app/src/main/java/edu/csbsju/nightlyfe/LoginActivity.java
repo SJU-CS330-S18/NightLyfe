@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        populateDatabase();
+        //populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -221,7 +221,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 goToNextActivity = new Intent(getApplicationContext(), AdminHomescreen.class);
                 goToNextActivity.putExtra("user", username);
             }
-            else if (isValidCredentials(username, password) == 2) {
+            else if (isValidCredentials(username, password) == 2 || isValidCredentials(username, password) == 4) {
                 goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
                 goToNextActivity.putExtra("user", username);
             }

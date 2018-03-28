@@ -2,8 +2,6 @@ package edu.csbsju.nightlyfe;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -40,7 +38,7 @@ public class OwnerHomescreen extends AppCompatActivity {
 
         user = getIntent().getStringExtra("user");
 
-        TextView mUsernameView = findViewById(R.id.userTxt);
+        TextView mUsernameView = findViewById(R.id.ownerTxt);
         //System.out.println(user);
         mUsernameView.setText(user);
 
@@ -54,5 +52,25 @@ public class OwnerHomescreen extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
+
+        LinearLayout ll = findViewById(R.id.buttonLayout);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        resultSet.moveToFirst();
+        if(resultSet.getInt(2) == 2){
+            Button mPremium = new Button(this);
+            mPremium.setText("Become a Premium account!");
+            ll.addView(mPremium,lp);
+
+            mPremium.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //dummy click listener to register as a premium account
+                    Cursor resultSet = mydatabase.rawQuery("Update users set type = " + 4 + " where username = '"+user+"'",null);
+                    resultSet.moveToFirst();
+                    startActivity(getIntent());
+                }
+            });
+        }
     }
 }
