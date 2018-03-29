@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        //populateDatabase();
+        populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -419,8 +419,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'user3');");
 
         mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
-        mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
-        mydatabase.execSQL("INSERT INTO business VALUES (2, 'The Middy', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
+        mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '19 College Ave N, St Joseph, MN 56374', 45.564497, -94.320641);");
+        mydatabase.execSQL("INSERT INTO business VALUES (3, 'The Middy', 'Saint Joseph', '21 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
+        mydatabase.execSQL("INSERT INTO business VALUES (4, 'Bad Habit', 'Saint Joseph', '15 E Minnesota St #108, St Joseph, MN 56374', 45.564497, -94.320641);");
+
 
         mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'sals')");
 
