@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NightlyfeProject.iml" filepath="$PROJECT_DIR$/NightlyfeProject.iml" />
       <module fileurl="file://C:\Users\Grant\Desktop\NightLyfe Project\NightLyfe\NightlyfeProject\NightlyfeProject.iml" filepath="C:\Users\Grant\Desktop\NightLyfe Project\NightLyfe\NightlyfeProject\NightlyfeProject.iml" />
+      <module fileurl="file://C:\Users\Grant\Desktop\NL\NightLyfe\NightlyfeProject\NightlyfeProject.iml" filepath="C:\Users\Grant\Desktop\NL\NightLyfe\NightlyfeProject\NightlyfeProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Grant\Desktop\NL\NightLyfe\NightlyfeProject\app\app.iml" filepath="C:\Users\Grant\Desktop\NL\NightLyfe\NightlyfeProject\app\app.iml" />
       <module fileurl="file://C:\Users\Grant\Desktop\NightLyfe Project\NightLyfe\NightlyfeProject\app\app.iml" filepath="C:\Users\Grant\Desktop\NightLyfe Project\NightLyfe\NightlyfeProject\app\app.iml" />
     </modules>
   </component>
