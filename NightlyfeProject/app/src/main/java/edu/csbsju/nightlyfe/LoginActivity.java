@@ -369,10 +369,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("DROP TABLE IF EXISTS groupmessage");
 
         //creates table users
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30), destination INT);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30), destination INT REFERENCES business(id));");
 
         //creates table businesses
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS businesses (name VARCHAR(20) PRIMARY KEY, owner VARCHAR(20) REFERENCES users(username), city VARCHAR(20), address VARCHAR(100), latitude FLOAT(9), longitude FLOAT(9));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS business (id int PRIMARY KEY, name VARCHAR(20), city VARCHAR(20), address VARCHAR(100), latitude FLOAT(9), longitude FLOAT(9));");
 
         //creates table reviews
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS reviews (username VARCHAR(20) REFERENCES users(username), business VARCHAR(20) REFERENCES businesses(name), commenttext VARCHAR2(2000));");
@@ -401,7 +401,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two', 0);");
-        mydatabase.execSQL("INSERT INTO users VALUES ('owner1', 'pass', 2, 'Owner One', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('owner1', 'pass', 2, 'Sals Owner', 1);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('owner2', 'pass', 2, 'La Owner', 2);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'John Doe', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'Jane Doe', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'Jerry Springer', 0);");
@@ -417,8 +418,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'user1');");
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'user3');");
 
-
-        mydatabase.execSQL("INSERT INTO businesses VALUES ('sals', 'owner1', 'saint joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
+        mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
+        mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
+        mydatabase.execSQL("INSERT INTO business VALUES (2, 'The Middy', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641);");
 
         mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'sals')");
 
