@@ -357,7 +357,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         //drops tables to recreate and populate
         mydatabase.execSQL("DROP TABLE IF EXISTS users;");
-        mydatabase.execSQL("DROP TABLE IF EXISTS businesses;");
+        mydatabase.execSQL("DROP TABLE IF EXISTS business;");
         mydatabase.execSQL("DROP TABLE IF EXISTS reviews;");
         mydatabase.execSQL("DROP TABLE IF EXISTS friends;");
         mydatabase.execSQL("DROP TABLE IF EXISTS plans;");
