@@ -19,6 +19,7 @@
         android:text="Business Name"
         android:textColor="@android:color/black"
         android:textSize="45sp"
+        android:layout_marginTop="10dp"
         tools:textAlignment="center" />
 
         <TextView
@@ -89,7 +90,7 @@
             android:id="@+id/BusinessHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView"
+            android:layout_below="@+id/BusinessPhone"
             android:layout_centerHorizontal="true"
             android:fontFamily="cursive"
             android:text="Business Hours"
@@ -100,7 +101,7 @@
             android:id="@+id/BusinessPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/BusinessHours"
+            android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
             android:fontFamily="casual"
             android:text="Phone #"

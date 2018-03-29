@@ -24,6 +24,7 @@ import android.widget.*;
 public class OwnerHomescreen extends AppCompatActivity {
 
     String user;
+    int id;
     SQLiteDatabase mydatabase;
 
     @Override
@@ -38,11 +39,14 @@ public class OwnerHomescreen extends AppCompatActivity {
 
         user = getIntent().getStringExtra("user");
 
+
         TextView mUsernameView = findViewById(R.id.ownerTxt);
         //System.out.println(user);
         mUsernameView.setText(user);
 
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+user+"'",null);
+        resultSet.moveToFirst();
+        id = resultSet.getInt(4);
 
         Button mLogout = (Button) findViewById(R.id.logoutBtn);
         mLogout.setOnClickListener(new View.OnClickListener() {
@@ -53,10 +57,26 @@ public class OwnerHomescreen extends AppCompatActivity {
             }
         });
 
+        Cursor resultSet2 = mydatabase.rawQuery("Select * from business where id = "+id,null);
+        resultSet2.moveToFirst();
+
+        TextView mName = findViewById(R.id.establishmentTxt);
+        mName.setText(resultSet2.getString(1));
+
+        Button mMyPage = (Button) findViewById(R.id.restaurantBtn);
+        mMyPage.setTag(id);
+        mMyPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+                goToNextActivity.putExtra("id", (int) view.getTag());
+                startActivity(goToNextActivity);
+            }
+        });
+
         LinearLayout ll = findViewById(R.id.buttonLayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        resultSet.moveToFirst();
         if(resultSet.getInt(2) == 2){
             Button mPremium = new Button(this);
             mPremium.setText("Become a Premium account!");
