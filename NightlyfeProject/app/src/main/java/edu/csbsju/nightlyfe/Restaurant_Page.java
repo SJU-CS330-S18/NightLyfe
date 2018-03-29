@@ -20,7 +20,7 @@ public class Restaurant_Page extends AppCompatActivity {
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
         user = getIntent().getStringExtra("user");
 
-        Button BulletinBtn = (Button) findViewById(R.id.PhotosBtn);
+        Button BulletinBtn = (Button) findViewById(R.id.BulletinBtn);
         BulletinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
