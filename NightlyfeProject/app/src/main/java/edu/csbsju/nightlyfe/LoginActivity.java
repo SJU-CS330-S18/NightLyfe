@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        populateDatabase();
+        //populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -375,7 +375,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS business (id int PRIMARY KEY, name VARCHAR(20), city VARCHAR(20), address VARCHAR(100), latitude FLOAT(9), longitude FLOAT(9));");
 
         //creates table reviews
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS reviews (username VARCHAR(20) REFERENCES users(username), business VARCHAR(20) REFERENCES businesses(name), commenttext VARCHAR2(2000));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS reviews (username VARCHAR(20) REFERENCES users(username), id int REFERENCES businesses(id), commenttext VARCHAR2(2000));");
 
         //creates table friends
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friends (user1 VARCHAR(20), user2 VARCHAR(20), status INT, FOREIGN KEY (user1) REFERENCES users(username),  FOREIGN KEY (user2) REFERENCES users(username), PRIMARY KEY (user1, user2));");
@@ -390,7 +390,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friendgroups (groupID INT, groupName VARCHAR(20));");
 
         //creates table groupmember
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmember (groupID INT REFERENCES friendgroups(groupID),  username VARCHAR(20) REFERENCES user(username), PRIMARY KEY (groupID, username));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmember (groupID INT REFERENCES friendgroups(groupID),  username VARCHAR(20) REFERENCES users(username), PRIMARY KEY (groupID, username));");
 
         //creates table favorites
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favorites (user VARCAR(20) REFERENCES users(username),  location VARCHAR(20) REFERENCES businesses(name), PRIMARY KEY (user, location));");
