@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="60dp">
 
         <Button
-            android:id="@+id/userBtn"
+            android:id="@+id/ownerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -24,7 +24,7 @@
             android:text="Account" />
 
         <TextView
-            android:id="@+id/userTxt"
+            android:id="@+id/ownerTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/userBtn"
@@ -41,5 +41,38 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:text="Logout" />
+
+        <TextView
+            android:id="@+id/establishmentLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ownerBtn"
+            android:text="My Establishment:" />
+
+        <TextView
+            android:id="@+id/establishmentTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/establishmentLbl"
+            android:layout_centerHorizontal="true"
+            android:text="No Establishment Selected!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <LinearLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/establishmentTxt"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/restaurantBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logoutBtn"
+                android:layout_centerHorizontal="true"
+                android:text="View my Page" />
+        </LinearLayout>
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

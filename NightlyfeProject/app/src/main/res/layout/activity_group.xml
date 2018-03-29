@@ -44,6 +44,16 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/membersView"
                 android:text="Add Member" />
+
+        <Button
+            android:id="@+id/chatBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/membersView"
+            android:text="View Chat" />
+
         <Button
             android:id="@+id/homeBtn"
             android:layout_width="match_parent"

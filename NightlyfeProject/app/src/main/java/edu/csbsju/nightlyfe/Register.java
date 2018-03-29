@@ -80,7 +80,7 @@ public class Register extends AppCompatActivity {
             return false;
         }
         else{
-            mydatabase.execSQL("INSERT INTO users VALUES ('"+username+"', '"+password+"', 1, '"+fname+" "+lname+"');");
+            mydatabase.execSQL("INSERT INTO users VALUES ('"+username+"', '"+password+"', 1, '"+fname+" "+lname+"', 0);");
             return true;
         }
     }

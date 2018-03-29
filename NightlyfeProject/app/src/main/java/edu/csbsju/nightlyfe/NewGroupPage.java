@@ -62,6 +62,7 @@ public class NewGroupPage extends AppCompatActivity {
             int id = resultSet.getCount()+1;
             mydatabase.execSQL("INSERT INTO friendgroups VALUES ("+id+", '"+groupName+"');");
             mydatabase.execSQL("INSERT INTO groupmember VALUES ("+id+", '"+user+"');");
+            
 
             Intent goToNextActivity = new Intent(getApplicationContext(), GroupsList.class);
             goToNextActivity.putExtra("user", user);
