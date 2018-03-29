@@ -58,12 +58,26 @@
             android:layout_centerHorizontal="true"
             android:text="No Establishment Selected!"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/attendanceLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/establishmentTxt"
+            android:text="Projected Attendence:" />
+
+        <TextView
+            android:id="@+id/attendanceTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/attendanceLbl"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <LinearLayout
             android:id="@+id/buttonLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/establishmentTxt"
+            android:layout_below="@id/attendanceTxt"
             android:orientation="vertical">
 
             <Button
@@ -73,6 +87,7 @@
                 android:layout_below="@+id/logoutBtn"
                 android:layout_centerHorizontal="true"
                 android:text="View my Page" />
+
         </LinearLayout>
 
     </RelativeLayout>

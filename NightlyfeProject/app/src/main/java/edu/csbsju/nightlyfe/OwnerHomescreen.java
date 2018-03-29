@@ -39,7 +39,6 @@ public class OwnerHomescreen extends AppCompatActivity {
 
         user = getIntent().getStringExtra("user");
 
-
         TextView mUsernameView = findViewById(R.id.ownerTxt);
         //System.out.println(user);
         mUsernameView.setText(user);
@@ -73,6 +72,12 @@ public class OwnerHomescreen extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
+
+        Cursor resultSet3 = mydatabase.rawQuery("Select * from users where destination = "+id+" and NOT user = '"+user+"'",null);
+        resultSet3.moveToFirst();
+
+        TextView mEstimate = findViewById(R.id.attendanceTxt);
+        mEstimate.setText(resultSet3.getCount());
 
         LinearLayout ll = findViewById(R.id.buttonLayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
