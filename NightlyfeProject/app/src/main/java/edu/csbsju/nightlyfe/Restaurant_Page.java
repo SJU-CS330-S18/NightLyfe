@@ -31,10 +31,5 @@ public class Restaurant_Page extends AppCompatActivity {
         });
 
     }
-<<<<<<< HEAD
-
-
-=======
     //Buttons should be linked to created pages and a "back to search" button should be created
->>>>>>> ca9e15b4afe7083e85467f7434a0659b1d76f63e
 }
