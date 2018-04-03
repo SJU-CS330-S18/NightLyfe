@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class Group extends AppCompatActivity {
@@ -32,7 +31,7 @@ public class Group extends AppCompatActivity {
         id = getIntent().getIntExtra("id", 0);
         user = getIntent().getStringExtra("user");
 
-        Button mHome = (Button) findViewById(R.id.homeBtn);
+        Button mHome = (Button) findViewById(R.id.listBtn);
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

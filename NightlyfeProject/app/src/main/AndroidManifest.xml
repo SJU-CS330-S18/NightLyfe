@@ -47,7 +47,8 @@
         <activity android:name=".NewGroupPage" />
         <activity android:name=".Group" />
         <activity android:name=".AddMembers" />
-        <activity android:name=".GroupChat"></activity>
+        <activity android:name=".GroupChat" />
+        <activity android:name=".RestaurantList"></activity>
     </application>
 
 </manifest>

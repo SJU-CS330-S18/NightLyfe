@@ -117,6 +117,19 @@
             android:layout_toRightOf="@+id/FavoritesBtn"
             app:srcCompat="@drawable/logo" />
 
+        <Button
+            android:id="@+id/listBtn"
+            android:layout_width="203dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="11dp"
+            android:fontFamily="casual"
+            android:text="Back to List"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="286dp" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

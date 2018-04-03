@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Button.*;
 
 public class FriendSearch extends AppCompatActivity {
 
@@ -45,7 +44,7 @@ public class FriendSearch extends AppCompatActivity {
         LinearLayout ll = (LinearLayout)findViewById(R.id.searchLayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        Button mHome = (Button) findViewById(R.id.homeBtn);
+        Button mHome = (Button) findViewById(R.id.listBtn);
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
