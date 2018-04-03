@@ -31,7 +31,7 @@ public class AddMembers extends AppCompatActivity {
         user = getIntent().getStringExtra("user");
         id = getIntent().getIntExtra("id", 0);
 
-        Button mHome = (Button) findViewById(R.id.homeBtn);
+        Button mHome = (Button) findViewById(R.id.listBtn);
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -55,7 +55,7 @@
             android:text="View Chat" />
 
         <Button
-            android:id="@+id/homeBtn"
+            android:id="@+id/listBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Return Home"
@@ -65,7 +65,7 @@
             android:id="@+id/leaveBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/homeBtn"
+            android:layout_below="@+id/listBtn"
             android:background="?attr/colorError"
             android:text="Leave Group"
             android:textColor="@android:color/white"

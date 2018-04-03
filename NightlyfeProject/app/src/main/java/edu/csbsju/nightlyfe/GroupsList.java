@@ -34,7 +34,7 @@ public class GroupsList extends AppCompatActivity {
             }
         });
 
-        Button mHome = (Button) findViewById(R.id.homeBtn);
+        Button mHome = (Button) findViewById(R.id.listBtn);
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

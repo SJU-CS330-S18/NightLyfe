@@ -412,6 +412,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'user1', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'tdrichmond', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('grsalk', 'user1', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'grsalk', 1);");
 
         mydatabase.execSQL("INSERT INTO friendgroups VALUES (1, 'St. Joe Bros');");
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'tdrichmond');");
@@ -425,6 +427,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
         mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'sals')");
+        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'Middy')");
 
         //how to querey from the table
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user1'",null);
