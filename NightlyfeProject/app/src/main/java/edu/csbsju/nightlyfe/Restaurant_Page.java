@@ -2,6 +2,7 @@
 package edu.csbsju.nightlyfe;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,10 @@ public class Restaurant_Page extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
     public String user;
     public String key;
+    public String busName;
+    public String address;
+    public String phone;
+    public String hours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +47,11 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
-
+    Cursor resultSet = mydatabase.rawQuery("Select * from business where id = '" + key + "'", null);
+    String busName = resultSet.getString(1);
+    String address = resultSet.getString(3);
+    String phone = resultSet.getString(3);
+    String hours = resultSet.getString(3);
 
 
 
