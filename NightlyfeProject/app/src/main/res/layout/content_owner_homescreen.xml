@@ -11,9 +11,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp">
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <Button
             android:id="@+id/ownerBtn"
@@ -58,6 +57,7 @@
             android:layout_centerHorizontal="true"
             android:text="No Establishment Selected!"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
         <TextView
             android:id="@+id/attendanceLbl"
             android:layout_width="wrap_content"
@@ -73,22 +73,35 @@
             android:text="0"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <LinearLayout
-            android:id="@+id/buttonLayout"
+        <Button
+            android:id="@+id/restaurantBtn"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/attendanceTxt"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/attendanceTxt"
+            android:text="View my Page" />
 
-            <Button
-                android:id="@+id/restaurantBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/logoutBtn"
-                android:layout_centerHorizontal="true"
-                android:text="View my Page" />
+        <EditText
+            android:id="@+id/claimTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/restaurantBtn"
+            android:layout_toLeftOf="@+id/ownerTxt"
+            android:layout_toStartOf="@+id/ownerTxt"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/claimBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/restaurantBtn"
+            android:layout_toEndOf="@+id/ownerTxt"
+            android:layout_toRightOf="@+id/ownerTxt"
+            android:text="Claim" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
