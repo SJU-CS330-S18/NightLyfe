@@ -43,7 +43,15 @@ public class Restaurant_Page extends AppCompatActivity {
         });
 
 
-
+        Button reviewsBtn = (Button) findViewById(R.id.ReviewBtn);
+        reviewsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
+                goToNextActivity.putExtra(key, Integer.parseInt((String) view.getTag()));
+                startActivity(goToNextActivity);
+            }
+        });
 
 
     }

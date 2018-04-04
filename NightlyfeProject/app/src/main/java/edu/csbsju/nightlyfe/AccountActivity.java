@@ -34,9 +34,11 @@ public class AccountActivity extends AppCompatActivity {
         mUserHeader.setText("Hello, " + name + "!");
 
         AutoCompleteTextView cName = findViewById(R.id.fChangeName);
+        //AutoCompleteTextView cLocation = findViewById(R.id.fChangeLocation);
         AutoCompleteTextView cPass = findViewById(R.id.fChangePassword);
 
         cName.setHint(resultSet.getString(3));
+        //cLocation.setHint(resultSet.getString(4));
         cPass.setHint(resultSet.getString(1));
 
         Button mChangeName = (Button) findViewById(R.id.changeNameBtn);
@@ -84,6 +86,15 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        Button mHome = (Button) findViewById(R.id.homeBtn);
+        mHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+            }
+        });
     }
 
     private void changeName(String name) {

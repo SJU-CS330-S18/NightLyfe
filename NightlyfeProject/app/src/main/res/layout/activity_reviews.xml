@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.csbsju.nightlyfe.ReviewsActivity">
+
+        <TextView
+            android:id="@+id/mReviewsHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textSize="28dp"
+            tools:text="Reviews"
+            tools:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/labelBarName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mReviewsHeader"
+        android:layout_centerHorizontal="true"
+        android:text="Bar Name Here" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/messageBar"
+        android:layout_below="@+id/labelBarName">
+
+        <LinearLayout
+            android:id="@+id/reviewWindow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/messageBar"
+            android:layout_below="@+id/scrollView"
+            android:orientation="vertical"></LinearLayout>
+
+    </ScrollView>
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/mReviewEntry"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="Write your review here..." />
+
+    <Button
+        android:id="@+id/submitReviewBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="Submit Review" />
+
+</RelativeLayout>
