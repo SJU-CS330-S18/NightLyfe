@@ -406,7 +406,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'John Doe', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'Jane Doe', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'Jerry Springer', 0);");
-        mydatabase.execSQL("INSERT INTO users VALUES ('tdrichmond', 'pass', 1, 'Tom Richmond', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('tdrichmond', 'pass', 1, 'Tom Richmond', 1);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('grsalk', 'pass', 1, 'Grant Salk', 0);");
 
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'user2', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
