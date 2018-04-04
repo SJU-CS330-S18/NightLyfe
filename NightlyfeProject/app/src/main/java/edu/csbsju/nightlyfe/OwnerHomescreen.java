@@ -86,7 +86,10 @@ public class OwnerHomescreen extends AppCompatActivity {
                 Cursor resultSet3 = mydatabase.rawQuery("Select * from business where id = "+id, null);
                 resultSet3.moveToFirst();
                 int restaurantOwn = resultSet3.getInt(8);
-                if(verifyClaim == restaurantOwn){
+                if(verifyClaim != restaurantOwn) {
+                    claimText.setError("Invalid owner ID");
+                }
+                else if(verifyClaim == restaurantOwn){
                     Cursor resultSet4 = mydatabase.rawQuery("Update users set type = " + 4 + " where username = '"+user+"'", null);
                     resultSet4.moveToFirst();
                     Intent goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
