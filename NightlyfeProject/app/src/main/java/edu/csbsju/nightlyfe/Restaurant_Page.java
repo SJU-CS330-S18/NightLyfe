@@ -15,10 +15,7 @@ public class Restaurant_Page extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
     public String user;
     public String key;
-    public String busName;
-    public String address;
-    public String phone;
-    public String hours;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +47,10 @@ public class Restaurant_Page extends AppCompatActivity {
         });
 
     Cursor resultSet = mydatabase.rawQuery("Select * from business where id = '" + key + "'", null);
+    resultSet.moveToFirst();
     String busName = resultSet.getString(1);
     String address = resultSet.getString(3);
-<<<<<<< HEAD
+
     String phone = resultSet.getString(6);
     String hours = resultSet.getString(7);
 
@@ -68,10 +66,9 @@ public class Restaurant_Page extends AppCompatActivity {
     TextView BusinessHours = findViewById(R.id.BusinessHours);
     BusinessHours.setText(hours);
 
-=======
-    String phone = resultSet.getString(3);
-    String hours = resultSet.getString(3);
->>>>>>> cfd3ce2392fa10a0b30ea74e12407bceee408921
+
+
+
     }
     //Buttons should be linked to created pages and a "back to search" button should be created
 }
