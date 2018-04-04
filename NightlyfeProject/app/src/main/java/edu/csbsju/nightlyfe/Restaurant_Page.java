@@ -53,9 +53,6 @@ public class Restaurant_Page extends AppCompatActivity {
     String address = resultSet.getString(3);
     String phone = resultSet.getString(3);
     String hours = resultSet.getString(3);
-
-
-
     }
     //Buttons should be linked to created pages and a "back to search" button should be created
 }

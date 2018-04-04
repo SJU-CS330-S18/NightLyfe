@@ -427,8 +427,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mydatabase.execSQL("INSERT INTO specials VALUES (1, 'Big Mugs!! Come get your drink on here at Sals!', 2018-04-04, 2018-04-04);");
 
-        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'sals')");
-        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'Middy')");
+        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 1)");
+        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 3)");
 
         //how to querey from the table
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user1'",null);
