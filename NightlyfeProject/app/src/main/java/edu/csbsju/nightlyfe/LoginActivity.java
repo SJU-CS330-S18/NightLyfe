@@ -384,7 +384,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS plans (who VARCHAR(20), business VARCHAR(20) REFERENCES businesses(name), plantime DATE);");
 
         //creates table specials
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS specials (business VARCHAR(20) REFERENCES businesses(name), special VARCHAR2(2000), starttime DATE, endtime DATE);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS specials (businessID REFERENCES businesses(id), special VARCHAR2(2000), starttime DATE, endtime DATE);");
 
         //creates table friendgroups
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friendgroups (groupID INT, groupName VARCHAR(20));");
@@ -425,6 +425,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO business VALUES (3, 'The Middy', 'Saint Joseph', '21 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 3333);");
         mydatabase.execSQL("INSERT INTO business VALUES (4, 'Bad Habit', 'Saint Joseph', '15 E Minnesota St #108, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 4444);");
 
+        mydatabase.execSQL("INSERT INTO specials VALUES (1, 'Big Mugs!! Come get your drink on here at Sals!', 2018-04-04, 2018-04-04);");
 
         mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'sals')");
         mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'Middy')");

@@ -29,6 +29,7 @@ public class Restaurant_Page extends AppCompatActivity {
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), BulletinBoard.class);
                 goToNextActivity.putExtra("user", user);
+                goToNextActivity.putExtra("key", key);
                 startActivity(goToNextActivity);
             }
         });
