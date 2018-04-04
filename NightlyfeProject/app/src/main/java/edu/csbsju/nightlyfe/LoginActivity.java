@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        populateDatabase();
+        //populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -372,7 +372,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30), destination INT REFERENCES business(id));");
 
         //creates table businesses
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS business (id int PRIMARY KEY, name VARCHAR(20), city VARCHAR(20), address VARCHAR(100), latitude FLOAT(9), longitude FLOAT(9), phone INT, hours VARCHAR(15));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS business (id int PRIMARY KEY, name VARCHAR(20), city VARCHAR(20), address VARCHAR(100), latitude FLOAT(9), longitude FLOAT(9), phone INT, hours VARCHAR(15), ownerID INT);");
 
         //creates table reviews
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS reviews (username VARCHAR(20) REFERENCES users(username), id int REFERENCES businesses(id), commenttext VARCHAR2(2000), time DATE, PRIMARY KEY(username, id));");
@@ -384,7 +384,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS plans (who VARCHAR(20), business VARCHAR(20) REFERENCES businesses(name), plantime DATE);");
 
         //creates table specials
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS specials (business VARCHAR(20) REFERENCES businesses(name), special VARCHAR2(2000), starttime DATE, endtime DATE);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS specials (businessID int REFERENCES business(id), special VARCHAR2(2000), starttime DATE, endtime DATE);");
 
         //creates table friendgroups
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friendgroups (groupID INT, groupName VARCHAR(20));");
@@ -393,7 +393,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmember (groupID INT REFERENCES friendgroups(groupID),  username VARCHAR(20) REFERENCES users(username), PRIMARY KEY (groupID, username));");
 
         //creates table favorites
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favorites (user VARCAR(20) REFERENCES users(username),  location VARCHAR(20) REFERENCES businesses(name), PRIMARY KEY (user, location));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favorites (user VARCAR(20) REFERENCES users(username),  locationID int REFERENCES business(int), PRIMARY KEY (user, locationID));");
 
         //creates table groupmessage
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmessage (groupID INT REFERENCES friendgroups(groupID), username VARCHAR(20) REFERENCES users(username), time INT, comment VARCHAR(100), PRIMARY KEY(groupID, username, time));");
@@ -406,7 +406,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'John Doe', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'Jane Doe', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'Jerry Springer', 0);");
-        mydatabase.execSQL("INSERT INTO users VALUES ('tdrichmond', 'pass', 1, 'Tom Richmond', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('tdrichmond', 'pass', 1, 'Tom Richmond', 1);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('grsalk', 'pass', 1, 'Grant Salk', 0);");
 
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'user2', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
@@ -420,14 +421,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'user1');");
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'user3');");
 
-        mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am');");
-        mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '19 College Ave N, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am');");
-        mydatabase.execSQL("INSERT INTO business VALUES (3, 'The Middy', 'Saint Joseph', '21 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am');");
-        mydatabase.execSQL("INSERT INTO business VALUES (4, 'Bad Habit', 'Saint Joseph', '15 E Minnesota St #108, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am');");
+        mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 1111);");
+        mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '19 College Ave N, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 2222);");
+        mydatabase.execSQL("INSERT INTO business VALUES (3, 'The Middy', 'Saint Joseph', '21 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 3333);");
+        mydatabase.execSQL("INSERT INTO business VALUES (4, 'Bad Habit', 'Saint Joseph', '15 E Minnesota St #108, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 4444);");
 
+        mydatabase.execSQL("INSERT INTO specials VALUES (1, 'Big Mugs!! Come get your drink on here at Sals!', 2018-04-04, 2018-04-04);");
 
-        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'sals')");
-        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 'Middy')");
+        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 1)");
+        mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 3)");
 
         //how to querey from the table
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = 'user1'",null);

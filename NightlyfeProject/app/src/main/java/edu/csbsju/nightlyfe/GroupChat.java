@@ -13,7 +13,8 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class GroupChat extends AppCompatActivity {
+public class
+GroupChat extends AppCompatActivity {
 
     public SQLiteDatabase mydatabase;
     public int id;
