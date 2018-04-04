@@ -66,9 +66,6 @@ public class Restaurant_Page extends AppCompatActivity {
     TextView BusinessHours = findViewById(R.id.BusinessHours);
     BusinessHours.setText(hours);
 
-
-
-
     }
     //Buttons should be linked to created pages and a "back to search" button should be created
 }
