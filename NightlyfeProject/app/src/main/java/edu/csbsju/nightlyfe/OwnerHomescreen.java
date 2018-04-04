@@ -1,5 +1,6 @@
 package edu.csbsju.nightlyfe;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -62,40 +63,48 @@ public class OwnerHomescreen extends AppCompatActivity {
         TextView mName = findViewById(R.id.establishmentTxt);
         mName.setText(resultSet2.getString(1));
 
-        Button mMyPage = (Button) findViewById(R.id.restaurantBtn);
-        mMyPage.setTag(id);
-        mMyPage.setOnClickListener(new View.OnClickListener() {
+        if(resultSet.getInt(2) != 2) {
+            Button mMyPage = (Button) findViewById(R.id.restaurantBtn);
+            mMyPage.setTag(id);
+            mMyPage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+                    goToNextActivity.putExtra("id", (int) view.getTag());
+                    startActivity(goToNextActivity);
+                }
+            });
+        }
+
+        Button claimR = (Button) findViewById(R.id.claimBtn);
+        claimR.setTag(id);
+        claimR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
-                goToNextActivity.putExtra("id", (int) view.getTag());
-                startActivity(goToNextActivity);
+                TextView claimText = (TextView) findViewById(R.id.claimTxt);
+                int verifyClaim = Integer.valueOf(claimText.getText().toString());
+                Cursor resultSet3 = mydatabase.rawQuery("Select * from business where id = "+id, null);
+                resultSet3.moveToFirst();
+                int restaurantOwn = resultSet3.getInt(8);
+                if(verifyClaim == restaurantOwn){
+                    Cursor resultSet4 = mydatabase.rawQuery("Update users set type = " + 4 + " where username = '"+user+"'", null);
+                    resultSet4.moveToFirst();
+                    Intent goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
+                    startActivity(getIntent());
+                    Context context = getApplicationContext();
+                    Toast toastClaim = Toast.makeText(context,"Ownership Claimed Successfully", Toast.LENGTH_LONG);
+                    toastClaim.show();
+                }
             }
         });
 
-        Cursor resultSet3 = mydatabase.rawQuery("Select * from users where destination = "+id+" and NOT user = '"+user+"'",null);
+    }
+
+        /*Cursor resultSet3 = mydatabase.rawQuery("Select * from users where destination = "+id+" and NOT user = '"+user+"'",null);
         resultSet3.moveToFirst();
 
         TextView mEstimate = findViewById(R.id.attendanceTxt);
         mEstimate.setText(resultSet3.getCount());
+*/
 
-        LinearLayout ll = findViewById(R.id.buttonLayout);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        if(resultSet.getInt(2) == 2){
-            Button mPremium = new Button(this);
-            mPremium.setText("Become a Premium account!");
-            ll.addView(mPremium,lp);
-
-            mPremium.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //dummy click listener to register as a premium account
-                    Cursor resultSet = mydatabase.rawQuery("Update users set type = " + 4 + " where username = '"+user+"'",null);
-                    resultSet.moveToFirst();
-                    startActivity(getIntent());
-                }
-            });
-        }
-    }
 }
