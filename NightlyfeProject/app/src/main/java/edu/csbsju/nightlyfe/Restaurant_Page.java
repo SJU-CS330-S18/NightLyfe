@@ -14,7 +14,7 @@ public class Restaurant_Page extends AppCompatActivity {
 
     public SQLiteDatabase mydatabase;
     public String user;
-    public String key;
+    public int key;
 
 
     @Override
@@ -23,8 +23,9 @@ public class Restaurant_Page extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_page);
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
         user = getIntent().getStringExtra("user");
-        key = getIntent().getStringExtra("key");
+        key = getIntent().getIntExtra("key", -1);
 
+        System.out.println(key);
 
         Button BulletinBtn = (Button) findViewById(R.id.BulletinBtn);
         BulletinBtn.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +47,7 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
-    Cursor resultSet = mydatabase.rawQuery("Select * from business where id = '" + key + "'", null);
+    Cursor resultSet = mydatabase.rawQuery("Select * from business where id = " + key, null);
     resultSet.moveToFirst();
     String busName = resultSet.getString(1);
     String address = resultSet.getString(3);

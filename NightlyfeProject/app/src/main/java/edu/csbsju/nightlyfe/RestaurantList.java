@@ -70,7 +70,7 @@ public class RestaurantList extends AppCompatActivity {
             Button mVisitBusiness = new Button(this);
 
             //gets the key relating to the business for a tag
-            String key = resultSet.getString(0);
+            int key = resultSet.getInt(0);
 
             //sets the associated restaurant ID as a tag associated with the button for inner class use
             mVisitBusiness.setTag(key);
@@ -80,7 +80,7 @@ public class RestaurantList extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
-                    goToNextActivity.putExtra("key", Integer.parseInt((String) view.getTag()));
+                    goToNextActivity.putExtra("key", (int) view.getTag());
                     startActivity(goToNextActivity);
                 }
             });
