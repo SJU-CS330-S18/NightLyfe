@@ -405,9 +405,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO users VALUES ('owner2', 'pass', 2, 'La Owner', 2);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'John Doe', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'Jane Doe', 0);");
-        mydatabase.execSQL("INSERT INTO users VALUES ('user3', 'pass', 1, 'Jerry Springer', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('drfritz', 'pass', 1, 'Danny Fritz', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('tdrichmond', 'pass', 1, 'Tom Richmond', 1);");
         mydatabase.execSQL("INSERT INTO users VALUES ('grsalk', 'pass', 1, 'Grant Salk', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('kjbecker', 'pass', 1, 'Kyle Becker', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('lrdahlquist', 'pass', 1, 'Logan Dahlquist', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('ajmcintyre', 'pass', 1, 'Andrew McIntyre', 0);");
 
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'user2', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");
@@ -415,16 +418,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'tdrichmond', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('grsalk', 'user1', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'grsalk', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'drfritz', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('drfritz', 'tdrichmond', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('lrdahlquist', 'ajmcintyre', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('ajmcintyre', 'lrdahlquist', 1);");
 
-        mydatabase.execSQL("INSERT INTO friendgroups VALUES (1, 'St. Joe Bros');");
+        mydatabase.execSQL("INSERT INTO friendgroups VALUES (1, 'Scrum Bois');");
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'tdrichmond');");
-        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'user1');");
-        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'user3');");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'grsalk');");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'lrdahlquist');");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'drfritz');");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'ajmcintyre');");
 
-        mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 1111);");
-        mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '19 College Ave N, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 2222);");
-        mydatabase.execSQL("INSERT INTO business VALUES (3, 'The Middy', 'Saint Joseph', '21 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 3333);");
-        mydatabase.execSQL("INSERT INTO business VALUES (4, 'Bad Habit', 'Saint Joseph', '15 E Minnesota St #108, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 4444);");
+        mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 3203638273, '11:00am-1:00am', 1111);");
+        mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '19 College Ave N, St Joseph, MN 56374', 45.564497, -94.320641, 3203637747, '11:00am-1:00am', 2222);");
+        mydatabase.execSQL("INSERT INTO business VALUES (3, 'The Middy', 'Saint Joseph', '21 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 3203634505, '12:00pm-1:00am', 3333);");
+        mydatabase.execSQL("INSERT INTO business VALUES (4, 'Bad Habit', 'Saint Joseph', '15 E Minnesota St #108, St Joseph, MN 56374', 45.564497, -94.320641, 3202713108, '4:00pm-11:00pm', 4444);");
 
         mydatabase.execSQL("INSERT INTO specials VALUES (0,1, 'Big Mugs!! Come get your drink on here at Sals!', '04-04-2018', '04-04-2018');");
         mydatabase.execSQL("INSERT INTO specials VALUES (1,1, 'AYCD!! Get as many drinks as you want, just $10!', '04-05-2018', '04-05-2018');");

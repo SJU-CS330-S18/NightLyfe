@@ -35,6 +35,18 @@ public class Homescreen extends AppCompatActivity {
 
         //access user info from database from passed variable 'user'
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+user+"'",null);
+        resultSet.moveToFirst();
+
+        TextView mDestinationView = findViewById(R.id.destinationTxt);
+
+        Cursor resultSet2 = mydatabase.rawQuery("Select * from business where id = "+resultSet.getInt(4),null);
+        resultSet2.moveToFirst();
+        //System.out.println(resultSet2.getCount());
+
+        int dest = resultSet.getInt(4);
+        if(dest != 0) {
+            mDestinationView.setText(resultSet2.getString(1));
+        }
 
         Button mLogout = (Button) findViewById(R.id.logoutBtn);
         mLogout.setOnClickListener(new View.OnClickListener() {

@@ -50,6 +50,7 @@ public class GroupsList extends AppCompatActivity {
         //gets size of resultset and moves the cursor to the first entry
         int size = resultSet.getCount();
         resultSet.moveToFirst();
+        System.out.println(size);
 
         //finds linearlayout to display friends and creates LayoutParams object
         LinearLayout ll = (LinearLayout)findViewById(R.id.groupsLayout);
