@@ -68,7 +68,7 @@ public class ReviewsActivity extends AppCompatActivity {
     }
 
     private void submitReview(String review) {
-        Cursor resultSet = mydatabase.rawQuery("INSERT INTO reviews VALUES ('"+user+"', "+key+", strftime('%s','now'), '"+review+"');");
+        Cursor resultSet = mydatabase.rawQuery("INSERT INTO reviews VALUES ('"+user+"', "+key+", strftime('%s','now'), '"+review+"');",null);
         resultSet.moveToFirst();
     }
 }

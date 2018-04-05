@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        //populateDatabase();
+        populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -384,7 +384,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS plans (who VARCHAR(20), business VARCHAR(20) REFERENCES businesses(name), plantime DATE);");
 
         //creates table specials
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS specials (businessID int REFERENCES business(id), special VARCHAR2(2000), starttime DATE, endtime DATE);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS specials (sID int, businessID int REFERENCES business(id), special VARCHAR2(2000), starttime VARCHAR(10), endtime VARCHAR(10), PRIMARY KEY (sID, businessID));");
 
         //creates table friendgroups
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friendgroups (groupID INT, groupName VARCHAR(20));");
@@ -426,7 +426,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO business VALUES (3, 'The Middy', 'Saint Joseph', '21 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 3333);");
         mydatabase.execSQL("INSERT INTO business VALUES (4, 'Bad Habit', 'Saint Joseph', '15 E Minnesota St #108, St Joseph, MN 56374', 45.564497, -94.320641, 123456789, '11:00am-1:00am', 4444);");
 
-        mydatabase.execSQL("INSERT INTO specials VALUES (1, 'Big Mugs!! Come get your drink on here at Sals!', 2018-04-04, 2018-04-04);");
+        mydatabase.execSQL("INSERT INTO specials VALUES (0,1, 'Big Mugs!! Come get your drink on here at Sals!', '04-04-2018', '04-04-2018');");
+        mydatabase.execSQL("INSERT INTO specials VALUES (1,1, 'AYCD!! Get as many drinks as you want, just $10!', '04-05-2018', '04-05-2018');");
+        mydatabase.execSQL("INSERT INTO specials VALUES (2,2, 'BOGO Tequila Shots!! Limit 6 per person', '04-15-2018', '04-15-2018');");
+        mydatabase.execSQL("INSERT INTO specials VALUES (3,2, 'Get Stoned! 50% off all drinks served \"On the Rocks\"', '04-20-2018', '04-20-2018');");
+        mydatabase.execSQL("INSERT INTO specials VALUES (4,2, '$2 Margaritas all day, Limit 2 per person', '04-23-2018', '04-23-2018');");
 
         mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 1)");
         mydatabase.execSQL("INSERT INTO favorites VALUES ('user1', 3)");
