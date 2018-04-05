@@ -28,7 +28,7 @@ public class FavoritesList extends AppCompatActivity {
 
 
         //receives resultSet for all favorites associated with active user
-        Cursor resultSet = mydatabase.rawQuery("Select * from businesses where name in (SELECT location from favorites where user = '"+user+"')",null);
+        Cursor resultSet = mydatabase.rawQuery("Select name from businesses where name in (SELECT location from favorites where user = '"+user+"')",null);
 
         //gets size of resultset and moves the cursor to the first entry
         int size = resultSet.getCount();

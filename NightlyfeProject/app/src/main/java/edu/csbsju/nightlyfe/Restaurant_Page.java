@@ -47,16 +47,40 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
-    Cursor resultSet = mydatabase.rawQuery("Select * from business where id = " + key, null);
+        Cursor resultSet = mydatabase.rawQuery("SELECT location from favorites where user = '"+user+" and locationID = "+key+"'",null);
+        if(resultSet.moveToNext()){
+            Button favBtn = (Button) findViewById(R.id.FavoritesBtn);
+            favBtn.setText("Remove Favorite");
+            favBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mydatabase.execSQL("DELETE FROM favorites where user = '"+user+" and locationID = "+key+"'");
+                    Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+                    startActivity(goToNextActivity);
+                }
+            });
+        }
+        else {
+            Button favBtn = (Button) findViewById(R.id.FavoritesBtn);
+            favBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mydatabase.execSQL("INSERT INTO favorites VALUES ('"+user+"', "+key+")");
+                    Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+                    startActivity(goToNextActivity);
+                }
+            });
+        }
+    resultSet = mydatabase.rawQuery("Select * from business where id = " + key, null);
     resultSet.moveToFirst();
     String busName = resultSet.getString(1);
     String address = resultSet.getString(3);
 
     String phone = resultSet.getString(6);
     String hours = resultSet.getString(7);
-
     TextView BusinessName = findViewById(R.id.BusinessName);
     BusinessName.setText(busName);
+
 
         Button reviewsBtn = (Button) findViewById(R.id.ReviewBtn);
         reviewsBtn.setOnClickListener(new View.OnClickListener() {
