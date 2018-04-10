@@ -63,6 +63,7 @@ public class Restaurant_Page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
+                goToNextActivity.putExtra("user", user);
                 goToNextActivity.putExtra("key", key);
                 startActivity(goToNextActivity);
             }

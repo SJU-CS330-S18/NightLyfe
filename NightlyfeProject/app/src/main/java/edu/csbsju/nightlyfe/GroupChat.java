@@ -25,7 +25,7 @@ GroupChat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_chat);
 
-        //opens database for use
+        //opens database for user
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //gets parameters passed to activity

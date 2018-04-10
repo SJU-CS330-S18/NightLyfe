@@ -80,6 +80,7 @@ public class RestaurantList extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+                    goToNextActivity.putExtra("user", user);
                     goToNextActivity.putExtra("key", (int) view.getTag());
                     startActivity(goToNextActivity);
                 }
