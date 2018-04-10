@@ -11,7 +11,8 @@
         android:id="@+id/imageView2"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/board" />
@@ -59,6 +60,39 @@
         android:text="No Post Yet"
         tools:layout_editor_absoluteX="91dp"
         tools:layout_editor_absoluteY="232dp" />
+
+    <TextView
+        android:id="@+id/topDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_above="@+id/eventTextMiddle"
+        android:layout_alignLeft="@+id/eventTextTop"
+        android:layout_alignStart="@+id/eventTextTop"
+        android:layout_marginBottom="47dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/middleDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_alignLeft="@+id/eventTextMiddle"
+        android:layout_alignStart="@+id/eventTextMiddle"
+        android:layout_below="@+id/eventTextTop"
+        android:layout_marginTop="11dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/bottomDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_alignLeft="@+id/eventTextBottom"
+        android:layout_alignStart="@+id/eventTextBottom"
+        android:layout_below="@+id/eventTextMiddle"
+        android:layout_marginTop="12dp"
+        android:text="" />
 
 
 </RelativeLayout>

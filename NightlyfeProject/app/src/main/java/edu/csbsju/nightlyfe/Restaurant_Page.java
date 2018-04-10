@@ -25,14 +25,22 @@ public class Restaurant_Page extends AppCompatActivity {
         user = getIntent().getStringExtra("user");
         key = getIntent().getIntExtra("key", -1);
 
-        System.out.println(key);
+        //System.out.println(key);
+
+        Cursor resultSet = mydatabase.rawQuery("Select * from business where id = " + key, null);
+        resultSet.moveToFirst();
+        final String busName = resultSet.getString(1);
+        String address = resultSet.getString(3);
+
+        String phone = resultSet.getString(6);
+        String hours = resultSet.getString(7);
 
         Button BulletinBtn = (Button) findViewById(R.id.BulletinBtn);
         BulletinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), BulletinBoard.class);
-                goToNextActivity.putExtra("user", user);
+                goToNextActivity.putExtra("name", busName);
                 goToNextActivity.putExtra("key", key);
                 startActivity(goToNextActivity);
             }
@@ -47,13 +55,7 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
-    Cursor resultSet = mydatabase.rawQuery("Select * from business where id = " + key, null);
-    resultSet.moveToFirst();
-    String busName = resultSet.getString(1);
-    String address = resultSet.getString(3);
 
-    String phone = resultSet.getString(6);
-    String hours = resultSet.getString(7);
 
     TextView BusinessName = findViewById(R.id.BusinessName);
     BusinessName.setText(busName);
