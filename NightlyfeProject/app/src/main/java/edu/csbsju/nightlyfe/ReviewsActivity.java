@@ -10,11 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import java.util.Calendar;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ReviewsActivity extends AppCompatActivity {
 
@@ -30,26 +27,36 @@ public class ReviewsActivity extends AppCompatActivity {
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //gets parameters passed to activity
-        key = getIntent().getIntExtra("key", 0);
         user = getIntent().getStringExtra("user");
+        key = getIntent().getIntExtra("key", 0);
 
-        Cursor resultSetReviews = mydatabase.rawQuery("Select * from reviews where businesses = "+key+" ORDER BY time ASC",null);
+        ScrollView mScroll = findViewById(R.id.scrollView);
+        mScroll.scrollTo(0, mScroll.getBottom());
+
+        Cursor resultSetReviews = mydatabase.rawQuery("Select * from reviews where id = "+key+" ORDER BY time ASC",null);
+        Cursor resultSetBars = mydatabase.rawQuery("Select * from business where id = "+key, null);
         resultSetReviews.moveToFirst();
-        LinearLayout mChatWindow = findViewById(R.id.reviewWindow);
+        resultSetBars.moveToFirst();
+        LinearLayout mReviewWindow = findViewById(R.id.reviewWindow);
+
+
+        TextView mBarName = findViewById(R.id.labelBarName);
+        String busName = resultSetBars.getString(1);
+        mBarName.setText(busName);
 
         int size = resultSetReviews.getCount();
         for(int i = 0; i < size; i++){
-            TextView mTime = new TextView(this);
+            TextView mName = new TextView(this);
             TextView mReview = new TextView(this);
             String username = resultSetReviews.getString(0);
-            mTime.setText(resultSetReviews.getString(3));
+            mName.setText(username);
             if(username.equals(user)){
-                mTime.setTextColor(Color.RED);
+                mName.setTextColor(Color.RED);
             }
             mReview.setText("\t\t\t"+resultSetReviews.getString(2));
             mReview.setTextColor(Color.BLACK);
-            mChatWindow.addView(mTime);
-            mChatWindow.addView(mReview);
+            mReviewWindow.addView(mName);
+            mReviewWindow.addView(mReview);
             resultSetReviews.moveToNext();
         }
 
@@ -62,13 +69,19 @@ public class ReviewsActivity extends AppCompatActivity {
                 submitReview(review.getText().toString());
                 Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
                 goToNextActivity.putExtra("key", key);
+                goToNextActivity.putExtra("user", user);
                 startActivity(goToNextActivity);
             }
         });
     }
 
     private void submitReview(String review) {
+<<<<<<< HEAD
+        Cursor resultSet = mydatabase.rawQuery("INSERT INTO reviews VALUES ('"+user+"', "+key+", '"+review+"', strftime('%s','now'));",null);
+        //Cursor resultSet = mydatabase.rawQuery("INSERT INTO reviews VALUES ('"+user+"', "+key+", '"+review+"');",null);
+=======
         Cursor resultSet = mydatabase.rawQuery("INSERT INTO reviews VALUES ('"+user+"', "+key+", strftime('%s','now'), '"+review+"');",null);
+>>>>>>> 58dd01101333b12a5dad4ce407689821d476d734
         resultSet.moveToFirst();
     }
 }
