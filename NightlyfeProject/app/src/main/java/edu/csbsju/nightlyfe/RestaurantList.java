@@ -81,6 +81,7 @@ public class RestaurantList extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
                     goToNextActivity.putExtra("key", (int) view.getTag());
+                    goToNextActivity.putExtra("user", user);
                     startActivity(goToNextActivity);
                 }
             });

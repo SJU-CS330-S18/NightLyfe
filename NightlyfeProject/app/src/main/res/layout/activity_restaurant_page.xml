@@ -8,19 +8,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
-    <TextView
-        android:id="@+id/BusinessName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="cursive"
-        android:text="Business Name"
-        android:textColor="@android:color/black"
-        android:textSize="45sp"
-        android:layout_marginTop="10dp"
-        tools:textAlignment="center" />
+        <TextView
+            android:id="@+id/BusinessName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="cursive"
+            android:text="Business Name"
+            android:textColor="@android:color/black"
+            android:textSize="45sp"
+            tools:textAlignment="center" />
 
         <TextView
             android:id="@+id/BusinessAddress"
@@ -129,6 +131,15 @@
             android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="286dp" />
+
+        <ImageButton
+            android:id="@+id/starBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/BusinessName"
+            android:layout_toEndOf="@+id/BusinessName"
+            android:layout_toRightOf="@+id/BusinessName"
+            app:srcCompat="@drawable/blackstarbutton" />
 
     </RelativeLayout>
 

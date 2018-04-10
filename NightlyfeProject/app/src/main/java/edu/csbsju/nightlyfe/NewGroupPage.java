@@ -57,7 +57,8 @@ public class NewGroupPage extends AppCompatActivity {
         }
         else{
             //receives resultSet for all friends associated with active user
-            Cursor resultSet = mydatabase.rawQuery("Select DISTINCT g.groupName, g.groupID from friendgroups g, groupmember m where m.username = '"+user+"' AND g.groupID = m.groupID",null);
+            Cursor resultSet = mydatabase.rawQuery("Select DISTINCT g.groupID from friendgroups g",null);
+            resultSet.moveToFirst();
 
             int id = resultSet.getCount()+1;
             mydatabase.execSQL("INSERT INTO friendgroups VALUES ("+id+", '"+groupName+"');");
