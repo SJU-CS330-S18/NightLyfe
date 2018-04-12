@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FavoritesList extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
@@ -51,7 +52,7 @@ public class FavoritesList extends AppCompatActivity {
             mFavView.setTextColor(Color.BLACK);
 
             //sets value of textview
-            String busName = selectBars.getString(1);
+            final String busName = selectBars.getString(1);
             mFavView.setText(busName);
             mFavView.setGravity(View.TEXT_ALIGNMENT_CENTER);
 
@@ -74,6 +75,8 @@ public class FavoritesList extends AppCompatActivity {
                     removal.moveToFirst();
                     Intent goToNextActivity = new Intent(getApplicationContext(), FavoritesList.class);
                     goToNextActivity.putExtra("user", user);
+                    Toast toastName = Toast.makeText(getApplicationContext(), busName + " Removed from Favorites List", Toast.LENGTH_LONG);
+                    toastName.show();
                     startActivity(goToNextActivity);
                 }
             });
