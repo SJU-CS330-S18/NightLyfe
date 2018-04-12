@@ -57,6 +57,8 @@ public class ReviewsActivity extends AppCompatActivity {
             TextView mName = new TextView(this);
             TextView mTime = new TextView(this);
             TextView mReview = new TextView(this);
+            Button btnDelete = new Button(this);
+
             String username = resultSetReviews.getString(0);
             mName.setText(username);
             int time = resultSetReviews.getInt(2);
@@ -71,6 +73,15 @@ public class ReviewsActivity extends AppCompatActivity {
             mName.setTextSize(15);
             if(username.equals(user)){
                 mName.setTextColor(Color.RED);
+                btnDelete.setText("Delete My Review For " + busName);
+                btnDelete.setTextColor(Color.RED);
+                btnDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        deleteReview();
+                    }
+                });
+                mReviewWindow.addView(btnDelete);
             }
             mReview.setText("\t\t\t"+resultSetReviews.getString(3));
             mReview.setTextColor(Color.BLACK);
@@ -105,7 +116,6 @@ public class ReviewsActivity extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
-
     }
 
     private void submitReview(String review) {
@@ -119,5 +129,14 @@ public class ReviewsActivity extends AppCompatActivity {
             Toast toastName = Toast.makeText(getApplicationContext(),"You have already submitted a review!", Toast.LENGTH_LONG);
             toastName.show();
         }
+    }
+
+    private void deleteReview() {
+        Cursor deletion = mydatabase.rawQuery("DELETE FROM reviews WHERE username = '" + user + "' AND id = " + key + ";", null);
+        deletion.moveToFirst();
+        Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
+        goToNextActivity.putExtra("key", key);
+        goToNextActivity.putExtra("user", user);
+        startActivity(goToNextActivity);
     }
 }
