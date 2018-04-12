@@ -6,14 +6,31 @@
     android:layout_height="match_parent"
     tools:context="edu.csbsju.nightlyfe.FavoritesList">
 
-    <LinearLayout
-        android:id="@+id/favLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/searchTxt"
-        android:orientation="vertical">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+        <LinearLayout
+            android:id="@+id/favLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/searchTxt"
+            android:orientation="vertical">
 
-    </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:text="Return to Home Screen"
+            tools:layout_editor_absoluteX="93dp"
+            tools:layout_editor_absoluteY="447dp" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
