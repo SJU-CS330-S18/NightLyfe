@@ -371,7 +371,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30), destination INT REFERENCES business(id));");
 
         //creates table businesses
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS business (id int PRIMARY KEY, name VARCHAR(20), city VARCHAR(20), address VARCHAR(100), latitude FLOAT(9), longitude FLOAT(9), phone INT, hours VARCHAR(15), ownerID INT);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS business (id int PRIMARY KEY, name VARCHAR(20), city VARCHAR(20), address VARCHAR(100), latitude REAL(9), longitude REAL(9), phone VARCHAR, hours VARCHAR(15), ownerID INT);");
 
         //creates table review
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS reviews (username VARCHAR(20) REFERENCES users(username), id int REFERENCES businesses(id), time INT, commenttext VARCHAR2(2000), PRIMARY KEY(username, id, time));");
@@ -429,10 +429,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'drfritz');");
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'ajmcintyre');");
 
-        mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 3203638273, '11:00am-1:00am', 1111);");
-        mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '19 College Ave N, St Joseph, MN 56374', 45.564497, -94.320641, 3203637747, '11:00am-1:00am', 2222);");
-        mydatabase.execSQL("INSERT INTO business VALUES (3, 'The Middy', 'Saint Joseph', '21 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, 3203634505, '12:00pm-1:00am', 3333);");
-        mydatabase.execSQL("INSERT INTO business VALUES (4, 'Bad Habit', 'Saint Joseph', '15 E Minnesota St #108, St Joseph, MN 56374', 45.564497, -94.320641, 3202713108, '4:00pm-11:00pm', 4444);");
+        mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals Bar & Grill', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, '320-363-8273', '11:00am-1:00am', 1111);");
+        mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '19 College Ave N, St Joseph, MN 56374', 45.565203, -94.317925, '320-363-7747', '11:00am-1:00am', 2222);");
+        mydatabase.execSQL("INSERT INTO business VALUES (3, 'The Middy', 'Saint Joseph', '21 W Minnesota St, St Joseph, MN 56374', 45.564709, -94.318802, '320-363-4505', '12:00pm-1:00am', 3333);");
+        mydatabase.execSQL("INSERT INTO business VALUES (4, 'Bad Habit', 'Saint Joseph', '15 E Minnesota St #108, St Joseph, MN 56374', 45.565005, -94.316760, '320-271-3108', '4:00pm-11:00pm', 4444);");
 
         mydatabase.execSQL("INSERT INTO specials VALUES (0,1, 'Big Mugs!! Come get your drink on here at Sals!', '04-04-2018', '04-04-2018');");
         mydatabase.execSQL("INSERT INTO specials VALUES (1,1, 'AYCD!! Get as many drinks as you want, just $10!', '04-05-2018', '04-05-2018');");

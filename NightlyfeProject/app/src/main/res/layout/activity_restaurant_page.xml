@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/PhotosBtn"
+            android:layout_below="@+id/MapsBtn"
             android:fontFamily="casual"
             android:text="Bulletin Board"
             android:textSize="20sp"
@@ -76,14 +76,14 @@
             tools:layout_editor_absoluteY="143dp" />
 
         <Button
-            android:id="@+id/PhotosBtn"
+            android:id="@+id/MapsBtn"
             android:layout_width="203dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/ReviewBtn"
             android:fontFamily="casual"
-            android:text="Photos"
+            android:text="View in maps"
             android:textSize="20sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="286dp" />

@@ -38,6 +38,17 @@ public class Restaurant_Page extends AppCompatActivity {
         String phone = resultSet.getString(6);
         String hours = resultSet.getString(7);
 
+        Button MapsBtn = (Button) findViewById(R.id.MapsBtn);
+        MapsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), BusinessLocation.class);
+                goToNextActivity.putExtra("name", busName);
+                goToNextActivity.putExtra("key", key);
+                startActivity(goToNextActivity);
+            }
+        });
+
         Button BulletinBtn = (Button) findViewById(R.id.BulletinBtn);
         BulletinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
