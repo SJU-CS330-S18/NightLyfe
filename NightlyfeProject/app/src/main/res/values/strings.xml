@@ -18,4 +18,5 @@
     <string name="title_activity_owner_homescreen">OwnerHomescreen</string>
     <string name="title_activity_user">UserActivity</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_business_location">Map</string>
 </resources>

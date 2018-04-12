@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ImageButton;
 
 public class Restaurant_Page extends AppCompatActivity {
 
@@ -29,17 +30,31 @@ public class Restaurant_Page extends AppCompatActivity {
 
         Cursor resultSet = mydatabase.rawQuery("Select * from business where id = " + key, null);
         resultSet.moveToFirst();
+        Cursor userResultSet = mydatabase.rawQuery("Select * from users where username = '" + user +"'", null);
+        userResultSet.moveToFirst();
         final String busName = resultSet.getString(1);
         String address = resultSet.getString(3);
 
         String phone = resultSet.getString(6);
         String hours = resultSet.getString(7);
 
+        Button MapsBtn = (Button) findViewById(R.id.MapsBtn);
+        MapsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), BusinessLocation.class);
+                goToNextActivity.putExtra("name", busName);
+                goToNextActivity.putExtra("key", key);
+                startActivity(goToNextActivity);
+            }
+        });
+
         Button BulletinBtn = (Button) findViewById(R.id.BulletinBtn);
         BulletinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), BulletinBoard.class);
+                goToNextActivity.putExtra("user", user);
                 goToNextActivity.putExtra("name", busName);
                 goToNextActivity.putExtra("key", key);
                 startActivity(goToNextActivity);
@@ -51,10 +66,21 @@ public class Restaurant_Page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), RestaurantList.class);
+                goToNextActivity.putExtra("user", user);
                 startActivity(goToNextActivity);
             }
         });
 
+        ImageButton mStar = findViewById(R.id.starBtn);
+        if(userResultSet.getInt(4) == key){
+            mStar.setImageResource(R.drawable.goldstarbutton);
+        }
+        mStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                makeDestination();
+            }
+        });
 
 
     TextView BusinessName = findViewById(R.id.BusinessName);
@@ -79,6 +105,22 @@ public class Restaurant_Page extends AppCompatActivity {
     TextView BusinessHours = findViewById(R.id.BusinessHours);
     BusinessHours.setText(hours);
 
+    }
+
+    public void makeDestination(){
+        ImageButton star = findViewById(R.id.starBtn);
+        Cursor resultSet2 = mydatabase.rawQuery("Select * from users where username = '"+user+"'", null);
+        resultSet2.moveToFirst();
+        if(resultSet2.getInt(4) == key){
+            Cursor dummy = mydatabase.rawQuery("Update users set destination = " + 0 + " where username = '"+user+"'",null);
+            dummy.moveToFirst();
+            star.setImageResource(R.drawable.blackstarbutton);
+        }
+        else{
+            Cursor dummy = mydatabase.rawQuery("Update users set destination = " + key + " where username = '"+user+"'",null);
+            dummy.moveToFirst();
+            star.setImageResource(R.drawable.goldstarbutton);
+        }
     }
     //Buttons should be linked to created pages and a "back to search" button should be created
 }

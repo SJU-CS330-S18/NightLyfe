@@ -25,8 +25,8 @@ public class RestaurantList extends AppCompatActivity {
             user = getIntent().getStringExtra("user");
             mydatabase = openOrCreateDatabase("NightLyfe", MODE_PRIVATE, null);
 
-        Button mHome = (Button) findViewById(R.id.listBtn);
-        mHome.setOnClickListener(new View.OnClickListener() {
+        Button homeBtn = (Button) findViewById(R.id.homeBtn);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
@@ -82,6 +82,7 @@ public class RestaurantList extends AppCompatActivity {
                     Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
                     goToNextActivity.putExtra("user", user);
                     goToNextActivity.putExtra("key", (int) view.getTag());
+                    goToNextActivity.putExtra("user", user);
                     startActivity(goToNextActivity);
                 }
             });

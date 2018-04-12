@@ -116,6 +116,38 @@ public class FriendSearch extends AppCompatActivity {
         }
     }
 
+    private void decideButton(String user1, String user2){
+        //creates a button to either add or remove friend
+        Button mAddFriend = new Button(this);
+
+        //sets the associated friend's username as a tag associated with the button for inner class use
+        mAddFriend.setTag(user2);
+        //mAddFriend.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+
+        //queries to determine if there is a friend entry with the two users
+        Cursor resultSet2 = mydatabase.rawQuery("Select * from friends where user1 = '"+user1+"' AND user2 = '"+user2+"'",null);
+
+        //adds a remove button if the user is already a friend, and an add button if they are not
+        if(resultSet2.getCount() == 0) {
+            mAddFriend.setText("Add");
+            mAddFriend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    addFriend((String) view.getTag());
+                }
+            });
+        }
+        else{
+            mAddFriend.setText("Remove");
+            mAddFriend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    removeFriend((String) view.getTag());
+                }
+            });
+        }
+    }
+
     /*
     Method to create database connection between active user and a user associated with provided username parameter
     @param String username of added friend
