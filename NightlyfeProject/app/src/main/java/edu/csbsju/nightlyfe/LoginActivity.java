@@ -354,7 +354,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     //method to repopulate database with test information
     private void populateDatabase(){
-
         //drops tables to recreate and populate
         mydatabase.execSQL("DROP TABLE IF EXISTS users;");
         mydatabase.execSQL("DROP TABLE IF EXISTS business;");
