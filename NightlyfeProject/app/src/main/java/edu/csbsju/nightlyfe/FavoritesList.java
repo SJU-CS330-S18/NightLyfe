@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FavoritesList extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
@@ -28,8 +29,8 @@ public class FavoritesList extends AppCompatActivity {
 
 
         //receives resultSet for all favorites associated with active user
-        Cursor resultSet = mydatabase.rawQuery("Select * from businesses where name in (SELECT location from favorites where user = '"+user+"')",null);
-
+        //Cursor resultSet = mydatabase.rawQuery("Select * from businesses where name in (SELECT location from favorites where user = '"+user+"')",null);
+        Cursor resultSet = mydatabase.rawQuery("SELECT * FROM favorites WHERE user = '" + user + "';", null);
         //gets size of resultset and moves the cursor to the first entry
         int size = resultSet.getCount();
         resultSet.moveToFirst();
@@ -41,22 +42,66 @@ public class FavoritesList extends AppCompatActivity {
         //loops through each entry in favorites list and displays them
         for (int i = 0; i < size ; i++) {
             //gets username of entry in resultset
-            String name = resultSet.getString(0);
+            final int barID = resultSet.getInt(1);
 
+            Cursor selectBars = mydatabase.rawQuery("SELECT * FROM business WHERE id = " + barID + ";", null);
+            selectBars.moveToFirst();
             //creates and formats textview to display friend's username
             TextView mFavView = new TextView(this);
-            mFavView.setTextSize(20);
+            mFavView.setTextSize(30);
             mFavView.setTextColor(Color.BLACK);
 
             //sets value of textview
-            mFavView.setText(name);
+            final String busName = selectBars.getString(1);
+            mFavView.setText(busName);
+            mFavView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+
+            Button visitBar = new Button(this);
+            visitBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+                    goToNextActivity.putExtra("user", user);
+                    goToNextActivity.putExtra("key", barID);
+                    startActivity(goToNextActivity);
+                }
+            });
+
+            Button removeBar = new Button(this);
+            removeBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Cursor removal = mydatabase.rawQuery("DELETE FROM favorites WHERE user = '" + user + "' AND locationID = " + barID + ";", null);
+                    removal.moveToFirst();
+                    Intent goToNextActivity = new Intent(getApplicationContext(), FavoritesList.class);
+                    goToNextActivity.putExtra("user", user);
+                    Toast toastName = Toast.makeText(getApplicationContext(), busName + " Removed from Favorites List", Toast.LENGTH_LONG);
+                    toastName.show();
+                    startActivity(goToNextActivity);
+                }
+            });
+
+            visitBar.setText("Visit " + busName + "'s Page");
+            removeBar.setText("Remove " + busName + " From Favorites");
+            removeBar.setTextColor(Color.RED);
 
             //adds the view to layout
             ll.addView(mFavView, lp);
-
+            ll.addView(visitBar);
+            ll.addView(removeBar);
             //moves cursor to the next entry in the resultset
             resultSet.moveToNext();
         }
+
+        Button mHome = (Button) findViewById(R.id.homeBtn);
+        mHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+            }
+        });
     }
 }
 

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class Restaurant_Page extends AppCompatActivity {
 
@@ -58,6 +59,24 @@ public class Restaurant_Page extends AppCompatActivity {
                 goToNextActivity.putExtra("name", busName);
                 goToNextActivity.putExtra("key", key);
                 startActivity(goToNextActivity);
+            }
+        });
+
+        Button favoritesBtn = (Button) findViewById(R.id.FavoritesBtn);
+        favoritesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cursor checkFavorites = mydatabase.rawQuery("SELECT * FROM favorites WHERE user = '" + user + "' AND locationID = " + key + ";", null);
+                checkFavorites.moveToFirst();
+                if(checkFavorites.getCount() == 0) {
+                    Cursor resultSet = mydatabase.rawQuery("INSERT INTO favorites VALUES ('" + user + "', " + key + ");", null);
+                    resultSet.moveToFirst();
+                    Toast toastName = Toast.makeText(getApplicationContext(), busName + " was added to your Favorites List", Toast.LENGTH_LONG);
+                    toastName.show();
+                } else {
+                    Toast toastName = Toast.makeText(getApplicationContext(), busName + " has already been added to your Favorites List", Toast.LENGTH_LONG);
+                    toastName.show();
+                }
             }
         });
 
