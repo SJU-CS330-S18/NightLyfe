@@ -2,6 +2,7 @@ package edu.csbsju.nightlyfe;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -63,6 +64,12 @@ public class OwnerHomescreen extends AppCompatActivity {
         TextView mName = findViewById(R.id.establishmentTxt);
         mName.setText(resultSet2.getString(1));
 
+        //gets the number of users who say they are attending the bar tonight, and adjusts the attendence number accordingly
+        Cursor estimateResultSet = mydatabase.rawQuery("Select distinct username from users where destination = "+id+" and NOT username = '"+user+"'",null);
+        estimateResultSet.moveToFirst();
+        TextView mEstimate = findViewById(R.id.attendanceTxt);
+        mEstimate.setText(estimateResultSet.getCount()+"");
+
         if(resultSet.getInt(2) != 2) {
             Button mMyPage = (Button) findViewById(R.id.restaurantBtn);
             mMyPage.setTag(id);
@@ -101,13 +108,34 @@ public class OwnerHomescreen extends AppCompatActivity {
             }
         });
 
+        RelativeLayout rl = findViewById(R.id.ownerLayout);
+        RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        if(resultSet.getInt(2) == 2){
+            Button mPremium = new Button(this);
+            mPremium.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Cursor updateType = mydatabase.rawQuery("Update users set type = " + 4 + " where username = '"+user+"'", null);
+                    updateType.moveToFirst();
+                    startActivity(getIntent());
+                    Context context = getApplicationContext();
+                    Toast toastClaim = Toast.makeText(context,"Successfully subscribed as a premium owner", Toast.LENGTH_LONG);
+                    toastClaim.show();
+                }
+            });
+            //sets the attributes of the search result name
+            //mPremium.setTextSize(20);
+            //mPremium.setTextColor(Color.BLACK);
+            mPremium.setText("Become a Premium Member!");
+            rp.addRule(RelativeLayout.BELOW, R.id.restaurantBtn);
+            rl.addView(mPremium, rp);
+
+        }
+
     }
 
-        /*Cursor resultSet3 = mydatabase.rawQuery("Select * from users where destination = "+id+" and NOT user = '"+user+"'",null);
-        resultSet3.moveToFirst();
 
-        TextView mEstimate = findViewById(R.id.attendanceTxt);
-        mEstimate.setText(resultSet3.getCount());
-*/
+
 
 }

@@ -63,6 +63,11 @@ public class Restaurant_Page extends AppCompatActivity {
         });
 
         Button favoritesBtn = (Button) findViewById(R.id.FavoritesBtn);
+        Cursor checkFavorites = mydatabase.rawQuery("SELECT * FROM favorites WHERE user = '" + user + "' AND locationID = " + key + ";", null);
+        checkFavorites.moveToFirst();
+        if(checkFavorites.getCount() == 1){
+            favoritesBtn.setText("Remove from Favorites");
+        }
         favoritesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,9 +78,13 @@ public class Restaurant_Page extends AppCompatActivity {
                     resultSet.moveToFirst();
                     Toast toastName = Toast.makeText(getApplicationContext(), busName + " was added to your Favorites List", Toast.LENGTH_LONG);
                     toastName.show();
+                    ((Button)view).setText("Remove from Favorites");
                 } else {
-                    Toast toastName = Toast.makeText(getApplicationContext(), busName + " has already been added to your Favorites List", Toast.LENGTH_LONG);
+                    Cursor resultSet = mydatabase.rawQuery("DELETE FROM favorites WHERE user = '" + user + "' and locationID = " + key + ";", null);
+                    resultSet.moveToFirst();
+                    Toast toastName = Toast.makeText(getApplicationContext(), busName + " has been removed from your Favorites List", Toast.LENGTH_LONG);
                     toastName.show();
+                    ((Button)view).setText("Add to Favorites");
                 }
             }
         });
@@ -101,20 +110,19 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
-
     TextView BusinessName = findViewById(R.id.BusinessName);
     BusinessName.setText(busName);
 
-        Button reviewsBtn = (Button) findViewById(R.id.ReviewBtn);
-        reviewsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
-                goToNextActivity.putExtra("user", user);
-                goToNextActivity.putExtra("key", key);
-                startActivity(goToNextActivity);
-            }
-        });
+    Button reviewsBtn = (Button) findViewById(R.id.ReviewBtn);
+    reviewsBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
+            goToNextActivity.putExtra("user", user);
+            goToNextActivity.putExtra("key", key);
+            startActivity(goToNextActivity);
+        }
+    });
     TextView BusinessAddress = findViewById(R.id.BusinessAddress);
     BusinessAddress.setText(address);
 
