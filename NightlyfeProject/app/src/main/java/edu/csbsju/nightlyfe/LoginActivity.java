@@ -246,7 +246,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         resultSet.moveToFirst();
 
 
-        System.out.println(resultSet.getString(0));
+        //System.out.println(resultSet.getString(0));
 
         if (username.equals(resultSet.getString(0)) && password.equals(resultSet.getString(1))){
             int type = resultSet.getInt(2);

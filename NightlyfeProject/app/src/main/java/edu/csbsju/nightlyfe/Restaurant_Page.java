@@ -7,10 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.EditText;
+import android.content.Context;
 
 public class Restaurant_Page extends AppCompatActivity {
 
@@ -39,6 +43,9 @@ public class Restaurant_Page extends AppCompatActivity {
         String phone = resultSet.getString(6);
         String hours = resultSet.getString(7);
 
+        /*
+        Button associated with viewing the map location of a given bar
+         */
         Button MapsBtn = (Button) findViewById(R.id.MapsBtn);
         MapsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +57,9 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
+        /*
+        Button associated with viewing the bulletin board of a given bar
+         */
         Button BulletinBtn = (Button) findViewById(R.id.BulletinBtn);
         BulletinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,9 +72,13 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
+        /*
+        Button associated with adding or removing a given bar to your favorites list
+         */
         Button favoritesBtn = (Button) findViewById(R.id.FavoritesBtn);
         Cursor checkFavorites = mydatabase.rawQuery("SELECT * FROM favorites WHERE user = '" + user + "' AND locationID = " + key + ";", null);
         checkFavorites.moveToFirst();
+        //Changes text of button if bar is already on favorites list
         if(checkFavorites.getCount() == 1){
             favoritesBtn.setText("Remove from Favorites");
         }
@@ -89,6 +103,7 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
+        //Button to return back to the list of bars
         Button listBtn = (Button) findViewById(R.id.listBtn);
         listBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +114,7 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
+        //Button associated with adding a given restaurant as a destination
         ImageButton mStar = findViewById(R.id.starBtn);
         if(userResultSet.getInt(4) == key){
             mStar.setImageResource(R.drawable.goldstarbutton);
@@ -110,35 +126,101 @@ public class Restaurant_Page extends AppCompatActivity {
             }
         });
 
-    TextView BusinessName = findViewById(R.id.BusinessName);
-    BusinessName.setText(busName);
+        //Button associated with viewing reviews of a given bar
+        Button reviewsBtn = (Button) findViewById(R.id.ReviewBtn);
+        reviewsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
+                goToNextActivity.putExtra("user", user);
+                goToNextActivity.putExtra("key", key);
+                startActivity(goToNextActivity);
+            }
+        });
 
-    Button reviewsBtn = (Button) findViewById(R.id.ReviewBtn);
-    reviewsBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
-            goToNextActivity.putExtra("user", user);
-            goToNextActivity.putExtra("key", key);
-            startActivity(goToNextActivity);
+        //SQL request to determine if the bar already has an owner
+        Cursor ownerResultSet = mydatabase.rawQuery("Select * from users where destination = " + key + " and (type = 2 or type  = 4)", null);
+        ownerResultSet.moveToFirst();
+        //System.out.println(ownerResultSet.getCount());
+
+        //retrieves layout to add claimContainer
+        RelativeLayout rl = findViewById(R.id.businessLayout);
+        RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        if(ownerResultSet.getCount() == 0) {
+            //Creates claimTxt and claimBtn to be added to restaurant page if there is no owner
+            EditText claimTxt = new EditText(this);
+            Button claimBtn = new Button(this);
+            claimBtn.setText("Claim");
+
+            LinearLayout claimContainer = new LinearLayout(this);
+            claimContainer.setOrientation(LinearLayout.HORIZONTAL);
+            //LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            claimContainer.addView(claimTxt);
+            claimContainer.addView(claimBtn);
+
+            //rp.addRule(RelativeLayout.ABOVE, R.id.listBtn);
+            rp.addRule(RelativeLayout.BELOW, R.id.BusinessHours);
+            rp.addRule(RelativeLayout.CENTER_IN_PARENT);
+            rl.addView(claimContainer,rp);
+
+            claimBtn.setTag(claimTxt);
+            claimBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EditText claim = (EditText)view.getTag();
+                    int verifyClaim = Integer.parseInt(claim.getText().toString());
+                    Cursor resultSet3 = mydatabase.rawQuery("Select * from business where id = "+key, null);
+                    resultSet3.moveToFirst();
+                    int restaurantOwn = resultSet3.getInt(8);
+                    if(verifyClaim != restaurantOwn) {
+                        claim.setError("Invalid owner ID");
+                    }
+                    else if(verifyClaim == restaurantOwn){
+                        Cursor resultSet4 = mydatabase.rawQuery("Update users set type = " + 2 + ", destination = "+key+" where username = '"+user+"'", null);
+                        resultSet4.moveToFirst();
+                        Intent goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
+                        goToNextActivity.putExtra("user", user);
+                        startActivity(goToNextActivity);
+                        Context context = getApplicationContext();
+                        Toast toastClaim = Toast.makeText(context,"Ownership Claimed Successfully", Toast.LENGTH_LONG);
+                        toastClaim.show();
+                    }
+                }
+            });
         }
-    });
-    TextView BusinessAddress = findViewById(R.id.BusinessAddress);
-    BusinessAddress.setText(address);
 
-    TextView BusinessPhone = findViewById(R.id.BusinessPhone);
-    BusinessPhone.setText(phone);
+        //Sets the text field of the bar name
+        TextView BusinessName = findViewById(R.id.BusinessName);
+        BusinessName.setText(busName);
 
-    TextView BusinessHours = findViewById(R.id.BusinessHours);
-    BusinessHours.setText(hours);
+        //Sets the text field of the bar address
+        TextView BusinessAddress = findViewById(R.id.BusinessAddress);
+        BusinessAddress.setText(address);
 
+        //Sets the text field of the bar phone number
+        TextView BusinessPhone = findViewById(R.id.BusinessPhone);
+        BusinessPhone.setText(phone);
+
+        //Sets the text field of the bar hours
+        TextView BusinessHours = findViewById(R.id.BusinessHours);
+        BusinessHours.setText(hours);
     }
 
+    /*
+    Method associated with destination button, which toggles the restaurant as a destination if it isnt already,
+    and deactivates the destination if it is already selected.
+     */
     public void makeDestination(){
         ImageButton star = findViewById(R.id.starBtn);
         Cursor resultSet2 = mydatabase.rawQuery("Select * from users where username = '"+user+"'", null);
         resultSet2.moveToFirst();
-        if(resultSet2.getInt(4) == key){
+        if(resultSet2.getInt(2) == 2 || resultSet2.getInt(2) == 4){
+            Context context = getApplicationContext();
+            Toast toastClaim = Toast.makeText(context,"As an owner, you cannot change your destination", Toast.LENGTH_LONG);
+            toastClaim.show();
+        }
+        else if(resultSet2.getInt(4) == key){
             Cursor dummy = mydatabase.rawQuery("Update users set destination = " + 0 + " where username = '"+user+"'",null);
             dummy.moveToFirst();
             star.setImageResource(R.drawable.blackstarbutton);

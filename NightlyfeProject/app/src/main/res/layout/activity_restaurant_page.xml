@@ -7,6 +7,7 @@
     tools:context="edu.csbsju.nightlyfe.Restaurant_Page">
 
     <RelativeLayout
+        android:id="@+id/businessLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
@@ -28,10 +29,11 @@
             android:id="@+id/BusinessAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/BusinessPhone"
             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/FavoritesBtn"
             android:fontFamily="casual"
             android:text="Business Address"
+            android:layout_marginTop="10dp"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -92,10 +94,10 @@
             android:id="@+id/BusinessHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/BusinessPhone"
             android:layout_centerHorizontal="true"
             android:fontFamily="cursive"
             android:text="Business Hours"
+            android:layout_below="@+id/BusinessPhone"
             android:textColor="@android:color/black"
             android:textSize="30sp" />
 
@@ -103,10 +105,10 @@
             android:id="@+id/BusinessPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
             android:fontFamily="casual"
             android:text="Phone #"
+            android:layout_below="@+id/BusinessAddress"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 

@@ -83,30 +83,30 @@ public class OwnerHomescreen extends AppCompatActivity {
             });
         }
 
-        Button claimR = (Button) findViewById(R.id.claimBtn);
-        claimR.setTag(id);
-        claimR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextView claimText = (TextView) findViewById(R.id.claimTxt);
-                int verifyClaim = Integer.valueOf(claimText.getText().toString());
-                Cursor resultSet3 = mydatabase.rawQuery("Select * from business where id = "+id, null);
-                resultSet3.moveToFirst();
-                int restaurantOwn = resultSet3.getInt(8);
-                if(verifyClaim != restaurantOwn) {
-                    claimText.setError("Invalid owner ID");
-                }
-                else if(verifyClaim == restaurantOwn){
-                    Cursor resultSet4 = mydatabase.rawQuery("Update users set type = " + 4 + " where username = '"+user+"'", null);
-                    resultSet4.moveToFirst();
-                    Intent goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
-                    startActivity(getIntent());
-                    Context context = getApplicationContext();
-                    Toast toastClaim = Toast.makeText(context,"Ownership Claimed Successfully", Toast.LENGTH_LONG);
-                    toastClaim.show();
-                }
-            }
-        });
+//        Button claimR = (Button) findViewById(R.id.claimBtn);
+//        claimR.setTag(id)
+//        claimR.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                TextView claimText = (TextView) findViewById(R.id.claimTxt);
+//                int verifyClaim = Integer.valueOf(claimText.getText().toString());
+//                Cursor resultSet3 = mydatabase.rawQuery("Select * from business where id = "+id, null);
+//                resultSet3.moveToFirst();
+ //               int restaurantOwn = resultSet3.getInt(8);
+//                if(verifyClaim != restaurantOwn) {
+//                    claimText.setError("Invalid owner ID");
+//                }
+//                else if(verifyClaim == restaurantOwn){
+//                    Cursor resultSet4 = mydatabase.rawQuery("Update users set type = " + 4 + " where username = '"+user+"'", null);
+//                    resultSet4.moveToFirst();
+//                    Intent goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
+//                    startActivity(getIntent());
+//                    Context context = getApplicationContext();
+//                    Toast toastClaim = Toast.makeText(context,"Ownership Claimed Successfully", Toast.LENGTH_LONG);
+//                    toastClaim.show();
+//                }
+//            }
+//        });
 
         RelativeLayout rl = findViewById(R.id.ownerLayout);
         RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
