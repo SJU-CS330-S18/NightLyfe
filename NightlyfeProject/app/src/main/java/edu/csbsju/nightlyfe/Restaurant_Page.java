@@ -105,12 +105,23 @@ public class Restaurant_Page extends AppCompatActivity {
 
         //Button to return back to the list of bars
         Button listBtn = (Button) findViewById(R.id.listBtn);
+        if(userResultSet.getInt(2) == 2 || userResultSet.getInt(2) == 4){
+            listBtn.setText("Return Home");
+        }
+        listBtn.setTag(userResultSet.getInt(2));
         listBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), RestaurantList.class);
-                goToNextActivity.putExtra("user", user);
-                startActivity(goToNextActivity);
+                if(((int)view.getTag()) == 1) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), RestaurantList.class);
+                    goToNextActivity.putExtra("user", user);
+                    startActivity(goToNextActivity);
+                }
+                else if (((int)view.getTag()) == 2 || ((int)view.getTag() == 4)){
+                    Intent goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
+                    goToNextActivity.putExtra("user", user);
+                    startActivity(goToNextActivity);
+                }
             }
         });
 

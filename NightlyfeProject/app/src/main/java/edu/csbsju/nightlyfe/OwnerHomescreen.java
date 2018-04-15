@@ -70,19 +70,20 @@ public class OwnerHomescreen extends AppCompatActivity {
         TextView mEstimate = findViewById(R.id.attendanceTxt);
         mEstimate.setText(estimateResultSet.getCount()+"");
 
-        if(resultSet.getInt(2) != 2) {
-            Button mMyPage = (Button) findViewById(R.id.restaurantBtn);
-            mMyPage.setTag(id);
-            mMyPage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
-                    goToNextActivity.putExtra("id", (int) view.getTag());
-                    startActivity(goToNextActivity);
-                }
-            });
-        }
+        Button mMyPage = (Button) findViewById(R.id.restaurantBtn);
+        mMyPage.setTag(id);
+        mMyPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+                goToNextActivity.putExtra("key", (int) view.getTag());
+                goToNextActivity.putExtra("user",user);
+                startActivity(goToNextActivity); }
+        });
 
+/*
+Code previously used for verification
+ */
 //        Button claimR = (Button) findViewById(R.id.claimBtn);
 //        claimR.setTag(id)
 //        claimR.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +119,9 @@ public class OwnerHomescreen extends AppCompatActivity {
                 public void onClick(View view) {
                     Cursor updateType = mydatabase.rawQuery("Update users set type = " + 4 + " where username = '"+user+"'", null);
                     updateType.moveToFirst();
-                    startActivity(getIntent());
+                    Intent goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
+                    goToNextActivity.putExtra("user", user);
+                    startActivity(goToNextActivity);
                     Context context = getApplicationContext();
                     Toast toastClaim = Toast.makeText(context,"Successfully subscribed as a premium owner", Toast.LENGTH_LONG);
                     toastClaim.show();
