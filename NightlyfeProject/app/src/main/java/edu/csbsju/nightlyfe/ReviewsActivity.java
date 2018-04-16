@@ -73,7 +73,16 @@ public class ReviewsActivity extends AppCompatActivity {
             mName.setTextSize(15);
             if(username.equals(user)){
                 mName.setTextColor(Color.RED);
-                btnDelete.setText("Delete My Review For " + busName);
+            }
+            mReview.setText("\t\t\t"+resultSetReviews.getString(3));
+            mReview.setTextColor(Color.BLACK);
+            mReview.setTextSize(25);
+            mReview.setTypeface(null, Typeface.ITALIC);
+            mReviewWindow.addView(mName);
+            mReviewWindow.addView(mTime);
+            mReviewWindow.addView(mReview);
+            if(username.equals(user)){
+                btnDelete.setText("Delete Review");
                 btnDelete.setTextColor(Color.RED);
                 btnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -83,13 +92,6 @@ public class ReviewsActivity extends AppCompatActivity {
                 });
                 mReviewWindow.addView(btnDelete);
             }
-            mReview.setText("\t\t\t"+resultSetReviews.getString(3));
-            mReview.setTextColor(Color.BLACK);
-            mReview.setTextSize(25);
-            mReview.setTypeface(null, Typeface.ITALIC);
-            mReviewWindow.addView(mName);
-            mReviewWindow.addView(mTime);
-            mReviewWindow.addView(mReview);
             resultSetReviews.moveToNext();
         }
 
@@ -103,22 +105,46 @@ public class ReviewsActivity extends AppCompatActivity {
             }
         }));
 
+        final DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        MultiAutoCompleteTextView review = findViewById(R.id.mReviewEntry);
+                        String quotedReview = "\"" + review.getText() + "\"";
+                        Cursor updateReview = mydatabase.rawQuery("UPDATE reviews SET commenttext = '" + quotedReview + "' WHERE username = '" + user + "' AND id = " + key + ";", null);
+                        updateReview.moveToFirst();
+                        Intent goToNextActivityYes = new Intent(getApplicationContext(), ReviewsActivity.class);
+                        goToNextActivityYes.putExtra("key", key);
+                        goToNextActivityYes.putExtra("user", user);
+                        startActivity(goToNextActivityYes);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        //do nothing
+                        Intent goToNextActivityNo = new Intent(getApplicationContext(), ReviewsActivity.class);
+                        goToNextActivityNo.putExtra("key", key);
+                        goToNextActivityNo.putExtra("user", user);
+                        startActivity(goToNextActivityNo);
+                        break;
+                }
+            }
+        };
+
         Button submitReview = (Button) findViewById(R.id.submitReviewBtn);
         submitReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MultiAutoCompleteTextView review = findViewById(R.id.mReviewEntry);
 
-                submitReview(review.getText().toString());
-                Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
-                goToNextActivity.putExtra("key", key);
-                goToNextActivity.putExtra("user", user);
-                startActivity(goToNextActivity);
+                submitReview(review.getText().toString(), dialogClickListener);
             }
         });
     }
 
-    private void submitReview(String review) {
+    private void submitReview(String review, DialogInterface.OnClickListener dialogClickListener) {
         String quotedReview = "\"" + review + "\"";
         Cursor checkUser = mydatabase.rawQuery("SELECT * FROM reviews WHERE username = '" + user + "' AND id = " + key +";", null);
         checkUser.moveToFirst();
@@ -126,8 +152,12 @@ public class ReviewsActivity extends AppCompatActivity {
             Cursor resultSet = mydatabase.rawQuery("INSERT INTO reviews VALUES ('" + user + "', " + key + ", strftime('%s','now'), '" + quotedReview + "');", null);
             resultSet.moveToFirst();
         } else {
-            Toast toastName = Toast.makeText(getApplicationContext(),"You have already submitted a review!", Toast.LENGTH_LONG);
-            toastName.show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(ReviewsActivity.this);
+            builder.setMessage("You have already submitted a review. Would you like to replace it?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+
+            //Toast toastName = Toast.makeText(getApplicationContext(),"You have already submitted a review!", Toast.LENGTH_LONG);
+            //toastName.show();
         }
     }
 
