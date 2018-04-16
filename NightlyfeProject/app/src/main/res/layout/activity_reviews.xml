@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.csbsju.nightlyfe.ReviewsActivity">
+    tools:context="edu.csbsju.nightlyfe.ReviewsActivity"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="20dp">
 
     <TextView
         android:id="@+id/mReviewsHeader"
@@ -13,7 +16,8 @@
         android:layout_centerHorizontal="true"
         android:textSize="28dp"
         tools:text="Reviews"
-        tools:textAlignment="center" />
+        tools:textAlignment="center"
+        />
 
     <TextView
         android:id="@+id/labelBarName"
