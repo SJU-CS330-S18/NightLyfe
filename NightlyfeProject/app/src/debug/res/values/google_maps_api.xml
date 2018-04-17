@@ -21,4 +21,6 @@
     string in this file.
     -->
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyA0Lv1Yqrg7fHmlTh9QCTfS-_CzsBdkWQg </string>
+    GoogleMap.getUiSettings();
+    UiSettings.setZoomControlsEnabled(boolean);
 </resources>
