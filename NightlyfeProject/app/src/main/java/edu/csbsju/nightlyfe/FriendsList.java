@@ -2,6 +2,7 @@ package edu.csbsju.nightlyfe;
 
 /*
 Class associated with viewing the friends list page of a given user
+@author Tom Richmond
  */
 
 import android.database.sqlite.*;

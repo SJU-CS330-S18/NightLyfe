@@ -19,6 +19,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 
+/*
+Class associated with viewing the homescreen of an admin account
+
+ */
 public class AdminHomescreen extends AppCompatActivity {
 
     public SQLiteDatabase mydatabase;

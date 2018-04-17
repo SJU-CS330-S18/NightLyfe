@@ -14,6 +14,7 @@ import android.view.ViewGroup.LayoutParams;
 
 /*
 Interface for our Strategy Behavioral design pattern, associated with adding or removing friends
+@author Tom Richmond
  */
 public interface FriendStrategy {
 

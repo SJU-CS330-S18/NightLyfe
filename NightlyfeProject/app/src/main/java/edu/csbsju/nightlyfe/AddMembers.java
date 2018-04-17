@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 /*
 class associated with the page where you add friends to a group you are associated with
+@author Tom Richmond
  */
 public class AddMembers extends AppCompatActivity {
 

@@ -12,6 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
 
+/*
+class associated with searching for friends to add from the friends list page
+@author Tom Richmond
+ */
 public class FriendSearch extends AppCompatActivity {
 
     private String search;

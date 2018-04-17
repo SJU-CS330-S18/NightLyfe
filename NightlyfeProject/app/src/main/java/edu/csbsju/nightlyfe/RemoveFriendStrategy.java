@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 /*
 Class for our Strategy Behavioral design pattern, associated with removing a friend
 @implements FriendStrategy
+@author Tom Richmond
  */
 public class RemoveFriendStrategy implements FriendStrategy {
 
