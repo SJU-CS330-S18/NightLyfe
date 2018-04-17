@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/*
+Class associated with viewing the list of groups associated with the active user
+@author Tom Richmond
+ */
 public class GroupsList extends AppCompatActivity {
 
     public SQLiteDatabase mydatabase;

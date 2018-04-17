@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/*
+Class associated with viewing the group page of a specified group
+@author Tom Richmond
+ */
 public class Group extends AppCompatActivity {
 
     //must still implement the group chat function

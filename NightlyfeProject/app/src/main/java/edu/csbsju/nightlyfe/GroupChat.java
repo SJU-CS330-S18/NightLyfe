@@ -13,6 +13,10 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+/*
+Class associated with viewing the group chat of a specified group
+@author Tom Richmond
+ */
 public class
 GroupChat extends AppCompatActivity {
 

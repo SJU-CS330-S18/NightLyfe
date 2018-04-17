@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/*
+Class associated with viewing the page to create a new group
+@author Tom Richmond
+ */
 public class NewGroupPage extends AppCompatActivity {
     String user;
     SQLiteDatabase mydatabase;
