@@ -41,10 +41,6 @@ public class AccountActivity extends AppCompatActivity {
         System.out.println(resultSet.getCount());
         String name = resultSet.getString(3);
 
-        //Textview to label the username field
-        TextView labelUsername = findViewById(R.id.labelUsername);
-        labelUsername.setText("Username: " + resultSet.getString(0));
-
         TextView mUserHeader = findViewById(R.id.mUserHeader);
         mUserHeader.setText("Hello, " + name + "!");
 

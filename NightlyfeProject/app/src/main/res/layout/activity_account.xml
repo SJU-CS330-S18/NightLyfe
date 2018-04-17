@@ -119,30 +119,22 @@
                 android:layout_alignStart="@+id/fChangePassword"
                 android:text="Change Password" />
 
-            <TextView
-                android:id="@+id/labelUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/changePasswordBtn"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:text="TextView"
-                android:textSize="10pt" />
-
             <Button
                 android:id="@+id/homeBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Return Home"
-                android:layout_below="@+id/labelUsername" />
+                android:layout_marginTop="35dp"
+                android:layout_above="@+id/deleteBtn" />
 
             <Button
                 android:id="@+id/deleteBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/homeBtn"
                 android:layout_centerHorizontal="true"
                 android:text="Delete Account"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
                 android:textColor="?attr/colorError" />
         </RelativeLayout>
     </RelativeLayout>
