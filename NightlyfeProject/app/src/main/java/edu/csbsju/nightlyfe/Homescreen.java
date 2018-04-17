@@ -2,6 +2,7 @@ package edu.csbsju.nightlyfe;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -25,8 +26,6 @@ public class Homescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //            @Override
         setContentView(R.layout.activity_homescreen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         user = getIntent().getStringExtra("user");
         // Changes user name textView to what was passed from login above
@@ -104,6 +103,15 @@ public class Homescreen extends AppCompatActivity {
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), AccountActivity.class);
                 goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+            }
+        });
+        // Button to access the information page
+        FloatingActionButton mInfo = (FloatingActionButton) findViewById(R.id.infoFab);
+        mInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), UserDocument.class);
                 startActivity(goToNextActivity);
             }
         });
