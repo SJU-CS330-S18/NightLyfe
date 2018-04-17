@@ -15,6 +15,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class BusinessLocation extends FragmentActivity implements OnMapReadyCallback {
@@ -69,9 +70,10 @@ public class BusinessLocation extends FragmentActivity implements OnMapReadyCall
 
         // Adds a business marker and moves/zooms the camera
         LatLng business = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(business).title(businessName));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(business));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+        MarkerOptions marker = new MarkerOptions().position(business).title(businessName);
+        mMap.addMarker(marker);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 16));
+        //mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
 
         //Allows user to use zoom buttons on screen
         mMap.getUiSettings().setZoomControlsEnabled(true);
