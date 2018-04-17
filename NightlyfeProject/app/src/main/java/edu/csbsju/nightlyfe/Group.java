@@ -15,6 +15,7 @@ public class Group extends AppCompatActivity {
 
     //must still implement the group chat function
     
+    //local sqllite db
     public SQLiteDatabase mydatabase;
     public int id;
     public String user;
@@ -22,6 +23,7 @@ public class Group extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //use activity_group layout
         setContentView(R.layout.activity_group);
 
         //opens database for use
@@ -31,6 +33,7 @@ public class Group extends AppCompatActivity {
         id = getIntent().getIntExtra("id", 0);
         user = getIntent().getStringExtra("user");
 
+        //return user home when they touch the home button
         Button mHome = (Button) findViewById(R.id.listBtn);
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +44,7 @@ public class Group extends AppCompatActivity {
             }
         });
 
+        //add members to group button
         Button mAdd = (Button) findViewById(R.id.addBtn);
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +56,7 @@ public class Group extends AppCompatActivity {
             }
         });
 
+        //When user touches leave button, they are removed from the group
         Button mLeave = (Button) findViewById(R.id.leaveBtn);
         mLeave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +68,7 @@ public class Group extends AppCompatActivity {
             }
         });
 
+        //button to bring user to the chat screen
         Button mChat = (Button) findViewById(R.id.chatBtn);
         mChat.setOnClickListener(new View.OnClickListener() {
             @Override

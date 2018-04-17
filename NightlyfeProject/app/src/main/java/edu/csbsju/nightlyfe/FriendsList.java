@@ -1,5 +1,9 @@
 package edu.csbsju.nightlyfe;
 
+/*
+Class associated with viewing the friends list page of a given user
+ */
+
 import android.database.sqlite.*;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -30,20 +34,24 @@ public class FriendsList extends AppCompatActivity {
         //receives active user's username from previous page
         user = getIntent().getStringExtra("user");
 
-        //creates listener for search button, which redirects to search page
+        //button associated with searching for a term in the user database
         Button mSearch = (Button) findViewById(R.id.searchBtn);
         mSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //retrieves the field for the search term
                 TextView mSearchTerm = (TextView) findViewById(R.id.searchTxt);
                 String searchText =  mSearchTerm.getText().toString();
                 Intent goToNextActivity = new Intent(getApplicationContext(), FriendSearch.class);
+                //passes search term to next activity
                 goToNextActivity.putExtra("search",searchText);
+                //passes user session variable to next activity
                 goToNextActivity.putExtra("user",user);
                 startActivity(goToNextActivity);
             }
         });
 
+        //button associated with the ability to return home from the friends list
         Button mHome = (Button) findViewById(R.id.listBtn);
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override

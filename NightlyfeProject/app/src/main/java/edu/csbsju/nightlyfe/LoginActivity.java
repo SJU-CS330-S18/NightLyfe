@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        populateDatabase();
+        //populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -232,6 +232,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    /*
+    Method to verify that the credentials entered are valid for login
+     */
     private int isValidCredentials(String username, String password) {
 
         //how to querey from the table
@@ -244,9 +247,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         //set cursor to first item in the table
         resultSet.moveToFirst();
-
-
-        //System.out.println(resultSet.getString(0));
 
         if (username.equals(resultSet.getString(0)) && password.equals(resultSet.getString(1))){
             int type = resultSet.getInt(2);
@@ -352,7 +352,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
-    //method to repopulate database with test information
+    /*
+    Method to populate our database with our test data
+     */
     private void populateDatabase(){
         //drops tables to recreate and populate
         mydatabase.execSQL("DROP TABLE IF EXISTS users;");

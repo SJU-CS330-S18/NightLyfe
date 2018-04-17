@@ -12,12 +12,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/*
+class associated with the page where you add friends to a group you are associated with
+ */
 public class AddMembers extends AppCompatActivity {
 
     public SQLiteDatabase mydatabase;
     public String user;
     public int id;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,9 @@ public class AddMembers extends AppCompatActivity {
         user = getIntent().getStringExtra("user");
         id = getIntent().getIntExtra("id", 0);
 
+        /*
+        Button associated with returning to the home screen
+         */
         Button mHome = (Button) findViewById(R.id.listBtn);
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +103,11 @@ public class AddMembers extends AppCompatActivity {
             resultSet.moveToNext();
         }
     }
+
+    /*
+    method to add a friend to the group
+    @param String username of friend to add to the group
+     */
     public void addFriend(String username){
         mydatabase.execSQL("INSERT INTO groupmember VALUES ("+id+", '"+username+"');");
 

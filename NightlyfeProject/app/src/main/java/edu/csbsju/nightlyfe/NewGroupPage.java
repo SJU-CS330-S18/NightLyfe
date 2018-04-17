@@ -17,6 +17,10 @@ public class NewGroupPage extends AppCompatActivity {
     SQLiteDatabase mydatabase;
     EditText mGroupName;
 
+    /**
+     * Initializes the new group page
+     * See appCompatActivity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +31,7 @@ public class NewGroupPage extends AppCompatActivity {
 
         user = getIntent().getStringExtra("user");
 
-
+        //Terminates the create new group process, redirects to GroupsList
         Button mCancel = (Button) findViewById(R.id.cancelBtn);
         mCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +44,7 @@ public class NewGroupPage extends AppCompatActivity {
 
         mGroupName = (EditText) findViewById(R.id.groupNameTxt);
 
+        //Creates a new group
         Button mConfirm = (Button) findViewById(R.id.confirmBtn);
         mConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +54,12 @@ public class NewGroupPage extends AppCompatActivity {
         });
     }
 
+    /**
+     * Creates group by retrieving information from text input fields, stores group in database table friendgroups
+     */
     public void createGroup() {
+
+        //Retrieves group name from tex input box
         String groupName = mGroupName.getText().toString();
         if (groupName.length() > 20 || groupName.length() <=2){
             mGroupName.setError("Group name must be between 3 and 20 characters.");
@@ -64,7 +74,7 @@ public class NewGroupPage extends AppCompatActivity {
             mydatabase.execSQL("INSERT INTO friendgroups VALUES ("+id+", '"+groupName+"');");
             mydatabase.execSQL("INSERT INTO groupmember VALUES ("+id+", '"+user+"');");
             
-
+            //Redirects to GroupsList page
             Intent goToNextActivity = new Intent(getApplicationContext(), GroupsList.class);
             goToNextActivity.putExtra("user", user);
             startActivity(goToNextActivity);

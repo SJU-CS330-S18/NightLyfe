@@ -23,17 +23,26 @@ public class BulletinBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bulletin_board);
+        //Getting the database....
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
+        //Getting the user who is using the app
         user = getIntent().getStringExtra("user");
+        //Getting the key of the bar or restaurant id
         key = getIntent().getIntExtra("key", -1);
+        //Query database for the specials where the business ID matches the key from earlier
         Cursor resultSet = mydatabase.rawQuery("Select * from specials where businessID = "+key, null);
         int size = resultSet.getCount();
         name = getIntent().getStringExtra("name");
+        //Sets the business name so the page can be dynamic for each different place.
         TextView bName = findViewById(R.id.BusinessName);
         bName.setText(name);
         System.out.println(size);
 
-
+        //This creates a semi dynamic list of specials that are the most Frequent / newest posted.
+        //Functions similar to a twitter page
+        //If there is less than 3 posts, only shows the number of posts. I.E if there is 2 there
+        //  would only be two posts shown
+        //Currently has a hard limit of three posts per page
         if(size>0) {
             resultSet.moveToLast();
             TextView first = findViewById(R.id.eventTextTop);

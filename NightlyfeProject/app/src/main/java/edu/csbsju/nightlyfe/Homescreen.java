@@ -19,7 +19,7 @@ public class Homescreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        // Opens database connection
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         super.onCreate(savedInstanceState);
@@ -29,7 +29,7 @@ public class Homescreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         user = getIntent().getStringExtra("user");
-
+        // Changes user name textView to what was passed from login above
         TextView mUsernameView = findViewById(R.id.userTxt);
         mUsernameView.setText(user);
 
@@ -43,11 +43,12 @@ public class Homescreen extends AppCompatActivity {
         resultSet2.moveToFirst();
         //System.out.println(resultSet2.getCount());
 
+        // Checks to see if the user has a destination which was queried from above, if they do it displays it
         int dest = resultSet.getInt(4);
         if(dest != 0) {
             mDestinationView.setText(resultSet2.getString(1));
         }
-
+        // Logout button for users to log out, brings user back to login page
         Button mLogout = (Button) findViewById(R.id.logoutBtn);
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +57,7 @@ public class Homescreen extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
-
+        // Button for friends, goes to the Friends list page
         Button mFriends = (Button) findViewById(R.id.friendsBtn);
         mFriends.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +67,7 @@ public class Homescreen extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
-
+        // Button to find bars and businesses
         Button mBars = (Button) findViewById(R.id.barsBtn);
         mBars.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +77,7 @@ public class Homescreen extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
-
+        // Button to go to favorites list
         Button mFavorites = (Button) findViewById(R.id.favoriteBtn);
         mFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +87,7 @@ public class Homescreen extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
-
+        // Button to go to to the group lists
         Button mGroups = (Button) findViewById(R.id.groupsBtn);
         mGroups.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +97,7 @@ public class Homescreen extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
-
+        // Button to modify account
         Button mUser = (Button) findViewById(R.id.userBtn);
         mUser.setOnClickListener(new View.OnClickListener() {
             @Override
