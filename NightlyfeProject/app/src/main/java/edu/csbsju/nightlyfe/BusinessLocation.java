@@ -1,7 +1,10 @@
 package edu.csbsju.nightlyfe;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -43,6 +46,8 @@ public class BusinessLocation extends FragmentActivity implements OnMapReadyCall
 
         System.out.println(latitude);
         System.out.println(longitude);
+
+
     }
 
     @Override
@@ -54,5 +59,22 @@ public class BusinessLocation extends FragmentActivity implements OnMapReadyCall
         mMap.addMarker(new MarkerOptions().position(business).title(businessName));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(business));
         mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setZoomGesturesEnabled(true);
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mMap.getUiSettings().setAllGesturesEnabled(true);
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+/*
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            //Check Permissions
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, )
+            ;
+        }
+*/
+        //mMap.setMyLocationEnabled(true);
+       // mMap.setOnMyLocationButtonClickListener(this);
+
     }
 }
