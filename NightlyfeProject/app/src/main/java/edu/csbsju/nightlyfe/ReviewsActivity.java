@@ -63,20 +63,20 @@ public class ReviewsActivity extends AppCompatActivity {
         int size = resultSetReviews.getCount();
         for (int i = 0; i < size; i++) {
             TextView mName = new TextView(this);
-            TextView mTime = new TextView(this);
+            //TextView mTime = new TextView(this);
             TextView mReview = new TextView(this);
             Button btnDelete = new Button(this);
 
             String username = resultSetReviews.getString(0);
             mName.setText(username);
-            int time = resultSetReviews.getInt(2);
-            SimpleDateFormat originalFormat = new SimpleDateFormat("MMddyyyy");
-            try {
-                Date date = originalFormat.parse(String.valueOf(time));
-                mTime.setText(date.toString());
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            //int time = resultSetReviews.getInt(2);
+            //SimpleDateFormat originalFormat = new SimpleDateFormat("MMddyyyy");
+            //try {
+            //    Date date = originalFormat.parse(String.valueOf(time));
+            //    mTime.setText(date.toString());
+            //} catch (Exception e) {
+            //    System.out.println(e);
+            //}
 
             mName.setTextSize(15);
             if (username.equals(user)) {
@@ -87,7 +87,7 @@ public class ReviewsActivity extends AppCompatActivity {
             mReview.setTextSize(25);
             mReview.setTypeface(null, Typeface.ITALIC);
             mReviewWindow.addView(mName);
-            mReviewWindow.addView(mTime);
+            //mReviewWindow.addView(mTime);
             mReviewWindow.addView(mReview);
             if (username.equals(user)) {
                 btnDelete.setText("Delete Review");
