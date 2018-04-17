@@ -151,6 +151,10 @@ public class ReviewsActivity extends AppCompatActivity {
         if(checkUser.getCount() == 0) {
             Cursor resultSet = mydatabase.rawQuery("INSERT INTO reviews VALUES ('" + user + "', " + key + ", strftime('%s','now'), '" + quotedReview + "');", null);
             resultSet.moveToFirst();
+            Intent goToNextActivity = new Intent(getApplicationContext(), ReviewsActivity.class);
+            goToNextActivity.putExtra("key", key);
+            goToNextActivity.putExtra("user", user);
+            startActivity(goToNextActivity);
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(ReviewsActivity.this);
             builder.setMessage("You have already submitted a review. Would you like to replace it?").setPositiveButton("Yes", dialogClickListener)

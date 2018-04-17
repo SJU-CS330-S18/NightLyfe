@@ -29,6 +29,10 @@ public class OwnerHomescreen extends AppCompatActivity {
     int id;
     SQLiteDatabase mydatabase;
 
+    /**
+     * Initializes the owner homescreen page
+     * refer to appCompatActivity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -49,6 +53,7 @@ public class OwnerHomescreen extends AppCompatActivity {
         resultSet.moveToFirst();
         id = resultSet.getInt(4);
 
+        //Brings user back to LoginActivity page
         Button mLogout = (Button) findViewById(R.id.logoutBtn);
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +75,7 @@ public class OwnerHomescreen extends AppCompatActivity {
         TextView mEstimate = findViewById(R.id.attendanceTxt);
         mEstimate.setText(estimateResultSet.getCount()+"");
 
+        //Sends the owner to the owned restaurant's page
         Button mMyPage = (Button) findViewById(R.id.restaurantBtn);
         mMyPage.setTag(id);
         mMyPage.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +119,7 @@ Code previously used for verification
         RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
         if(resultSet.getInt(2) == 2){
+            //Submits a request to admins for the owner to become a premium owner
             Button mPremium = new Button(this);
             mPremium.setOnClickListener(new View.OnClickListener() {
                 @Override
