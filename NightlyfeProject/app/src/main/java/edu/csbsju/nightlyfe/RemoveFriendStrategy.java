@@ -2,6 +2,10 @@ package edu.csbsju.nightlyfe;
 
 import android.database.sqlite.SQLiteDatabase;
 
+/*
+Class for our Strategy Behavioral design pattern, associated with removing a friend
+@implements FriendStrategy
+ */
 public class RemoveFriendStrategy implements FriendStrategy {
 
     public SQLiteDatabase mydatabase;

@@ -12,6 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
 
+/*
+Interface for our Strategy Behavioral design pattern, associated with adding or removing friends
+ */
 public interface FriendStrategy {
 
     /*
