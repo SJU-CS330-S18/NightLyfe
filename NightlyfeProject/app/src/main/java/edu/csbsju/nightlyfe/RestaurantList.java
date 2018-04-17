@@ -22,9 +22,13 @@ public class RestaurantList extends AppCompatActivity {
          super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_restaurant_list);
 
+            //Get user variable from recent page
             user = getIntent().getStringExtra("user");
+
+            //Opens database used for NightLyfe application
             mydatabase = openOrCreateDatabase("NightLyfe", MODE_PRIVATE, null);
 
+        //Creates a home button to return to the user home screen
         Button homeBtn = (Button) findViewById(R.id.homeBtn);
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,54 +39,55 @@ public class RestaurantList extends AppCompatActivity {
             }
         });
 
-        //receives resultSet for all businesses associated with active user--will be location in future
+        //Receives resultSet for all businesses associated with active user--will be location in future
        Cursor resultSet = mydatabase.rawQuery("Select * from business", null);
 
-        //gets size of resultset and moves the cursor to the first entry
+        //Gets size of resultset and moves the cursor to the first entry
         int size = resultSet.getCount();
         resultSet.moveToFirst();
 
 
 
-        //finds linearlayout to display restaurants and creates LayoutParams object
+        //Finds linearlayout to display restaurants and creates LayoutParams object
         LinearLayout ll = (LinearLayout) findViewById(R.id.restLayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        //loops through each entry in friends list and displays them
+        //Loops through each entry in friends list and displays them
         for (int i = 0; i < size; i++) {
 
-            //creates new horizonal LinearLayout for each entry into friendslist
+            //Creates new horizonal LinearLayout for each entry into friendslist
             LinearLayout row = new LinearLayout(this);
             row.setOrientation(LinearLayout.HORIZONTAL);
 
-            //creates LayoutParams object to dictate entries
+            //Creates LayoutParams object to dictate entries
             LinearLayout.LayoutParams rowp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1);
 
-            //gets username of entry in resultset
+            //Gets username of entry in resultset
             String name = resultSet.getString(1);
 
-            //creates and formats textview to display friend's username
+            //Creates and formats textview to display friend's username
             TextView mBusinessView = new TextView(this);
             mBusinessView.setTextSize(20);
             mBusinessView.setTextColor(Color.BLACK);
 
-            //creates a button to visit a business
+            //Creates a button to visit a business
             Button mVisitBusiness = new Button(this);
 
-            //gets the key relating to the business for a tag
+            //Gets the key relating to the business for a tag
             int key = resultSet.getInt(0);
 
-            //sets the associated restaurant ID as a tag associated with the button for inner class use
+            //Sets the associated restaurant ID as a tag associated with the button for inner class use
             mVisitBusiness.setTag(key);
             mVisitBusiness.setText("Visit Page");
 
+            //Dynamic button to bring user to individual restaurant pages
+            //Passes user ID and business key to individual page
             mVisitBusiness.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
                     goToNextActivity.putExtra("user", user);
                     goToNextActivity.putExtra("key", (int) view.getTag());
-                    goToNextActivity.putExtra("user", user);
                     startActivity(goToNextActivity);
                 }
             });
@@ -90,10 +95,7 @@ public class RestaurantList extends AppCompatActivity {
             //sets value of textview
             mBusinessView.setText(name);
 
-            //adds the view to layout
-           // ll.addView(mBusinessView, lp);
-
-            //adds the name and button to a linear layouts
+            //adds the name and button to the linear layouts
             row.addView(mBusinessView, rowp);
             row.addView(mVisitBusiness, rowp);
             ll.addView(row,lp);
@@ -103,8 +105,6 @@ public class RestaurantList extends AppCompatActivity {
         }
 
     }
-
-
 
 
 }
