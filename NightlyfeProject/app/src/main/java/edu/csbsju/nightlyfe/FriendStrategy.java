@@ -13,5 +13,11 @@ import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
 
 public interface FriendStrategy {
+
+    /*
+    method to dynamically add or remove a friend in subclasses
+    @param String friend to add or remove
+    @param String user to associate with friend
+     */
     boolean algorithmInterface(String friend, String user);
 }

@@ -44,6 +44,7 @@ public class FriendSearch extends AppCompatActivity {
         LinearLayout ll = (LinearLayout)findViewById(R.id.searchLayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+        //Button associated with returning to the home screen from friend search
         Button mHome = (Button) findViewById(R.id.listBtn);
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +117,11 @@ public class FriendSearch extends AppCompatActivity {
         }
     }
 
+    /*
+    method to make dynamic decision of whether a friend should be added or removed
+    @param String user1 the active user
+    @param String user2 the friend to be added or removed
+     */
     private void decideButton(String user1, String user2){
         //creates a button to either add or remove friend
         Button mAddFriend = new Button(this);
