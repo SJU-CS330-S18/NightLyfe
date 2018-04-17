@@ -24,6 +24,10 @@ public class AdminHomescreen extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
     public String user;
 
+    /**
+     * Initializes the admin homescreen
+     * See appCompatActivity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -42,6 +46,7 @@ public class AdminHomescreen extends AppCompatActivity {
 
         Cursor resultSet = mydatabase.rawQuery("Select * from users where username = '"+user+"'",null);
 
+        //Logs the user out and redirects to LoginActivity
         Button mLogout = (Button) findViewById(R.id.logoutBtn);
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override

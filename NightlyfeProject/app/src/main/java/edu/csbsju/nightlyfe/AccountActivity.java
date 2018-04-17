@@ -12,6 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
 
+/**
+ * A class that handles all Account functionality (View Account, Edit Account{Edit Name, Edit Location,
+ * Edit Password}, Delete Account*)
+ *
+ * @author dannyfritz3
+ */
 public class AccountActivity extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
     public String user;
