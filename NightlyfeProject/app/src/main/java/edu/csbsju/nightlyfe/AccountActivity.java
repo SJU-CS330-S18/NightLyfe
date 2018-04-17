@@ -1,5 +1,7 @@
 package edu.csbsju.nightlyfe;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
@@ -111,6 +114,35 @@ public class AccountActivity extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
+
+        final DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        deleteAccount();
+                        Toast toastPassword = Toast.makeText(getApplicationContext(),"Deleted: " + user, Toast.LENGTH_LONG);
+                        toastPassword.show();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        //do nothing
+                        break;
+                }
+            }
+        };
+
+        Button mDelete = (Button) findViewById(R.id.deleteBtn);
+        mDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(AccountActivity.this);
+                builder.setMessage("Are you sure you want to delete your account?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
+            }
+        });
     }
 
     /*
@@ -140,4 +172,10 @@ public class AccountActivity extends AppCompatActivity {
         resultSet.moveToFirst();
     }
 
+    private void deleteAccount() {
+        Intent goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);
+        Cursor resultSet = mydatabase.rawQuery("DELETE FROM users WHERE username = '" + user + "';", null);
+        resultSet.moveToFirst();
+        startActivity(goToNextActivity);
+    }
 }
