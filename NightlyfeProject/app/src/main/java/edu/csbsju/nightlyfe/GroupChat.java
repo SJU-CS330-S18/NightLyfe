@@ -32,25 +32,30 @@ GroupChat extends AppCompatActivity {
         id = getIntent().getIntExtra("id", 0);
         user = getIntent().getStringExtra("user");
 
+        //figure out how much chat is in the chat and scroll to the bottom (most recent) chat
         ScrollView mScroll = findViewById(R.id.scrollView);
         mScroll.scrollTo(0, mScroll.getBottom());
 
+        //get group info
         Cursor resultSet = mydatabase.rawQuery("Select * from friendgroups where groupID = "+id,null);
-
+        //leave if no chat
         if(resultSet.getCount() == 0){
             return;
         }
 
+        //query db for chat messages
         Cursor resultSetComments = mydatabase.rawQuery("Select * from groupmessage where groupID = "+id+" ORDER BY time ASC",null);
         resultSetComments.moveToFirst();
         LinearLayout mChatWindow = findViewById(R.id.chatWindow);
 
+        //display no message text if no chats for this group.
         if(resultSetComments.getCount() == 0){
             TextView mMessage = new TextView(this);
             mMessage.setText("No message history, start a conversation!");
             mMessage.setGravity(Gravity.CENTER);
             mChatWindow.addView(mMessage);
         }
+        //else display chat text, loop through messages abd display the username along with the content
         else{
             int size = resultSetComments.getCount();
             for(int i = 0; i < size; i++){
@@ -69,6 +74,7 @@ GroupChat extends AppCompatActivity {
             }
         }
 
+        //set back button functionality
         Button mBack = (Button) findViewById(R.id.backBtn);
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +85,7 @@ GroupChat extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
-
+        //set send message button functionality
         Button mSend = (Button) findViewById(R.id.sendBtn);
         mSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +102,7 @@ GroupChat extends AppCompatActivity {
                     startActivity(getIntent());
                 }
                 else{
-                    mComment.setError("Message must be between 0 and 100 character");
+                    mComment.setError("Message must be between 0 and 100 characters");
                 }
             }
         });
