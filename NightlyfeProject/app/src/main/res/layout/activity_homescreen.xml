@@ -107,6 +107,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             app:backgroundTint="@android:color/darker_gray"
+            app:fabSize="mini"
             app:rippleColor="@android:color/background_light"
             app:srcCompat="@android:drawable/ic_menu_help" />
     </RelativeLayout>

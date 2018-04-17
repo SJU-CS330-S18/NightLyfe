@@ -140,7 +140,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/homeBtn"
                 android:layout_centerHorizontal="true"
-                android:text="Delete Account" />
+                android:text="Delete Account"
+                android:textColor="?attr/colorError" />
         </RelativeLayout>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
