@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/*
+Class associated with viewing the page to register a user with the app database
+@author Tom Richmond
+ */
 public class Register extends AppCompatActivity {
 
     private EditText mFnameView;
