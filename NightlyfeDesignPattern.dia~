@@ -96,13 +96,13 @@
         <dia:point val="21.55,0.85"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="21.5,0.8;28.05,3.7"/>
+        <dia:rectangle val="21.5,0.8;28.645,3.7"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="21.55,0.85"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="6.4500000000000002"/>
+        <dia:real val="7.0449999999999999"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="2.7999999999999998"/>
@@ -200,7 +200,7 @@
       <dia:attribute name="attributes">
         <dia:composite type="umlattribute">
           <dia:attribute name="name">
-            <dia:string>#FriendStrategy#</dia:string>
+            <dia:string>#ContextInterface#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
             <dia:string>##</dia:string>
@@ -815,17 +815,17 @@
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O4">
       <dia:attribute name="obj_pos">
-        <dia:point val="24.775,3.70035"/>
+        <dia:point val="25.0725,3.70035"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="24.025,2.95035;25.525,8.54965"/>
+        <dia:rectangle val="24.3225,2.95035;25.8225,8.54965"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="24.775,3.70035"/>
-        <dia:point val="24.775,6.075"/>
+        <dia:point val="25.0725,3.70035"/>
+        <dia:point val="25.0725,6.075"/>
         <dia:point val="25.055,6.075"/>
         <dia:point val="25.055,7.74965"/>
       </dia:attribute>
