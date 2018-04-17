@@ -23,7 +23,7 @@ public class GroupsList extends AppCompatActivity {
 
         user = getIntent().getStringExtra("user");
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
-
+        //add functionality to create group button
         Button mCreate = (Button) findViewById(R.id.createBtn);
         mCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +33,7 @@ public class GroupsList extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
-
+        //add functionaslity to home button
         Button mHome = (Button) findViewById(R.id.listBtn);
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
