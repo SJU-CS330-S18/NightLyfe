@@ -13,6 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * A class that handles all functionality for the favorites list (Viewing Favorites, Adding Favorites,
+ * Removing Favorites, Visiting Items on Favorites)
+ *
+ * @author dannyfritz3
+ */
 public class FavoritesList extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
     public String user;
