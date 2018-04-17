@@ -15,7 +15,7 @@ import android.view.ViewGroup.LayoutParams;
 public class FriendSearch extends AppCompatActivity {
 
     private String search;
-    public SQLiteDatabase mydatabase;
+    public static SQLiteDatabase mydatabase;
     public String user;
 
     @Override
@@ -133,7 +133,11 @@ public class FriendSearch extends AppCompatActivity {
             mAddFriend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    addFriend((String) view.getTag());
+                    FriendStrategy af = new AddFriendStrategy((String) view.getTag(), user);
+                    Intent goToNextActivity = new Intent(getApplicationContext(), FriendsList.class);
+                    goToNextActivity.putExtra("user", user);
+                    startActivity(goToNextActivity);
+                    //addFriend((String) view.getTag());
                 }
             });
         }
@@ -142,7 +146,11 @@ public class FriendSearch extends AppCompatActivity {
             mAddFriend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    removeFriend((String) view.getTag());
+                    FriendStrategy af = new RemoveFriendStrategy((String) view.getTag(), user);
+                    Intent goToNextActivity = new Intent(getApplicationContext(), FriendsList.class);
+                    goToNextActivity.putExtra("user", user);
+                    startActivity(goToNextActivity);
+                    //removeFriend((String) view.getTag());
                 }
             });
         }
