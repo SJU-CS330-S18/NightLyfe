@@ -53,11 +53,10 @@ public class ReviewsActivity extends AppCompatActivity {
         LinearLayout mReviewWindow = findViewById(R.id.reviewWindow);
 
         //creates TextViews for the page and populates them
-        TextView mReviewsHeader = findViewById(R.id.mReviewsHeader);
         TextView mBarName = findViewById(R.id.labelBarName);
         String busName = resultSetBars.getString(1);
-        mReviewsHeader.setText("Reviews");
         mBarName.setText(busName);
+        mBarName.setTextSize(25);
 
         //iterates through each review to be printed on the screen
         int size = resultSetReviews.getCount();
@@ -80,7 +79,7 @@ public class ReviewsActivity extends AppCompatActivity {
 
             mName.setTextSize(15);
             if (username.equals(user)) {
-                mName.setTextColor(Color.RED);
+                mName.setTextColor(getResources().getColor(R.color.colorAccentOrange));
             }
             mReview.setText("\t\t\t" + resultSetReviews.getString(3));
             mReview.setTextColor(Color.BLACK);
@@ -91,7 +90,7 @@ public class ReviewsActivity extends AppCompatActivity {
             mReviewWindow.addView(mReview);
             if (username.equals(user)) {
                 btnDelete.setText("Delete Review");
-                btnDelete.setTextColor(Color.RED);
+                btnDelete.setTextColor(getResources().getColor(R.color.colorAccentOrange));
                 btnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

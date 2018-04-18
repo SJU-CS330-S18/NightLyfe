@@ -9,23 +9,12 @@
     android:layout_marginRight="20dp"
     android:layout_marginTop="20dp">
 
-    <TextView
-        android:id="@+id/mReviewsHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="28dp"
-        tools:text="Reviews"
-        tools:textAlignment="center"
-        />
-
-    <TextView
+        <TextView
         android:id="@+id/labelBarName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mReviewsHeader"
-        android:layout_centerHorizontal="true"
-        android:text="Bar Name Here" />
+            android:layout_centerHorizontal="true"
+            android:text="Bar Name Here" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -43,16 +32,20 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/submitReviewBtn"
+        android:layout_toStartOf="@+id/submitReviewBtn"
         android:hint="Write your review here..." />
 
     <Button
         android:id="@+id/submitReviewBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_alignBaseline="@+id/mReviewEntry"
+        android:layout_alignBottom="@+id/mReviewEntry"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Submit Review" />
+        android:text="Submit Review"
+        android:textSize="10dp" />
 
     <LinearLayout
         android:id="@+id/reviewWindow"
@@ -60,16 +53,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/scrollView"
+        android:layout_below="@id/btnHome"
         android:orientation="vertical"></LinearLayout>
 
     <Button
         android:id="@+id/btnHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/scrollView"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="Return Home" />
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/labelBarName"
+        android:layout_centerHorizontal="true"
+        android:text="Return Home"
+        android:textSize="10dp" />
 
 </RelativeLayout>
