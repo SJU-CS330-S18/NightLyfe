@@ -40,9 +40,9 @@
         <activity
             android:name=".OwnerHomescreen"
             android:label="@string/title_activity_owner_homescreen" />
-        <activity android:name=".Restaurant_Page" />
-        <activity
-            android:name=".Register"
+        <activity android:name=".Restaurant_Page"
+            android:label="@string/title_activity_findbars"/>
+        <activity android:name=".Register"
             android:label="@string/title_activity_register"/>
         <activity android:name=".FriendsList"
             android:label="@string/title_activity_friends"/>
