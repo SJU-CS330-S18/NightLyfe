@@ -141,6 +141,7 @@
             android:layout_alignBottom="@+id/BusinessName"
             android:layout_toEndOf="@+id/BusinessName"
             android:layout_toRightOf="@+id/BusinessName"
+            android:background="#00ffffff"
             app:srcCompat="@drawable/blackstarbutton" />
 
     </RelativeLayout>

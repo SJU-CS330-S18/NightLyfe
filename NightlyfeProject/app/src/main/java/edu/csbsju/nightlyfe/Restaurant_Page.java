@@ -161,6 +161,7 @@ public class Restaurant_Page extends AppCompatActivity {
         if(ownerResultSet.getCount() == 0) {
             //Creates claimTxt and claimBtn to be added to restaurant page if there is no owner
             EditText claimTxt = new EditText(this);
+            claimTxt.setWidth(200);
             Button claimBtn = new Button(this);
             claimBtn.setText("Claim");
 

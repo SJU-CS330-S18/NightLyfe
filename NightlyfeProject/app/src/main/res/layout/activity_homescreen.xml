@@ -1,33 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.csbsju.nightlyfe.Homescreen">
 
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <Button
+            android:id="@+id/userBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Account" />
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/userBtn"
+            android:layout_alignBottom="@+id/userBtn"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Logout" />
+
+        <Button
+            android:id="@+id/friendsBtn"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/barsBtn"
+            android:text="Friends List" />
 
-    </android.support.design.widget.AppBarLayout>
+        <Button
+            android:id="@+id/barsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/destinationTxt"
+            android:text="Find Bars" />
 
-    <include layout="@layout/content_homescreen" />
+        <Button
+            android:id="@+id/favoriteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/friendsBtn"
+            android:text="Favorites" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <Button
+            android:id="@+id/groupsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/favoriteBtn"
+            android:text="Groups" />
 
-</android.support.design.widget.CoordinatorLayout>
+        <TextView
+            android:id="@+id/userTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/logoutBtn"
+            android:layout_alignBottom="@+id/logoutBtn"
+            android:layout_centerHorizontal="true"
+            android:text="username"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/destinationLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/userBtn"
+            android:text="My Destination:" />
+
+        <TextView
+            android:id="@+id/destinationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/destinationLbl"
+            android:layout_centerHorizontal="true"
+            android:text="No Destination Selected!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/infoFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:backgroundTint="@android:color/darker_gray"
+            app:fabSize="mini"
+            app:rippleColor="@android:color/background_light"
+            app:srcCompat="@android:drawable/ic_menu_help" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
