@@ -19,4 +19,12 @@
     <string name="title_activity_user">UserActivity</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_business_location">Map</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_friends">Friends</string>
+    <string name="title_activity_favorites">Favorites</string>
+    <string name="title_activity_groups">Groups</string>
+    <string name="title_activity_account">Account</string>
+    <string name="title_activity_findbars">Find Bars</string>
+    <string name="title_activity_reviews">Reviews</string>
+
 </resources>

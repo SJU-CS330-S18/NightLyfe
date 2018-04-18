@@ -68,7 +68,7 @@ GroupChat extends AppCompatActivity {
                 String username = resultSetComments.getString(1);
                 mUser.setText(username+":");
                 if(username.equals(user)){
-                    mUser.setTextColor(Color.RED);
+                    mUser.setTextColor(getResources().getColor(R.color.colorAccentOrange));
                 }
                 mMessage.setText("\t\t\t"+resultSetComments.getString(3));
                 mMessage.setTextColor(Color.BLACK);
