@@ -1,6 +1,11 @@
 
 package edu.csbsju.nightlyfe;
 
+/*
+Restaurant_Page class provides functionality to dynamically display restaurant information and buttons/paths based on user choice
+
+@author Grant Salk
+ */
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
