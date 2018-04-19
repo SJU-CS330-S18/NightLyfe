@@ -40,33 +40,46 @@
         <activity
             android:name=".OwnerHomescreen"
             android:label="@string/title_activity_owner_homescreen" />
-        <activity android:name=".Restaurant_Page"
-            android:label="@string/title_activity_findbars"/>
-        <activity android:name=".Register"
-            android:label="@string/title_activity_register"/>
-        <activity android:name=".FriendsList"
-            android:label="@string/title_activity_friends"/>
-        <activity android:name=".AccountActivity"
-            android:label="@string/title_activity_account"/>
+        <activity
+            android:name=".Restaurant_Page"
+            android:label="@string/title_activity_findbars" />
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register" />
+        <activity
+            android:name=".FriendsList"
+            android:label="@string/title_activity_friends" />
+        <activity
+            android:name=".AccountActivity"
+            android:label="@string/title_activity_account" />
         <activity android:name=".BulletinBoard" />
-        <activity android:name=".FriendSearch"
-            android:label="@string/title_activity_friends"/>
-        <activity android:name=".FavoritesList"
-            android:label="@string/title_activity_favorites"/>
-        <activity android:name=".GroupsList"
-            android:label="@string/title_activity_groups"/>
-        <activity android:name=".NewGroupPage"
-            android:label="@string/title_activity_groups"/>
-        <activity android:name=".Group"
-            android:label="@string/title_activity_groups"/>
-        <activity android:name=".AddMembers"
-            android:label="@string/title_activity_groups"/>
-        <activity android:name=".GroupChat"
-            android:label="@string/title_activity_groups"/>
-        <activity android:name=".RestaurantList"
-            android:label="@string/title_activity_findbars"/>
-        <activity android:name=".ReviewsActivity"
-            android:label="@string/title_activity_reviews"/>
+        <activity
+            android:name=".FriendSearch"
+            android:label="@string/title_activity_friends" />
+        <activity
+            android:name=".FavoritesList"
+            android:label="@string/title_activity_favorites" />
+        <activity
+            android:name=".GroupsList"
+            android:label="@string/title_activity_groups" />
+        <activity
+            android:name=".NewGroupPage"
+            android:label="@string/title_activity_groups" />
+        <activity
+            android:name=".Group"
+            android:label="@string/title_activity_groups" />
+        <activity
+            android:name=".AddMembers"
+            android:label="@string/title_activity_groups" />
+        <activity
+            android:name=".GroupChat"
+            android:label="@string/title_activity_groups" />
+        <activity
+            android:name=".RestaurantList"
+            android:label="@string/title_activity_findbars" />
+        <activity
+            android:name=".ReviewsActivity"
+            android:label="@string/title_activity_reviews" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -82,7 +95,8 @@
         <activity
             android:name=".BusinessLocation"
             android:label="@string/title_activity_business_location" />
-        <activity android:name=".UserDocument"></activity>
+        <activity android:name=".UserDocument" />
+        <activity android:name=".AdminReview"></activity>
     </application>
 
 </manifest>
