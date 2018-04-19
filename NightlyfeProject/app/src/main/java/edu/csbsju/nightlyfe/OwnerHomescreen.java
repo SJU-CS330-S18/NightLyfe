@@ -121,7 +121,7 @@ Code previously used for verification
             mPremium.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Cursor updateType = mydatabase.rawQuery("Update users set type = " + 4 + " where username = '"+user+"'", null);
+                    Cursor updateType = mydatabase.rawQuery("Update users set type = " + 5 + " where username = '"+user+"'", null);
                     updateType.moveToFirst();
                     Intent goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
                     goToNextActivity.putExtra("user", user);
