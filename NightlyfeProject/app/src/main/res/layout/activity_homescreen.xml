@@ -15,34 +15,43 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp">
 
-        <Button
-            android:id="@+id/userBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="Account" />
+        <LinearLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/logoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/userBtn"
-            android:layout_alignBottom="@+id/userBtn"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:text="Logout" />
+            <Button
+                android:id="@+id/userBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Account" />
 
-        <TextView
-            android:id="@+id/userTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/logoutBtn"
-            android:layout_alignBottom="@+id/logoutBtn"
-            android:layout_centerHorizontal="true"
-            android:text="username"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <TextView
+                android:id="@+id/userTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/logoutBtn"
+                android:layout_toRightOf="@+id/userBtn"
+                android:layout_toLeftOf="@+id/logoutBtn"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="username"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <Button
+                android:id="@+id/logoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/userBtn"
+                android:layout_alignBottom="@+id/userBtn"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="Logout" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/destinationLbl"
@@ -62,26 +71,14 @@
             android:text="No Destination Selected!"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/infoFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            app:backgroundTint="@android:color/darker_gray"
-            app:fabSize="mini"
-            app:rippleColor="@android:color/background_light"
-            app:srcCompat="@android:drawable/ic_menu_help" />
-
         <LinearLayout
+            android:id="@+id/buttonGrid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_below="@+id/destinationTxt"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/rowOne"
@@ -111,10 +108,9 @@
                 android:id="@+id/rowTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_below="@+id/rowOne"
                 android:layout_marginTop="10dp"
-                >
+                android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/groupsBtn"
@@ -135,6 +131,19 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/infoFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:backgroundTint="?attr/colorButtonNormal"
+            app:fabSize="mini"
+            app:rippleColor="@android:color/background_light"
+            app:srcCompat="@android:drawable/ic_menu_help" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
