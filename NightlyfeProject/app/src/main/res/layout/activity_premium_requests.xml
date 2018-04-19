@@ -21,14 +21,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:text="Back" />
+                app:srcCompat="?attr/actionModeCloseDrawable" />
 
             <TextView
                 android:id="@+id/userTxt"

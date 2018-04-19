@@ -221,7 +221,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 goToNextActivity = new Intent(getApplicationContext(), AdminHomescreen.class);
                 goToNextActivity.putExtra("user", username);
             }
-            else if (isValidCredentials(username, password) == 2 || isValidCredentials(username, password) == 4) {
+            else if (isValidCredentials(username, password) == 2 || isValidCredentials(username, password) == 4 || isValidCredentials(username, password) == 5) {
                 goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
                 goToNextActivity.putExtra("user", username);
             }
