@@ -101,6 +101,8 @@
 
         <activity android:name=".PremiumRequests"></activity>
 
+        <activity android:name=".OwnerBulletinBoard"></activity>
+
     </application>
 
 </manifest>
