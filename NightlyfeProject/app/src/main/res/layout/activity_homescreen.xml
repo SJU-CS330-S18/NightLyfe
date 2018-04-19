@@ -48,8 +48,8 @@
             android:id="@+id/destinationLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/destinationTxt"
-            android:layout_marginBottom="-78dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/userBtn"
             android:text="My Destination:" />
 
         <TextView
