@@ -40,9 +40,6 @@ public class OwnerHomescreen extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_homescreen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         user = getIntent().getStringExtra("user");
 
         TextView mUsernameView = findViewById(R.id.ownerTxt);
