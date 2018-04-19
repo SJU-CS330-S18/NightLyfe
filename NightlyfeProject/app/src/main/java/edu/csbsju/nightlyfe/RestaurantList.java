@@ -1,5 +1,10 @@
 package edu.csbsju.nightlyfe;
 
+/*
+RestaurantList class provides functionality to display all of the businesses near location of interest
+
+@author Grant Salk
+ */
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

@@ -29,11 +29,11 @@
             android:id="@+id/BusinessAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@+id/FavoritesBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:fontFamily="casual"
             android:text="Business Address"
-            android:layout_marginTop="10dp"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -105,10 +105,10 @@
             android:id="@+id/BusinessPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/BusinessAddress"
             android:layout_centerHorizontal="true"
             android:fontFamily="casual"
             android:text="Phone #"
-            android:layout_below="@+id/BusinessAddress"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -116,10 +116,14 @@
             android:id="@+id/imageView"
             android:layout_width="240dp"
             android:layout_height="359dp"
+            android:layout_above="@+id/BusinessHours"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            app:srcCompat="@drawable/logo" />
+            android:layout_toEndOf="@+id/FavoritesBtn"
+            android:layout_toRightOf="@+id/FavoritesBtn"
+            app:srcCompat="@drawable/logocrop"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="136dp" />
 
         <Button
             android:id="@+id/listBtn"
