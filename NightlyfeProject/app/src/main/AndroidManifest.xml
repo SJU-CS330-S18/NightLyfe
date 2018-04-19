@@ -96,7 +96,11 @@
             android:name=".BusinessLocation"
             android:label="@string/title_activity_business_location" />
         <activity android:name=".UserDocument" />
+
         <activity android:name=".AdminReview"></activity>
+
+        <activity android:name=".PremiumRequests"></activity>
+
     </application>
 
 </manifest>
