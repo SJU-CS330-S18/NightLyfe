@@ -127,7 +127,7 @@ Code previously used for verification
                     goToNextActivity.putExtra("user", user);
                     startActivity(goToNextActivity);
                     Context context = getApplicationContext();
-                    Toast toastClaim = Toast.makeText(context,"Successfully subscribed as a premium owner", Toast.LENGTH_LONG);
+                    Toast toastClaim = Toast.makeText(context,"Your request for premium ownership is being processed", Toast.LENGTH_LONG);
                     toastClaim.show();
                 }
             });

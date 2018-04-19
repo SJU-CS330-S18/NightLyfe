@@ -157,5 +157,17 @@ public class Poll extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
+
+        Button mDelete = (Button) findViewById(R.id.deleteBtn);
+        mDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mydatabase.execSQL("DELETE FROM polls WHERE groupID = " + id + ";");
+                Intent goToNextActivity = new Intent(getApplicationContext(), Group.class);
+                goToNextActivity.putExtra("user", user);
+                goToNextActivity.putExtra("id", id);
+                startActivity(goToNextActivity);
+            }
+        });
     }
 }

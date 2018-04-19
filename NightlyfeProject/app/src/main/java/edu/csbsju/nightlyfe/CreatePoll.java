@@ -110,10 +110,17 @@ public class CreatePoll extends AppCompatActivity {
         createPoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), Group.class);
-                goToNextActivity.putExtra("user", user);
-                goToNextActivity.putExtra("id", id);
-                startActivity(goToNextActivity);
+                if(count>=3) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), Group.class);
+                    goToNextActivity.putExtra("user", user);
+                    goToNextActivity.putExtra("id", id);
+                    startActivity(goToNextActivity);
+                }
+                else{
+                    Context context = getApplicationContext();
+                    Toast toastie = Toast.makeText(context, "Please select 3 businesses", Toast.LENGTH_LONG);
+                    toastie.show();
+                }
             }
         });
 

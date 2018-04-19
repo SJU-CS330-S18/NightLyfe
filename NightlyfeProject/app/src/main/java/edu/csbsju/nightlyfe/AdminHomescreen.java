@@ -54,6 +54,7 @@ public class AdminHomescreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                goToNextActivity.putExtra("user", user);
                 startActivity(goToNextActivity);
             }
         });
@@ -63,6 +64,17 @@ public class AdminHomescreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), AdminReview.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+            }
+        });
+
+        Button premiumBtn = (Button) findViewById(R.id.premiumBtn);
+        premiumBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), PremiumRequests.class);
+                goToNextActivity.putExtra("user", user);
                 startActivity(goToNextActivity);
             }
         });
