@@ -34,7 +34,9 @@
                 android:id="@+id/businessLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_below="@+id/mngReviews"
+                >
 
 
 
@@ -61,7 +63,7 @@
             android:id="@+id/homeBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/businessLayout"
+            android:layout_below="@+id/reviewLayout"
             android:text="Return Home"/>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

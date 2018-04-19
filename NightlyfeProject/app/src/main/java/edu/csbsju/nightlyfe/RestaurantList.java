@@ -46,11 +46,11 @@ public class RestaurantList extends AppCompatActivity {
         });
 
         //Receives resultSet for all businesses associated with active user--will be location in future
-       Cursor resultSet = mydatabase.rawQuery("Select * from business", null);
+            Cursor resultSet = mydatabase.rawQuery("Select * from business", null);
 
-        //Gets size of resultset and moves the cursor to the first entry
-        int size = resultSet.getCount();
-        resultSet.moveToFirst();
+            //Gets size of resultset and moves the cursor to the first entry
+            int size = resultSet.getCount();
+            resultSet.moveToFirst();
 
 
 

@@ -103,6 +103,10 @@
 
         <activity android:name=".OwnerBulletinBoard"></activity>
 
+        <activity android:name=".CreatePoll"></activity>
+
+        <activity android:name=".Poll"></activity>
+
     </application>
 
 </manifest>

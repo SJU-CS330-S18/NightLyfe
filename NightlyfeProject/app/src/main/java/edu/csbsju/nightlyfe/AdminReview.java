@@ -51,5 +51,63 @@ public class AdminReview extends AppCompatActivity {
         int size = resultSet.getCount();
         resultSet.moveToFirst();
 
+        //Finds linearlayout to display restaurants and creates LayoutParams object
+        LinearLayout ll = (LinearLayout) findViewById(R.id.businessLayout);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        //Loops through each entry in friends list and displays them
+        for (int i = 0; i < size; i++) {
+
+            //Creates new horizonal LinearLayout for each entry into friendslist
+            LinearLayout row = new LinearLayout(this);
+            row.setOrientation(LinearLayout.HORIZONTAL);
+
+            //Creates LayoutParams object to dictate entries
+            LinearLayout.LayoutParams rowp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+
+            //Gets username of entry in resultset
+            String name = resultSet.getString(1);
+
+            //Creates and formats textview to display friend's username
+            TextView mBusinessView = new TextView(this);
+            mBusinessView.setTextSize(20);
+            mBusinessView.setTextColor(Color.BLACK);
+            //mBusinessView.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 2));
+
+            //Creates a button to visit a business
+            Button mVisitBusiness = new Button(this);
+
+            //Gets the key relating to the business for a tag
+            int key = resultSet.getInt(0);
+
+            //Sets the associated restaurant ID as a tag associated with the button for inner class use
+            mVisitBusiness.setTag(key);
+            mVisitBusiness.setText("Visit Page");
+            //mVisitBusiness.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1));
+
+            //Dynamic button to bring user to individual restaurant pages
+            //Passes user ID and business key to individual page
+            mVisitBusiness.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+                    goToNextActivity.putExtra("user", user);
+                    goToNextActivity.putExtra("key", (int) view.getTag());
+                    startActivity(goToNextActivity);
+                }
+            });
+
+            //sets value of textview
+            mBusinessView.setText(name);
+
+            //adds the name and button to the linear layouts
+            row.addView(mBusinessView, rowp);
+            row.addView(mVisitBusiness, rowp);
+            ll.addView(row, lp);
+
+            //moves cursor to the next entry in the resultset
+            resultSet.moveToNext();
+
+        }
     }
 }
