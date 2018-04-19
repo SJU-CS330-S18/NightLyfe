@@ -46,6 +46,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/restaurantsView"
             android:text="Back to Group" />
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/backBtn"
+            android:background="?attr/colorError"
+            android:text="Delete Poll"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
