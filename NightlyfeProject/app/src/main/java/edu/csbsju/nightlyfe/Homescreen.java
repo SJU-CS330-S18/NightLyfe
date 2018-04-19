@@ -46,6 +46,7 @@ public class Homescreen extends AppCompatActivity {
         int dest = resultSet.getInt(4);
         if(dest != 0) {
             mDestinationView.setText(resultSet2.getString(1));
+            mDestinationView.setTextColor(getResources().getColor(R.color.colorAccentOrange));
         }
         // Logout button for users to log out, brings user back to login page
         Button mLogout = (Button) findViewById(R.id.logoutBtn);
