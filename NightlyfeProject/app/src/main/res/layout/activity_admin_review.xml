@@ -11,6 +11,9 @@
         android:layout_height="495dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/mngReviews"
@@ -26,16 +29,15 @@
         <ScrollView
             android:id="@+id/businessScroll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mngReviews">
 
             <LinearLayout
                 android:id="@+id/businessLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_below="@+id/mngReviews"
+                android:layout_centerVertical="true"
                 >
 
 
@@ -63,7 +65,8 @@
             android:id="@+id/homeBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/reviewLayout"
+            android:layout_below="@+id/businessScroll"
             android:text="Return Home"/>
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
