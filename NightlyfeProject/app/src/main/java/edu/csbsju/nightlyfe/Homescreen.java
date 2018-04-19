@@ -57,7 +57,7 @@ public class Homescreen extends AppCompatActivity {
             }
         });
         // Button for friends, goes to the Friends list page
-        Button mFriends = (Button) findViewById(R.id.friendsBtn);
+        ImageButton mFriends = (ImageButton) findViewById(R.id.friendsBtn);
         mFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +67,7 @@ public class Homescreen extends AppCompatActivity {
             }
         });
         // Button to find bars and businesses
-        Button mBars = (Button) findViewById(R.id.barsBtn);
+        ImageButton mBars = (ImageButton) findViewById(R.id.barsBtn);
         mBars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,7 +77,7 @@ public class Homescreen extends AppCompatActivity {
             }
         });
         // Button to go to favorites list
-        Button mFavorites = (Button) findViewById(R.id.favoriteBtn);
+        ImageButton mFavorites = (ImageButton) findViewById(R.id.favoriteBtn);
         mFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +87,7 @@ public class Homescreen extends AppCompatActivity {
             }
         });
         // Button to go to to the group lists
-        Button mGroups = (Button) findViewById(R.id.groupsBtn);
+        ImageButton mGroups = (ImageButton) findViewById(R.id.groupsBtn);
         mGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

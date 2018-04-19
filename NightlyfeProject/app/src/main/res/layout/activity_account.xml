@@ -9,8 +9,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="20dp">
 
         <TextView
@@ -125,6 +123,8 @@
                 android:layout_height="wrap_content"
                 android:text="Return Home"
                 android:layout_marginTop="35dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_above="@+id/deleteBtn" />
 
             <Button
@@ -135,6 +135,8 @@
                 android:text="Delete Account"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:textColor="?attr/colorError" />
         </RelativeLayout>
     </RelativeLayout>

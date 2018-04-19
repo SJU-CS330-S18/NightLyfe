@@ -9,8 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="60dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp">
@@ -34,42 +34,6 @@
             android:layout_alignParentRight="true"
             android:text="Logout" />
 
-        <Button
-            android:id="@+id/friendsBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/barsBtn"
-            android:text="Friends List" />
-
-        <Button
-            android:id="@+id/barsBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/destinationTxt"
-            android:text="Find Bars" />
-
-        <Button
-            android:id="@+id/favoriteBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/friendsBtn"
-            android:text="Favorites" />
-
-        <Button
-            android:id="@+id/groupsBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/favoriteBtn"
-            android:text="Groups" />
-
         <TextView
             android:id="@+id/userTxt"
             android:layout_width="wrap_content"
@@ -84,17 +48,17 @@
             android:id="@+id/destinationLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/userBtn"
+            android:layout_above="@+id/destinationTxt"
+            android:layout_marginBottom="-78dp"
             android:text="My Destination:" />
 
         <TextView
             android:id="@+id/destinationTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/destinationLbl"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="78dp"
             android:text="No Destination Selected!"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -110,5 +74,67 @@
             app:fabSize="mini"
             app:rippleColor="@android:color/background_light"
             app:srcCompat="@android:drawable/ic_menu_help" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/destinationTxt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:id="@+id/rowOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/barsBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/barsbutton" />
+
+                <ImageButton
+                    android:id="@+id/friendsBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/barsBtn"
+                    app:srcCompat="@drawable/friendsbutton" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/rowTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/rowOne"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageButton
+                    android:id="@+id/groupsBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/friendsBtn"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/favoriteBtn"
+                    app:srcCompat="@drawable/groupsbutton" />
+
+                <ImageButton
+                    android:id="@+id/favoriteBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/barsBtn"
+                    android:layout_marginLeft="10dp"
+                    app:srcCompat="@drawable/favoitesbutton" />
+            </LinearLayout>
+
+        </LinearLayout>
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
