@@ -38,11 +38,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Back" />
+                android:layout_alignParentLeft="true"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
 
             <TextView
                 android:id="@+id/nameTxt"
@@ -73,12 +74,12 @@
                 android:hint="New Message..."
                 android:inputType="textPersonName" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/sendBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Send" />
+                app:srcCompat="@android:drawable/ic_menu_send" />
         </LinearLayout>
     </RelativeLayout>
 

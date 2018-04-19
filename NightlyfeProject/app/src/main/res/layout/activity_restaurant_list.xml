@@ -17,12 +17,12 @@
             android:id="@+id/restResults"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_centerHorizontal="true"
             android:text="Business Results"
             android:textSize="30sp"
             tools:layout_editor_absoluteX="140dp"
-            tools:layout_editor_absoluteY="16dp" />
+            tools:layout_editor_absoluteY="16dp"
+            android:layout_marginBottom="20dp"/>
         <LinearLayout
             android:id="@+id/restLayout"
             android:layout_width="match_parent"

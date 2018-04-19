@@ -161,6 +161,7 @@ public class Restaurant_Page extends AppCompatActivity {
 
         //retrieves layout to add claimContainer
         RelativeLayout rl = findViewById(R.id.businessLayout);
+        rl.setGravity(RelativeLayout.CENTER_IN_PARENT);
         RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
         if(ownerResultSet.getCount() == 0) {

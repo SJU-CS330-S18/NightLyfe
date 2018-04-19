@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -79,7 +80,7 @@ GroupChat extends AppCompatActivity {
         }
 
         //set back button functionality
-        Button mBack = (Button) findViewById(R.id.backBtn);
+        ImageButton mBack = (ImageButton) findViewById(R.id.backBtn);
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +91,7 @@ GroupChat extends AppCompatActivity {
             }
         });
         //set send message button functionality
-        Button mSend = (Button) findViewById(R.id.sendBtn);
+        ImageButton mSend = (ImageButton) findViewById(R.id.sendBtn);
         mSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

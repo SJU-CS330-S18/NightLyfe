@@ -36,7 +36,7 @@ public class FriendsList extends AppCompatActivity {
         user = getIntent().getStringExtra("user");
 
         //button associated with searching for a term in the user database
-        Button mSearch = (Button) findViewById(R.id.searchBtn);
+        ImageButton mSearch = (ImageButton) findViewById(R.id.searchBtn);
         mSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

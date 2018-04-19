@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +29,7 @@ public class GroupsList extends AppCompatActivity {
         user = getIntent().getStringExtra("user");
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
         //add functionality to create group button
-        Button mCreate = (Button) findViewById(R.id.createBtn);
+        FloatingActionButton mCreate = (FloatingActionButton) findViewById(R.id.createBtn);
         mCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

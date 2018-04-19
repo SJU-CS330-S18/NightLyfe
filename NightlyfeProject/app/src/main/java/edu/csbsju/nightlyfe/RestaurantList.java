@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -74,6 +76,7 @@ public class RestaurantList extends AppCompatActivity {
             TextView mBusinessView = new TextView(this);
             mBusinessView.setTextSize(20);
             mBusinessView.setTextColor(Color.BLACK);
+            //mBusinessView.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 2));
 
             //Creates a button to visit a business
             Button mVisitBusiness = new Button(this);
@@ -84,6 +87,7 @@ public class RestaurantList extends AppCompatActivity {
             //Sets the associated restaurant ID as a tag associated with the button for inner class use
             mVisitBusiness.setTag(key);
             mVisitBusiness.setText("Visit Page");
+            //mVisitBusiness.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1));
 
             //Dynamic button to bring user to individual restaurant pages
             //Passes user ID and business key to individual page

@@ -9,16 +9,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="0dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp">
-        <Button
-            android:id="@+id/createBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:text="New" />
+        android:layout_marginTop="20dp"
+        >
 
         <TextView
             android:id="@+id/pageLbl"
@@ -29,11 +25,25 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/black" />
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/createBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="20dp"
+            android:clickable="true"
+            app:backgroundTint="?attr/colorButtonNormal"
+            app:elevation="4dp"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
         <LinearLayout
             android:id="@+id/groupsLayout"
             android:layout_width="379dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/createBtn"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="17dp"
             tools:layout_editor_absoluteY="61dp"></LinearLayout>
@@ -44,6 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/groupsLayout"
             android:text="Return Home" />
+
+
 
 
     </RelativeLayout>
