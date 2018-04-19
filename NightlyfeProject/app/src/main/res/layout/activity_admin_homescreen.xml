@@ -42,5 +42,20 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:text="Logout" />
+
+        <Button
+            android:id="@+id/reviewsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="69dp"
+            android:text="Reviews" />
+
+        <Button
+            android:id="@+id/premiumBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reviewsBtn"
+            android:text="Premium Requests" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
