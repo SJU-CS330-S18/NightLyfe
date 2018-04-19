@@ -18,7 +18,7 @@
         <LinearLayout
             android:id="@+id/topBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
@@ -57,8 +57,8 @@
             android:id="@+id/destinationLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/userBtn"
+            android:layout_below="@+id/topBar"
+            android:layout_marginTop="10dp"
             android:text="My Destination:" />
 
         <TextView
