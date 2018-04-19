@@ -1,10 +1,8 @@
 package edu.csbsju.nightlyfe;
 
-/*
-RestaurantList class provides functionality to display all of the businesses near location of interest
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-@author Grant Salk
- */
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,22 +15,23 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class RestaurantList extends AppCompatActivity {
+public class AdminReview extends AppCompatActivity {
 
     public SQLiteDatabase mydatabase;
     public String user;
     public String business;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-         super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_restaurant_list);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_admin_review);
 
-            //Get user variable from recent page
-            user = getIntent().getStringExtra("user");
+        //Get user variable from recent page
+        user = getIntent().getStringExtra("user");
 
-            //Opens database used for NightLyfe application
-            mydatabase = openOrCreateDatabase("NightLyfe", MODE_PRIVATE, null);
+        //Opens database used for NightLyfe application
+        mydatabase = openOrCreateDatabase("NightLyfe", MODE_PRIVATE, null);
+
 
         //Creates a home button to return to the user home screen
         Button homeBtn = (Button) findViewById(R.id.homeBtn);
@@ -46,16 +45,14 @@ public class RestaurantList extends AppCompatActivity {
         });
 
         //Receives resultSet for all businesses associated with active user--will be location in future
-            Cursor resultSet = mydatabase.rawQuery("Select * from business", null);
+        Cursor resultSet = mydatabase.rawQuery("Select * from business", null);
 
-            //Gets size of resultset and moves the cursor to the first entry
-            int size = resultSet.getCount();
-            resultSet.moveToFirst();
-
-
+        //Gets size of resultset and moves the cursor to the first entry
+        int size = resultSet.getCount();
+        resultSet.moveToFirst();
 
         //Finds linearlayout to display restaurants and creates LayoutParams object
-        LinearLayout ll = (LinearLayout) findViewById(R.id.restLayout);
+        LinearLayout ll = (LinearLayout) findViewById(R.id.businessLayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         //Loops through each entry in friends list and displays them
@@ -106,13 +103,11 @@ public class RestaurantList extends AppCompatActivity {
             //adds the name and button to the linear layouts
             row.addView(mBusinessView, rowp);
             row.addView(mVisitBusiness, rowp);
-            ll.addView(row,lp);
+            ll.addView(row, lp);
 
             //moves cursor to the next entry in the resultset
             resultSet.moveToNext();
+
         }
-
     }
-
-
 }

@@ -57,5 +57,14 @@ public class AdminHomescreen extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
+
+        Button reviewsBtn = (Button) findViewById(R.id.reviewsBtn);
+        reviewsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), AdminReview.class);
+                startActivity(goToNextActivity);
+            }
+        });
     }
 }

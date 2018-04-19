@@ -18,6 +18,7 @@ public class Homescreen extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
     public String user;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Opens database connection
@@ -37,6 +38,10 @@ public class Homescreen extends AppCompatActivity {
         resultSet.moveToFirst();
 
         TextView mDestinationView = findViewById(R.id.destinationTxt);
+
+        //Gets the privilege of the user
+        //int privilege = resultSet.getInt(2);
+        //System.out.println(privilege);
 
         Cursor resultSet2 = mydatabase.rawQuery("Select * from business where id = "+resultSet.getInt(4),null);
         resultSet2.moveToFirst();

@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        //populateDatabase();
+        populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -368,6 +368,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("DROP TABLE IF EXISTS groupmember;");
         mydatabase.execSQL("DROP TABLE IF EXISTS favorites");
         mydatabase.execSQL("DROP TABLE IF EXISTS groupmessage");
+        mydatabase.execSQL("DROP TABLE IF EXISTS polls");
 
         //creates table users
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS users (username VARCHAR(20) PRIMARY KEY, password VARCHAR(20), type INT, name VARCHAR(30), destination INT REFERENCES business(id));");
@@ -391,7 +392,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS friendgroups (groupID INT, groupName VARCHAR(20));");
 
         //creates table groupmember
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmember (groupID INT REFERENCES friendgroups(groupID),  username VARCHAR(20) REFERENCES users(username), PRIMARY KEY (groupID, username));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmember (groupID INT REFERENCES friendgroups(groupID),  username VARCHAR(20) REFERENCES users(username), voted INT, PRIMARY KEY (groupID, username));");
 
         //creates table favorites
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favorites (user VARCAR(20) REFERENCES users(username),  locationID int REFERENCES business(int), PRIMARY KEY (user, locationID));");
@@ -399,6 +400,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //creates table groupmessage
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS groupmessage (groupID INT REFERENCES friendgroups(groupID), username VARCHAR(20) REFERENCES users(username), time INT, comment VARCHAR(100), PRIMARY KEY(groupID, username, time));");
 
+        //creates table polls
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS polls (groupID INT REFERENCES friendgroups(groupID), option1 INT, option2 INT, option3 INT, votes1 INT, votes2 INT, votes3 INT);");
 
         mydatabase.execSQL("INSERT INTO users VALUES ('admin1', 'pass', 3, 'Admin One', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('admin2', 'pass', 3, 'Admin Two', 0);");
@@ -424,12 +427,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO friends VALUES ('lrdahlquist', 'ajmcintyre', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('ajmcintyre', 'lrdahlquist', 1);");
 
-        mydatabase.execSQL("INSERT INTO friendgroups VALUES (1, 'Scrum Bois');");
-        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'tdrichmond');");
-        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'grsalk');");
-        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'lrdahlquist');");
-        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'drfritz');");
-        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'ajmcintyre');");
+        //mydatabase.execSQL("INSERT INTO friendgroups VALUES (1, 'Scrum Bois');");
+        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'tdrichmond', 0);");
+        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'grsalk', 0);");
+        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'lrdahlquist', 0);");
+        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'drfritz', 0);");
+        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'ajmcintyre', 0);");
 
         mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals Bar & Grill', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, '320-363-8273', '11:00am-1:00am', 1111);");
         mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '19 College Ave N, St Joseph, MN 56374', 45.565203, -94.317925, '320-363-7747', '11:00am-1:00am', 2222);");
@@ -506,4 +509,3 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 }
-
