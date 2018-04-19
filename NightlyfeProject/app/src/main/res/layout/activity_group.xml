@@ -31,19 +31,19 @@
             android:layout_below="@+id/groupNameTxt"
             android:text="Members:" />
 
-            <LinearLayout
-                android:id="@+id/membersView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/membersTxt"
-                android:orientation="vertical">
-            </LinearLayout>
-            <Button
-                android:id="@+id/addBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/membersView"
-                android:text="Add Member" />
+        <LinearLayout
+            android:id="@+id/membersView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/membersTxt"
+            android:orientation="vertical">
+        </LinearLayout>
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/membersView"
+            android:text="Add Member" />
 
         <Button
             android:id="@+id/chatBtn"
@@ -51,7 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/membersView"
+            android:layout_alignTop="@+id/membersView"
+            android:layout_toEndOf="@+id/groupNameTxt"
+            android:layout_toRightOf="@+id/groupNameTxt"
             android:text="View Chat" />
 
         <Button
@@ -66,9 +68,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/listBtn"
+            android:background="?attr/colorError"
             android:text="Leave Group"
-            android:textColor="?attr/colorError"
+            android:textColor="@android:color/white"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/mPollBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/membersView"
+            android:layout_toEndOf="@+id/addBtn"
+            android:layout_toLeftOf="@+id/chatBtn"
+            android:layout_toRightOf="@+id/addBtn"
+            android:layout_toStartOf="@+id/chatBtn"
+            android:text="Create Poll" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

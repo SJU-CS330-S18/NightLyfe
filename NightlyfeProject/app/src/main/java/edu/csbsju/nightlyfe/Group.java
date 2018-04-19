@@ -18,7 +18,7 @@ Class associated with viewing the group page of a specified group
 public class Group extends AppCompatActivity {
 
     //must still implement the group chat function
-    
+
     //local sqllite db
     public SQLiteDatabase mydatabase;
     public int id;
@@ -36,6 +36,8 @@ public class Group extends AppCompatActivity {
         //gets parameters passed to activity
         id = getIntent().getIntExtra("id", 0);
         user = getIntent().getStringExtra("user");
+
+
 
         //return user home when they touch the home button
         Button mHome = (Button) findViewById(R.id.listBtn);
@@ -59,6 +61,36 @@ public class Group extends AppCompatActivity {
                 startActivity(goToNextActivity);
             }
         });
+
+        Cursor results = mydatabase.rawQuery("Select * from polls where groupID = " +id, null);
+        results.moveToFirst();
+        int rSize = results.getCount();
+        if(rSize == 0) {
+            Button mPoll = (Button) findViewById(R.id.mPollBtn);
+            mPoll.setText("Create Poll");
+            mPoll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), CreatePoll.class);
+                    goToNextActivity.putExtra("user", user);
+                    goToNextActivity.putExtra("id", id);
+                    startActivity(goToNextActivity);
+                }
+            });
+        }
+        else{
+            Button mPoll = (Button) findViewById(R.id.mPollBtn);
+            mPoll.setText("View Poll");
+            mPoll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), Poll.class);
+                    goToNextActivity.putExtra("user", user);
+                    goToNextActivity.putExtra("id", id);
+                    startActivity(goToNextActivity);
+                }
+            });
+        }
 
         //When user touches leave button, they are removed from the group
         Button mLeave = (Button) findViewById(R.id.leaveBtn);
@@ -113,9 +145,11 @@ public class Group extends AppCompatActivity {
 
             //adds the view to layout
             ll.addView(mMemberView, lp);
+            //ll.addView(mPoll, lp);
 
             //moves cursor to the next entry in the resultset
             resultSet2.moveToNext();
         }
+
     }
 }
