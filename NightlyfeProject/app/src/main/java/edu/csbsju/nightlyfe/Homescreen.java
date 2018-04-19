@@ -40,8 +40,8 @@ public class Homescreen extends AppCompatActivity {
         TextView mDestinationView = findViewById(R.id.destinationTxt);
 
         //Gets the privilege of the user
-        //int privilege = resultSet.getInt(2);
-        //System.out.println(privilege);
+        int privilege = resultSet.getInt(2);
+        System.out.println(privilege);
 
         Cursor resultSet2 = mydatabase.rawQuery("Select * from business where id = "+resultSet.getInt(4),null);
         resultSet2.moveToFirst();
