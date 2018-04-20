@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import android.database.sqlite.*;
 import android.database.Cursor;
+import android.view.ViewGroup.LayoutParams;
 
 public class PremiumRequests extends AppCompatActivity {
     SQLiteDatabase mydatabase;
@@ -33,7 +34,7 @@ public class PremiumRequests extends AppCompatActivity {
         LinearLayout mRequests = findViewById(R.id.requestsLayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        Button mBackBtn = findViewById(R.id.backBtn);
+        ImageButton mBackBtn = (ImageButton) findViewById(R.id.backBtn);
         mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,11 +71,13 @@ public class PremiumRequests extends AppCompatActivity {
                 mNameView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
                 //creates a button to either approve or deny request
-                Button mApproveBtn = new Button(this);
-                Button mDenyBtn = new Button(this);
+                ImageButton mApproveBtn = new ImageButton(this);
+                ImageButton mDenyBtn = new ImageButton(this);
 
-                mApproveBtn.setText("Approve");
-                mDenyBtn.setText("Deny");
+                mApproveBtn.setImageResource(android.R.drawable.ic_input_add);
+                mApproveBtn.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                mDenyBtn.setImageResource(android.R.drawable.ic_delete);
+                mDenyBtn.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
                 //sets the username as the tag for both approve and deny buttons
                 mApproveBtn.setTag(name);
@@ -116,8 +119,8 @@ public class PremiumRequests extends AppCompatActivity {
 
                 //adds the name and button to a linear layouts
                 row.addView(mNameView, rowp);
-                row.addView(mApproveBtn, rowp);
-                row.addView(mDenyBtn, rowp);
+                row.addView(mApproveBtn, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                row.addView(mDenyBtn, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
                 mRequests.addView(row, lp);
 
                 //moves the resultSet to the next entry
