@@ -96,17 +96,12 @@
             android:name=".BusinessLocation"
             android:label="@string/title_activity_business_location" />
         <activity android:name=".UserDocument" />
-
-        <activity android:name=".AdminReview"></activity>
-
-        <activity android:name=".PremiumRequests"></activity>
-
-        <activity android:name=".OwnerBulletinBoard"></activity>
-
-        <activity android:name=".CreatePoll"></activity>
-
-        <activity android:name=".Poll"></activity>
-
+        <activity android:name=".AdminReview" />
+        <activity android:name=".PremiumRequests" />
+        <activity android:name=".OwnerBulletinBoard" />
+        <activity android:name=".CreatePoll" />
+        <activity android:name=".Poll" />
+        <activity android:name=".FriendsMap"></activity>
     </application>
 
 </manifest>

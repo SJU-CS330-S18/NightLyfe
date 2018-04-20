@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        //populateDatabase();
+        populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -409,12 +409,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO users VALUES ('owner2', 'pass', 2, 'La Owner', 2);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user1', 'pass', 1, 'John Doe', 0);");
         mydatabase.execSQL("INSERT INTO users VALUES ('user2', 'pass', 1, 'Jane Doe', 0);");
-        mydatabase.execSQL("INSERT INTO users VALUES ('drfritz', 'pass', 1, 'Danny Fritz', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('drfritz', 'pass', 1, 'Danny Fritz', 1);");
         mydatabase.execSQL("INSERT INTO users VALUES ('tdrichmond', 'pass', 1, 'Tom Richmond', 1);");
-        mydatabase.execSQL("INSERT INTO users VALUES ('grsalk', 'pass', 1, 'Grant Salk', 0);");
-        mydatabase.execSQL("INSERT INTO users VALUES ('kjbecker', 'pass', 1, 'Kyle Becker', 0);");
-        mydatabase.execSQL("INSERT INTO users VALUES ('lrdahlquist', 'pass', 1, 'Logan Dahlquist', 0);");
-        mydatabase.execSQL("INSERT INTO users VALUES ('ajmcintyre', 'pass', 1, 'Andrew McIntyre', 0);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('grsalk', 'pass', 1, 'Grant Salk', 2);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('kjbecker', 'pass', 1, 'Kyle Becker', 4);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('lrdahlquist', 'pass', 1, 'Logan Dahlquist', 3);");
+        mydatabase.execSQL("INSERT INTO users VALUES ('ajmcintyre', 'pass', 1, 'Andrew McIntyre', 3);");
 
         mydatabase.execSQL("INSERT INTO friends VALUES ('user1', 'user2', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('user2', 'user1', 1);");

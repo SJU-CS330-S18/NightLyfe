@@ -63,6 +63,17 @@ public class FriendsList extends AppCompatActivity {
             }
         });
 
+        //button associated with the ability to return home from the friends list
+        Button mMap = (Button) findViewById(R.id.mapBtn);
+        mMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), FriendsMap.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+            }
+        });
+
         //receives resultSet for all friends associated with active user
         Cursor resultSet = mydatabase.rawQuery("Select * from friends where user1 = '"+user+"'",null);
 
