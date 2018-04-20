@@ -1,5 +1,6 @@
 package edu.csbsju.nightlyfe;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -57,8 +58,12 @@ public class AdminReview extends AppCompatActivity {
         LinearLayout ll = (LinearLayout) findViewById(R.id.businessLayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+        System.out.println("Created linear business layout");
+
         //Loops through each entry in business list and displays them
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
+        {
+            System.out.println("In outer for loop");
 
             //Gets username of entry in resultset
             String name = resultSet.getString(1);
@@ -68,30 +73,59 @@ public class AdminReview extends AppCompatActivity {
 
             Cursor resultSet2 = mydatabase.rawQuery("Select * from reviews where id = "+key+";", null);
             int reviewSize = resultSet2.getCount();
+
+            resultSet2.moveToFirst();
+
             System.out.println(reviewSize);
 
+            //creates and formats textview to display businesses
+            TextView businessView = new TextView(this);
+            businessView.setTextSize(30);
+            businessView.setTextColor(Color.BLACK);
 
 
-        //creates and formats textview to display businesses
-        TextView businessView = new TextView(this);
-        businessView.setTextSize(30);
-        businessView.setTextColor(Color.BLACK);
+            //sets text of textview
+            businessView.setText(name+ " Reviews");
+            businessView.setGravity(Gravity.CENTER);
 
 
-        //sets text of textview
-        businessView.setText(name+ " Reviews");
-        businessView.setGravity(Gravity.CENTER);
+            //adds the view to layout
+            ll.addView(businessView);
 
 
-        //adds the view to layout
-        ll.addView(businessView);
+            LinearLayout adminReviewWindow = findViewById(R.id.reviewLayout);
+
+            for (int j = 0; j < reviewSize; j++) {
 
 
-        //ll.setOrientation(Gravity.CENTER_VERTICAL);
+                System.out.println("In inner for loop");
+
+                TextView mName = new TextView(this);
+                TextView mReview = new TextView(this);
+                Button btnDelete = new Button(this);
+
+                String username = resultSet2.getString(0);
+                mName.setText(username);
+                mName.setTextSize(15);
+
+                mReview.setText("\t\t\t" + resultSet2.getString(3));
+                mReview.setTextColor(Color.BLACK);
+                mReview.setTextSize(25);
+                mReview.setTypeface(null, Typeface.ITALIC);
+
+                adminReviewWindow.addView(mName);
+                adminReviewWindow.addView(mReview);
+
+                btnDelete.setText("Delete Review");
+                btnDelete.setTextColor(getResources().getColor(R.color.colorAccentOrange));
+
+                adminReviewWindow.addView(btnDelete);
+                resultSet2.moveToNext();
+
+            }
 
             //moves cursor to the next entry in the resultset
             resultSet.moveToNext();
-
         }
     }
 }
