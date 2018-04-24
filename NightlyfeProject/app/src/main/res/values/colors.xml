@@ -10,4 +10,5 @@
     <color name="colorDark4">#424242</color>
     <color name="colorAccentOldOrange">#FF8C00</color>
     <color name="colorAccentOrange">#00CED1</color>
+    <color name="dangerRed">#FFFF0000</color>
 </resources>
