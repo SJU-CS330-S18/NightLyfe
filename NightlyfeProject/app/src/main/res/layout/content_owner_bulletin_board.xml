@@ -7,17 +7,17 @@
     tools:context="edu.csbsju.nightlyfe.OwnerBulletinBoard"
     tools:layout_editor_absoluteY="81dp">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+
+    <ListView
+        android:id="@+id/ownerListView"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/board" />
+        android:layout_below="@+id/ownerBusinessName" />
+
     <TextView
-        android:id="@+id/BusinessName"
+        android:id="@+id/ownerBusinessName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
@@ -27,129 +27,27 @@
         android:textColor="@android:color/black"
         android:textSize="45sp" />
 
-    <TextView
-        android:id="@+id/eventTextMiddle"
-        android:layout_width="310dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/bulletinDelete1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="No Post Yet"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="103dp" />
-
-    <TextView
-        android:id="@+id/eventTextBottom"
-        android:layout_width="310dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/bottomDate"
-        android:layout_marginTop="36dp"
-        android:layout_toEndOf="@+id/middleDate"
-        android:layout_toRightOf="@+id/middleDate"
-        android:text="No Post Yet"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="103dp" />
-
-    <TextView
-        android:id="@+id/eventTextTop"
-        android:layout_width="310dp"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/middleDate"
-        android:layout_alignStart="@+id/middleDate"
-        android:layout_below="@+id/BusinessName"
-        android:layout_marginTop="79dp"
-        android:text="No Post Yet"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="232dp" />
-
-    <TextView
-        android:id="@+id/topDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_above="@+id/eventTextMiddle"
-        android:layout_alignLeft="@+id/eventTextTop"
-        android:layout_alignStart="@+id/eventTextTop"
-        android:layout_marginBottom="47dp"
-        android:textColor="@android:color/black"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/middleDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_alignLeft="@+id/eventTextMiddle"
-        android:layout_alignStart="@+id/eventTextMiddle"
-        android:layout_below="@+id/eventTextTop"
-        android:layout_marginTop="11dp"
-        android:textColor="@android:color/black"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/bottomDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_alignLeft="@+id/eventTextBottom"
-        android:layout_alignStart="@+id/eventTextBottom"
-        android:layout_below="@+id/eventTextMiddle"
-        android:layout_marginTop="12dp"
-        android:textColor="@android:color/black"
-        android:text="" />
-
     <EditText
-        android:id="@+id/newPostBulletin"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
+        android:id="@+id/ownerPost"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ownerListView"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="19dp"
         android:ems="10"
         android:inputType="textMultiLine" />
 
     <Button
-        android:id="@+id/bulletinPost"
+        android:id="@+id/ownerPostButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/newPostBulletin"
-        android:layout_alignBottom="@+id/newPostBulletin"
-        android:layout_toLeftOf="@+id/newPostBulletin"
-        android:layout_toStartOf="@+id/newPostBulletin"
+        android:layout_alignTop="@+id/ownerPost"
+        android:layout_toEndOf="@+id/ownerPost"
+        android:layout_toRightOf="@+id/ownerPost"
         android:text="Post" />
 
-    <Button
-        android:id="@+id/bulletinDelete1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/eventTextTop"
-        android:layout_alignRight="@+id/eventTextTop"
-        android:layout_alignTop="@+id/middleDate"
-        android:text="Delete" />
-
-    <Button
-        android:id="@+id/bulletinDelete2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/bulletinDelete1"
-        android:layout_alignRight="@+id/bulletinDelete1"
-        android:layout_alignTop="@+id/bottomDate"
-        android:text="Delete" />
-
-    <Button
-        android:id="@+id/bulletinDelete3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/eventTextBottom"
-        android:layout_alignRight="@+id/eventTextBottom"
-        android:layout_below="@+id/eventTextBottom"
-        android:layout_marginTop="11dp"
-        android:text="Delete" />
 
 </RelativeLayout>

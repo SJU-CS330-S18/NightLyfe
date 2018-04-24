@@ -101,7 +101,8 @@
         <activity android:name=".OwnerBulletinBoard" />
         <activity android:name=".CreatePoll" />
         <activity android:name=".Poll" />
-        <activity android:name=".FriendsMap"></activity>
+        <activity android:name=".FriendsMap" />
+        <activity android:name=".OwnerEditPosts"></activity>
     </application>
 
 </manifest>
