@@ -8,6 +8,7 @@ Class associated with viewing the friends list page of a given user
 import android.database.sqlite.*;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.*;
@@ -87,6 +88,13 @@ public class FriendsList extends AppCompatActivity {
 
         //loops through each entry in friends list and displays them
         for (int i = 0; i < size ; i++) {
+            //creates new horizonal LinearLayout for each entry into friendslist
+            LinearLayout row = new LinearLayout(this);
+            row.setOrientation(LinearLayout.HORIZONTAL);
+
+            //creates LayoutParams object to dictate entries
+            LinearLayout.LayoutParams rowp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+
             //gets username of entry in resultset
             String name = resultSet.getString(1);
 
@@ -97,6 +105,9 @@ public class FriendsList extends AppCompatActivity {
 
             //sets value of textview
             mFriendView.setText(name);
+
+            //adds the view to layout
+            row.addView(mFriendView, rowp);
 
             Cursor resultSet2 = mydatabase.rawQuery("Select * from users where username = '"+name+"'",null);
 
@@ -111,16 +122,18 @@ public class FriendsList extends AppCompatActivity {
                 mMyFriend.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent goToNextActivity = new Intent(getApplicationContext(), FriendsMap.class);
+                        Intent goToNextActivity = new Intent(getApplicationContext(), MyFriendMap.class);
                         goToNextActivity.putExtra("user", user);
                         goToNextActivity.putExtra("friend", (String) view.getTag());
                         startActivity(goToNextActivity);
                     }
                 });
+                //adds the view to layout
+                row.addView(mMyFriend, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
 
-            //adds the view to layout
-            ll.addView(mFriendView, lp);
+            //adds the new row to the layout
+            ll.addView(row, lp);
 
             //moves cursor to the next entry in the resultset
             resultSet.moveToNext();
