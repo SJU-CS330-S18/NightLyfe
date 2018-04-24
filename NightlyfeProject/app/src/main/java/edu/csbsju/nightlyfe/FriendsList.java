@@ -98,11 +98,15 @@ public class FriendsList extends AppCompatActivity {
             //sets value of textview
             mFriendView.setText(name);
 
-            if (resultSet.getInt(4) != 0){
+            Cursor resultSet2 = mydatabase.rawQuery("Select * from users where username = '"+name+"'",null);
+
+            resultSet2.moveToFirst();
+
+            if (resultSet2.getInt(4) != 0){
                 Button mMyFriend = new Button(this);
                 mMyFriend.setText("Map");
 
-                mMyFriend.setTag(resultSet.getString(0));
+                mMyFriend.setTag(resultSet2.getString(0));
 
                 mMyFriend.setOnClickListener(new View.OnClickListener() {
                     @Override

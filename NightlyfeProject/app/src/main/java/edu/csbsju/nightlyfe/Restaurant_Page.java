@@ -40,7 +40,7 @@ public class Restaurant_Page extends AppCompatActivity {
 
         Cursor resultSet = mydatabase.rawQuery("Select * from business where id = " + key, null);
         resultSet.moveToFirst();
-        Cursor userResultSet = mydatabase.rawQuery("Select * from users where username = '" + user +"'", null);
+        final Cursor userResultSet = mydatabase.rawQuery("Select * from users where username = '" + user +"'", null);
         userResultSet.moveToFirst();
         final String busName = resultSet.getString(1);
         String address = resultSet.getString(3);
@@ -69,11 +69,20 @@ public class Restaurant_Page extends AppCompatActivity {
         BulletinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), BulletinBoard.class);
-                goToNextActivity.putExtra("user", user);
-                goToNextActivity.putExtra("name", busName);
-                goToNextActivity.putExtra("key", key);
-                startActivity(goToNextActivity);
+                if((userResultSet.getInt(2) == 2 || userResultSet.getInt(2) == 4 || userResultSet.getInt(2) == 5) && userResultSet.getInt(4) == key) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), OwnerBulletinBoard.class);
+                    goToNextActivity.putExtra("user", user);
+                    goToNextActivity.putExtra("name", busName);
+                    goToNextActivity.putExtra("key", key);
+                    startActivity(goToNextActivity);
+                }
+                else{
+                    Intent goToNextActivity = new Intent(getApplicationContext(), BulletinBoard.class);
+                    goToNextActivity.putExtra("user", user);
+                    goToNextActivity.putExtra("name", busName);
+                    goToNextActivity.putExtra("key", key);
+                    startActivity(goToNextActivity);
+                }
             }
         });
 

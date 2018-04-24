@@ -40,9 +40,9 @@ public class BulletinBoard extends AppCompatActivity {
 
         //This creates a semi dynamic list of specials that are the most Frequent / newest posted.
         //Functions similar to a twitter page
-        //If there is less than 3 posts, only shows the number of posts. I.E if there is 2 there
-        //  would only be two posts shown
-        //Currently has a hard limit of three posts per page
+        //If there is less than 3 postsWithDate, only shows the number of postsWithDate. I.E if there is 2 there
+        //  would only be two postsWithDate shown
+        //Currently has a hard limit of three postsWithDate per page
         if(size>0) {
             resultSet.moveToLast();
             TextView first = findViewById(R.id.eventTextTop);
