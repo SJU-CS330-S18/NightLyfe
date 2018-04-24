@@ -38,13 +38,15 @@
             android:layout_below="@+id/membersTxt"
             android:orientation="vertical">
         </LinearLayout>
-        <Button
-            android:id="@+id/addBtn"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:id="@+id/buttonBar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/membersView"
-            android:text="Add Member" />
+            android:orientation="horizontal">
 
+<<<<<<< HEAD
         <Button
             android:id="@+id/chatBtn"
             android:layout_width="wrap_content"
@@ -53,34 +55,56 @@
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/membersView"
             android:text="View Chat" />
+=======
+            <Button
+                android:id="@+id/addBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/membersView"
+                android:layout_weight="1"
+                android:text="Add Member" />
+
+            <Button
+                android:id="@+id/mPollBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/membersView"
+                android:layout_toEndOf="@+id/addBtn"
+                android:layout_toLeftOf="@+id/chatBtn"
+                android:layout_toRightOf="@+id/addBtn"
+                android:layout_toStartOf="@+id/chatBtn"
+                android:layout_weight="1"
+                android:text="Create Poll" />
+
+            <Button
+                android:id="@+id/chatBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/membersView"
+                android:layout_toEndOf="@+id/groupNameTxt"
+                android:layout_toRightOf="@+id/groupNameTxt"
+                android:layout_weight="1"
+                android:text="View Chat" />
+        </LinearLayout>
+>>>>>>> 5ec56226ade7c693ee11f9e90d82d59e1e726f5f
 
         <Button
             android:id="@+id/listBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Return Home"
-            android:layout_below="@+id/addBtn" />
+            android:layout_below="@+id/buttonBar" />
 
         <Button
             android:id="@+id/leaveBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/listBtn"
-            android:background="?attr/colorError"
             android:text="Leave Group"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/colorError"
             android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/mPollBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/membersView"
-            android:layout_toEndOf="@+id/addBtn"
-            android:layout_toLeftOf="@+id/chatBtn"
-            android:layout_toRightOf="@+id/addBtn"
-            android:layout_toStartOf="@+id/chatBtn"
-            android:text="Create Poll" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
