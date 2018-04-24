@@ -52,8 +52,6 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/membersView"
-            android:layout_toEndOf="@+id/groupNameTxt"
-            android:layout_toRightOf="@+id/groupNameTxt"
             android:text="View Chat" />
 
         <Button
