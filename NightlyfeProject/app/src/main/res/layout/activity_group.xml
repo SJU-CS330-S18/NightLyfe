@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/listBtn"
             android:text="Leave Group"
-            android:textColor="?attr/colorError"
+            android:textColor="@color/dangerRed"
             android:textStyle="bold" />
 
     </RelativeLayout>

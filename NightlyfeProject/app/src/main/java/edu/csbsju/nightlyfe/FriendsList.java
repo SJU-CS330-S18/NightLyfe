@@ -98,6 +98,23 @@ public class FriendsList extends AppCompatActivity {
             //sets value of textview
             mFriendView.setText(name);
 
+            if (resultSet.getInt(4) != 0){
+                Button mMyFriend = new Button(this);
+                mMyFriend.setText("Map");
+
+                mMyFriend.setTag(resultSet.getString(0));
+
+                mMyFriend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent goToNextActivity = new Intent(getApplicationContext(), FriendsMap.class);
+                        goToNextActivity.putExtra("user", user);
+                        goToNextActivity.putExtra("friend", (String) view.getTag());
+                        startActivity(goToNextActivity);
+                    }
+                });
+            }
+
             //adds the view to layout
             ll.addView(mFriendView, lp);
 
