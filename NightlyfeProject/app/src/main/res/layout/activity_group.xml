@@ -46,6 +46,16 @@
             android:layout_below="@+id/membersView"
             android:orientation="horizontal">
 
+<<<<<<< HEAD
+        <Button
+            android:id="@+id/chatBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/membersView"
+            android:text="View Chat" />
+=======
             <Button
                 android:id="@+id/addBtn"
                 android:layout_width="wrap_content"
@@ -78,6 +88,7 @@
                 android:layout_weight="1"
                 android:text="View Chat" />
         </LinearLayout>
+>>>>>>> 5ec56226ade7c693ee11f9e90d82d59e1e726f5f
 
         <Button
             android:id="@+id/listBtn"
