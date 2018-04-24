@@ -1,5 +1,6 @@
 package edu.csbsju.nightlyfe;
 
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class AdminReview extends AppCompatActivity {
@@ -87,13 +89,18 @@ public class AdminReview extends AppCompatActivity {
             //sets text of textview
             businessView.setText(name+ " Reviews");
             businessView.setGravity(Gravity.CENTER);
+            //businessView.setBackgroundColor(getResources().getColor(R.color.colorAccentOrange));
+            businessView.setPaintFlags(businessView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
             //adds the view to layout
             ll.addView(businessView);
 
 
-            LinearLayout adminReviewWindow = findViewById(R.id.reviewLayout);
+            LinearLayout businessLayout = findViewById(R.id.businessLayout);
+
+
+
 
             for (int j = 0; j < reviewSize; j++) {
 
@@ -110,19 +117,25 @@ public class AdminReview extends AppCompatActivity {
 
                 mReview.setText("\t\t\t" + resultSet2.getString(3));
                 mReview.setTextColor(Color.BLACK);
-                mReview.setTextSize(25);
+                mReview.setTextSize(20);
                 mReview.setTypeface(null, Typeface.ITALIC);
 
-                adminReviewWindow.addView(mName);
-                adminReviewWindow.addView(mReview);
+                //LinearLayout adminReviewWindow = new LinearLayout(this);
+                //ScrollView sv = new ScrollView(this);
+                //adminReviewWindow.setOrientation(LinearLayout.VERTICAL);
+                //sv.addView(businessLayout);
+
+                businessLayout.addView(mName);
+                businessLayout.addView(mReview);
 
                 btnDelete.setText("Delete Review");
-                btnDelete.setTextColor(getResources().getColor(R.color.colorAccentOrange));
+                btnDelete.setTextColor(getResources().getColor(R.color.colorAccentOldOrange));
 
-                adminReviewWindow.addView(btnDelete);
+                businessLayout.addView(btnDelete);
                 resultSet2.moveToNext();
 
             }
+
 
             //moves cursor to the next entry in the resultset
             resultSet.moveToNext();
