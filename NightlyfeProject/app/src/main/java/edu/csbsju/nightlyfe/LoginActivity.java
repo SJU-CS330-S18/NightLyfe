@@ -427,12 +427,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO friends VALUES ('lrdahlquist', 'ajmcintyre', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('ajmcintyre', 'lrdahlquist', 1);");
 
-        //mydatabase.execSQL("INSERT INTO friendgroups VALUES (1, 'Scrum Bois');");
-        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'tdrichmond', 0);");
-        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'grsalk', 0);");
-        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'lrdahlquist', 0);");
-        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'drfritz', 0);");
-        //mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'ajmcintyre', 0);");
+        mydatabase.execSQL("INSERT INTO friendgroups VALUES (1, 'Scrum Bois');");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'tdrichmond', 0);");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'grsalk', 0);");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'lrdahlquist', 0);");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'drfritz', 0);");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'ajmcintyre', 0);");
 
         mydatabase.execSQL("INSERT INTO business VALUES (1, 'Sals Bar & Grill', 'Saint Joseph', '109 W Minnesota St, St Joseph, MN 56374', 45.564497, -94.320641, '320-363-8273', '11:00am-1:00am', 1111);");
         mydatabase.execSQL("INSERT INTO business VALUES (2, 'La Playette', 'Saint Joseph', '19 College Ave N, St Joseph, MN 56374', 45.565203, -94.317925, '320-363-7747', '11:00am-1:00am', 2222);");
