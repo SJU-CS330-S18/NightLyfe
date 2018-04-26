@@ -1,12 +1,19 @@
 package edu.csbsju.nightlyfe;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -65,23 +72,11 @@ public class FriendsMap extends FragmentActivity implements OnMapReadyCallback {
                 if(locations.contains(destination)){
                     last.set(locations.indexOf(destination), friend);
                     count.set(locations.indexOf(destination),count.get(locations.indexOf(destination))+1);
-                    //Cursor resultSet2 = mydatabase.rawQuery("Select b.latitude, b.longitude, u.username from users u, business b where u.username = '" + friend + "' and u.destination = b.id;", null);
-                    //resultSet2.moveToFirst();
-                    // Adds a business marker and moves/zooms the camera
-                    //LatLng business = new LatLng(resultSet2.getFloat(0), resultSet2.getFloat(1));
-                    //marker = new MarkerOptions().position(business).title(friend+" + "+ count.get(locations.indexOf(destination)) +" friends");
-                    //mMap.addMarker(marker);
                 }
                 else {
                     locations.add(destination);
                     count.add(1);
                     last.add(friend);
-                    //Cursor resultSet2 = mydatabase.rawQuery("Select b.latitude, b.longitude, u.username from users u, business b where u.username = '" + friend + "' and u.destination = b.id;", null);
-                    //resultSet2.moveToFirst();
-                    // Adds a business marker and moves/zooms the camera
-                    //LatLng business = new LatLng(resultSet2.getFloat(0), resultSet2.getFloat(1));
-                    //marker = new MarkerOptions().position(business).title(friend);
-                    //mMap.addMarker(marker);
                 }
                 resultSet.moveToNext();
             }
@@ -93,16 +88,50 @@ public class FriendsMap extends FragmentActivity implements OnMapReadyCallback {
             resultSet2.moveToFirst();
             // Adds a business marker and moves/zooms the camera
             LatLng business = new LatLng(resultSet2.getFloat(0), resultSet2.getFloat(1));
+            Cursor businessname = mydatabase.rawQuery("Select b.name from business b where b.id = " + locations.get(i) + ";", null);
+            businessname.moveToFirst();
+            String name = businessname.getString(0);
             if(count.get(i) == 1){
-
-                marker = new MarkerOptions().position(business).title(last.get(i));
+                marker = new MarkerOptions().position(business).title(name).snippet(last.get(i));
             }
             else if (count.get(i) == 2){
-                marker = new MarkerOptions().position(business).title(last.get(i) + " + " + (count.get(i)-1) + " friend");
+                marker = new MarkerOptions().position(business).title(name).snippet(last.get(i) + " + " + (count.get(i)-1) + " friend");
             }
             else{
-                marker = new MarkerOptions().position(business).title(last.get(i) + " + " + (count.get(i)-1) + " friends");
+                marker = new MarkerOptions().position(business).title(name).snippet(last.get(i) + " + " + (count.get(i)-1) + " friends");
             }
+
+            mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+
+                @Override
+                public View getInfoWindow(Marker arg0) {
+                    return null;
+                }
+
+                @Override
+                public View getInfoContents(Marker marker) {
+                    Context context = getApplicationContext();
+
+                    LinearLayout info = new LinearLayout(context);
+                    info.setOrientation(LinearLayout.VERTICAL);
+
+                    TextView title = new TextView(context);
+                    title.setTextColor(Color.BLACK);
+                    title.setGravity(Gravity.CENTER);
+                    title.setTypeface(null, Typeface.BOLD);
+                    title.setText(marker.getTitle());
+
+                    TextView snippet = new TextView(context);
+                    snippet.setTextColor(Color.GRAY);
+                    snippet.setText(marker.getSnippet());
+
+                    info.addView(title);
+                    info.addView(snippet);
+
+                    return info;
+                }
+            });
+
             mMap.addMarker(marker);
         }
 
