@@ -95,6 +95,7 @@ public class FriendsList extends AppCompatActivity {
 
             //creates LayoutParams object to dictate entries
             LinearLayout.LayoutParams rowp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+            rowp.leftMargin = 20;
 
             //gets username of entry in resultset
             String name = resultSet.getString(1);
@@ -108,35 +109,46 @@ public class FriendsList extends AppCompatActivity {
             //sets value of textview
             mFriendView.setText(name);
 
-            //adds the view to layout
-            row.addView(mFriendView, rowp);
-
             Cursor resultSet2 = mydatabase.rawQuery("Select * from users where username = '"+name+"'",null);
 
             resultSet2.moveToFirst();
 
-            if (resultSet2.getInt(4) != 0){
+            //if (resultSet2.getInt(4) != 0) {
                 ImageButton mMyFriend = new ImageButton(this);
                 mMyFriend.setImageResource(android.R.drawable.ic_menu_compass);
                 mMyFriend.setBackgroundColor(getResources().getColor(R.color.transparent));
 
                 mMyFriend.setTag(resultSet2.getString(0));
 
-                mMyFriend.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent goToNextActivity = new Intent(getApplicationContext(), MyFriendMap.class);
-                        goToNextActivity.putExtra("user", user);
-                        goToNextActivity.putExtra("friend", (String) view.getTag());
-                        startActivity(goToNextActivity);
-                    }
-                });
+                if (resultSet2.getInt(4) != 0){
+                    mMyFriend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent goToNextActivity = new Intent(getApplicationContext(), MyFriendMap.class);
+                            goToNextActivity.putExtra("user", user);
+                            goToNextActivity.putExtra("friend", (String) view.getTag());
+                            startActivity(goToNextActivity);
+                        }
+                    });
+                }
+                else{
+                    mMyFriend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast toastName = Toast.makeText(getApplicationContext(), ((String) view.getTag()) + " does not currently have a destination", Toast.LENGTH_LONG);
+                            toastName.show();
+                        }
+                    });
+                }
                 //adds the view to layout
                 row.addView(mMyFriend, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            }
+            //}
 
+            //adds the view to layout
+            row.addView(mFriendView, rowp);
             //adds the new row to the layout
             ll.addView(row, lp);
+
 
             //moves cursor to the next entry in the resultset
             resultSet.moveToNext();
