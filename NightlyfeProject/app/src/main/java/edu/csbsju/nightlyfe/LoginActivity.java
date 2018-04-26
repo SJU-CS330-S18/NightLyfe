@@ -426,6 +426,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO friends VALUES ('drfritz', 'tdrichmond', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('lrdahlquist', 'ajmcintyre', 1);");
         mydatabase.execSQL("INSERT INTO friends VALUES ('ajmcintyre', 'lrdahlquist', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'ajmcintyre', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('ajmcintyre', 'tdrichmond', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('lrdahlquist', 'tdrichmond', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'lrdahlquist', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('grsalk', 'tdrichmond', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'grsalk', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('kjbecker', 'tdrichmond', 1);");
+        mydatabase.execSQL("INSERT INTO friends VALUES ('tdrichmond', 'kjbecker', 1);");
 
         mydatabase.execSQL("INSERT INTO friendgroups VALUES (1, 'Scrum Bois');");
         mydatabase.execSQL("INSERT INTO groupmember VALUES (1, 'tdrichmond', 0);");

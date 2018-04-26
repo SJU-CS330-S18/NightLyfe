@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NightlyfeProject.iml" filepath="$PROJECT_DIR$/NightlyfeProject.iml" />
-      <module fileurl="file://C:\Users\andre\Documents\GitHub\NightLyfe2.0\NightlyfeProject\NightlyfeProject.iml" filepath="C:\Users\andre\Documents\GitHub\NightLyfe2.0\NightlyfeProject\NightlyfeProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\andre\Documents\GitHub\NightLyfe2.0\NightlyfeProject\app\app.iml" filepath="C:\Users\andre\Documents\GitHub\NightLyfe2.0\NightlyfeProject\app\app.iml" />
     </modules>
   </component>
 </project>

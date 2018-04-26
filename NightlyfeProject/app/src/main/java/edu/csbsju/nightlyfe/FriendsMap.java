@@ -16,6 +16,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class FriendsMap extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     public SQLiteDatabase mydatabase;
@@ -42,6 +44,9 @@ public class FriendsMap extends FragmentActivity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        ArrayList<Integer> locations = new ArrayList<Integer>();
+        ArrayList<Integer> count = new ArrayList<Integer>();
+        ArrayList<String> last = new ArrayList<String>();
 
         Cursor friendsResultSet = mydatabase.rawQuery("Select user2 from friends where user1 = '"+user+"';", null);
         friendsResultSet.moveToFirst();
@@ -57,15 +62,48 @@ public class FriendsMap extends FragmentActivity implements OnMapReadyCallback {
             resultSet.moveToFirst();
             int destination = resultSet.getInt(4);
             if (destination != 0){
-                Cursor resultSet2 = mydatabase.rawQuery("Select b.latitude, b.longitude, u.username from users u, business b where u.username = '" + friend + "' and u.destination = b.id;", null);
-                resultSet2.moveToFirst();
-                // Adds a business marker and moves/zooms the camera
-                LatLng business = new LatLng(resultSet2.getFloat(0), resultSet2.getFloat(1));
-                marker = new MarkerOptions().position(business).title(friend);
-                mMap.addMarker(marker);
+                if(locations.contains(destination)){
+                    last.set(locations.indexOf(destination), friend);
+                    count.set(locations.indexOf(destination),count.get(locations.indexOf(destination))+1);
+                    //Cursor resultSet2 = mydatabase.rawQuery("Select b.latitude, b.longitude, u.username from users u, business b where u.username = '" + friend + "' and u.destination = b.id;", null);
+                    //resultSet2.moveToFirst();
+                    // Adds a business marker and moves/zooms the camera
+                    //LatLng business = new LatLng(resultSet2.getFloat(0), resultSet2.getFloat(1));
+                    //marker = new MarkerOptions().position(business).title(friend+" + "+ count.get(locations.indexOf(destination)) +" friends");
+                    //mMap.addMarker(marker);
+                }
+                else {
+                    locations.add(destination);
+                    count.add(1);
+                    last.add(friend);
+                    //Cursor resultSet2 = mydatabase.rawQuery("Select b.latitude, b.longitude, u.username from users u, business b where u.username = '" + friend + "' and u.destination = b.id;", null);
+                    //resultSet2.moveToFirst();
+                    // Adds a business marker and moves/zooms the camera
+                    //LatLng business = new LatLng(resultSet2.getFloat(0), resultSet2.getFloat(1));
+                    //marker = new MarkerOptions().position(business).title(friend);
+                    //mMap.addMarker(marker);
+                }
                 resultSet.moveToNext();
             }
             friendsResultSet.moveToNext();
+        }
+
+        for(int i = 0 ; i < locations.size(); i++){
+            Cursor resultSet2 = mydatabase.rawQuery("Select b.latitude, b.longitude, u.username from users u, business b where u.username = '" + last.get(i) + "' and u.destination = b.id;", null);
+            resultSet2.moveToFirst();
+            // Adds a business marker and moves/zooms the camera
+            LatLng business = new LatLng(resultSet2.getFloat(0), resultSet2.getFloat(1));
+            if(count.get(i) == 1){
+
+                marker = new MarkerOptions().position(business).title(last.get(i));
+            }
+            else if (count.get(i) == 2){
+                marker = new MarkerOptions().position(business).title(last.get(i) + " + " + (count.get(i)-1) + " friend");
+            }
+            else{
+                marker = new MarkerOptions().position(business).title(last.get(i) + " + " + (count.get(i)-1) + " friends");
+            }
+            mMap.addMarker(marker);
         }
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 16));

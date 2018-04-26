@@ -11,7 +11,8 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/friendsLbl"
@@ -39,32 +40,41 @@
             android:layout_alignParentRight="true"
             app:srcCompat="@android:drawable/ic_menu_search" />
 
-        <LinearLayout
-            android:id="@+id/friendsLayout"
+        <ScrollView
+            android:id="@+id/friendScroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/friendsLbl"
+            android:layout_above="@+id/mapBtn"
             android:orientation="vertical">
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/friendsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/friendsLbl"
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/listBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Return Home"
-            android:layout_below="@+id/friendsLayout" />
+            </LinearLayout>
+        </ScrollView>
 
         <Button
             android:id="@+id/mapBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/listBtn"
+            android:layout_above="@+id/listBtn"
             android:layout_centerHorizontal="true"
-            android:text="Map" />
-
+            android:text="View Friends on Map" />
+        <Button
+            android:id="@+id/listBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Return Home"
+            android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>
 
