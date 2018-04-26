@@ -8,6 +8,7 @@ Class associated with viewing the friends list page of a given user
 import android.database.sqlite.*;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -100,6 +101,7 @@ public class FriendsList extends AppCompatActivity {
 
             //creates and formats textview to display friend's username
             TextView mFriendView = new TextView(this);
+            mFriendView.setGravity(Gravity.CENTER_VERTICAL);
             mFriendView.setTextSize(20);
             mFriendView.setTextColor(Color.BLACK);
 
@@ -114,8 +116,9 @@ public class FriendsList extends AppCompatActivity {
             resultSet2.moveToFirst();
 
             if (resultSet2.getInt(4) != 0){
-                Button mMyFriend = new Button(this);
-                mMyFriend.setText("Map");
+                ImageButton mMyFriend = new ImageButton(this);
+                mMyFriend.setImageResource(android.R.drawable.ic_menu_compass);
+                mMyFriend.setBackgroundColor(getResources().getColor(R.color.transparent));
 
                 mMyFriend.setTag(resultSet2.getString(0));
 

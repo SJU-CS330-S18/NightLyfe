@@ -16,62 +16,77 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp">
 
-        <Button
-            android:id="@+id/ownerBtn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="Account" />
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/userBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Account" />
 
-        <TextView
-            android:id="@+id/ownerTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/userBtn"
-            android:layout_alignBottom="@+id/userBtn"
-            android:layout_centerHorizontal="true"
-            android:text="username"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <TextView
+                android:id="@+id/ownerTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/logoutBtn"
+                android:layout_toRightOf="@+id/userBtn"
+                android:layout_toLeftOf="@+id/logoutBtn"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="username"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <Button
-            android:id="@+id/logoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="Logout" />
+            <Button
+                android:id="@+id/logoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/userBtn"
+                android:layout_alignBottom="@+id/userBtn"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="Logout" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/establishmentLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ownerBtn"
+            android:layout_below="@+id/topBar"
+            android:layout_marginTop="10dp"
             android:text="My Establishment:" />
 
         <TextView
             android:id="@+id/establishmentTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/establishmentLbl"
+            android:layout_marginTop="78dp"
             android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
             android:text="No Establishment Selected!"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorAccentOrange" />
 
         <TextView
             android:id="@+id/attendanceLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/establishmentTxt"
+            android:layout_marginTop="10dp"
             android:text="Projected Attendence:" />
 
         <TextView
             android:id="@+id/attendanceTxt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/attendanceLbl"
+
+            android:layout_centerHorizontal="true"
             android:text="0"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -81,6 +96,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/attendanceTxt"
             android:text="View my Page" />
     </RelativeLayout>

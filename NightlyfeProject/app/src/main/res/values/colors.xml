@@ -9,6 +9,7 @@
     <color name="colorDark3">#303030</color>
     <color name="colorDark4">#424242</color>
     <color name="colorAccentOldOrange">#FF8C00</color>
-    <color name="colorAccentOrange">#00CED1</color>
+    <color name="colorAccentOrange">#00ced1</color>
     <color name="dangerRed">#FFFF0000</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

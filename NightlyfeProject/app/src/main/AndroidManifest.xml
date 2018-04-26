@@ -24,7 +24,8 @@
         android:theme="@style/DarkTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,7 +49,8 @@
             android:label="@string/title_activity_register" />
         <activity
             android:name=".FriendsList"
-            android:label="@string/title_activity_friends" />
+            android:label="@string/title_activity_friends"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".AccountActivity"
             android:label="@string/title_activity_account" />
@@ -64,7 +66,8 @@
             android:label="@string/title_activity_groups" />
         <activity
             android:name=".NewGroupPage"
-            android:label="@string/title_activity_groups" />
+            android:label="@string/title_activity_groups"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".Group"
             android:label="@string/title_activity_groups" />
@@ -73,13 +76,15 @@
             android:label="@string/title_activity_groups" />
         <activity
             android:name=".GroupChat"
-            android:label="@string/title_activity_groups" />
+            android:label="@string/title_activity_groups"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".RestaurantList"
             android:label="@string/title_activity_findbars" />
         <activity
             android:name=".ReviewsActivity"
-            android:label="@string/title_activity_reviews" />
+            android:label="@string/title_activity_reviews"
+            android:windowSoftInputMode="stateHidden"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
