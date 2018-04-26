@@ -13,11 +13,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -29,7 +28,7 @@ public class AdminReview extends AppCompatActivity {
     public String user;
     public String business;
     public String aUser;
-    public int aBusiness;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,11 +112,10 @@ public class AdminReview extends AppCompatActivity {
                 TextView mReview = new TextView(this);
                 Button btnDelete = new Button(this);
 
-                String username = resultSet2.getString(0);
+                final String username = resultSet2.getString(0);
                 mName.setText(username);
                 mName.setTextSize(15);
 
-                aUser = username;
 
                 mReview.setText("\t\t\t" + resultSet2.getString(3));
                 mReview.setTextColor(Color.BLACK);
@@ -134,18 +132,22 @@ public class AdminReview extends AppCompatActivity {
 
                 btnDelete.setText("Delete Review");
                 btnDelete.setTextColor(getResources().getColor(R.color.dangerRed));
-                btnDelete.setTag(j);
+                btnDelete.setId(key);
+                btnDelete.setTag(username);
                 businessLayout.addView(btnDelete);
+                final int aBusiness = btnDelete.getId();
+
                 btnDelete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        deleteReview();
-                    }
+                                            public void onClick(View view) {
+                                                Toast.makeText(view.getContext(),
+                                                        "Button clicked index = " + aBusiness, Toast.LENGTH_SHORT)
+                                                        .show();
+                                                        deleteReview(username, aBusiness);
+                                            }
                 });
 
                 resultSet2.moveToNext();
             }
-            aBusiness = i;
             TextView emptyReview = new TextView(this);
 
             if (reviewSize == 0)
@@ -162,7 +164,7 @@ public class AdminReview extends AppCompatActivity {
         }
     }
 
-    private void deleteReview() {
+    private void deleteReview(String aUser, int aBusiness) {
         Cursor deletion = mydatabase.rawQuery("DELETE FROM reviews WHERE username = '" + aUser + "' AND id = " + aBusiness + ";", null);
         System.out.println(aUser);
         System.out.println(aBusiness);
