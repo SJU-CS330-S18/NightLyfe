@@ -42,6 +42,9 @@ public class ReviewsActivity extends AppCompatActivity {
         user = getIntent().getStringExtra("user");
         key = getIntent().getIntExtra("key", 0);
 
+        MultiAutoCompleteTextView reviewEntry = findViewById(R.id.mReviewEntry);
+        reviewEntry.bringToFront();
+
         ScrollView mScroll = findViewById(R.id.scrollView);
         mScroll.scrollTo(0, mScroll.getBottom());
 

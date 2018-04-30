@@ -25,7 +25,6 @@
         android:layout_below="@+id/labelBarName">
 
     </ScrollView>
-
     <LinearLayout
         android:id="@+id/reviewWindow"
         android:layout_width="match_parent"
