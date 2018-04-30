@@ -35,6 +35,7 @@
         android:layout_below="@+id/eventTextTop"
         android:layout_marginTop="30dp"
         android:text="No Post Yet"
+        android:textColor="@android:color/black"
         tools:layout_editor_absoluteX="91dp"
         tools:layout_editor_absoluteY="103dp"
         android:textSize="16sp"/>
@@ -48,6 +49,7 @@
         android:layout_below="@+id/eventTextMiddle"
         android:layout_marginTop="30dp"
         android:text="No Post Yet"
+        android:textColor="@android:color/black"
         tools:layout_editor_absoluteX="91dp"
         tools:layout_editor_absoluteY="103dp"
         android:textSize="16sp"/>
@@ -63,6 +65,7 @@
         android:layout_marginStart="34dp"
         android:layout_marginTop="89dp"
         android:text="No Post Yet"
+        android:textColor="@android:color/black"
         tools:layout_editor_absoluteX="91dp"
         tools:layout_editor_absoluteY="232dp"
         android:textSize="16sp"/>
