@@ -25,31 +25,6 @@
         android:layout_below="@+id/labelBarName">
 
     </ScrollView>
-
-<<<<<<< HEAD
-    <MultiAutoCompleteTextView
-        android:id="@+id/mReviewEntry"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/submitReviewBtn"
-        android:layout_toStartOf="@+id/submitReviewBtn"
-        android:background="#ffff"
-        android:hint="Write your review here..." />
-
-    <Button
-        android:id="@+id/submitReviewBtn"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_alignBaseline="@+id/mReviewEntry"
-        android:layout_alignBottom="@+id/mReviewEntry"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="Submit Review"
-        android:textSize="10dp" />
-
-=======
->>>>>>> e7552c5ae745f4734509e180d03c49a2dcdceb5d
     <LinearLayout
         android:id="@+id/reviewWindow"
         android:layout_width="match_parent"
