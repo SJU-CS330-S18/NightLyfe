@@ -23,6 +23,7 @@ public class CreatePoll extends AppCompatActivity {
     public String user;
     int count = 0;
     int key;
+    Cursor resultSet1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,14 +78,25 @@ public class CreatePoll extends AppCompatActivity {
             mAddBusiness.setTag(key);
             mAddBusiness.setText("Add to Poll");
 
+            resultSet1 = mydatabase.rawQuery("Select * from polls where groupID = '"+id+"'", null);
+            resultSet1.moveToFirst();
+
             //Dynamic button to bring user to individual restaurant pages
             //Passes user ID and business key to individual page
             mAddBusiness.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     count = count +1;
-                    if(count<4){
+                    resultSet1 = mydatabase.rawQuery("Select * from polls where groupID = '"+id+"'", null);
+                    resultSet1.moveToFirst();
+                    if(count<4 && ((resultSet1.getInt(1) != (int)view.getTag()) && (resultSet1.getInt(2) != (int)view.getTag()) && (resultSet1.getInt(3) != (int)view.getTag()) )){
                         addToPoll((int)view.getTag(), count);
+                    }
+                    else if(((resultSet1.getInt(1) == (int)view.getTag()) || (resultSet1.getInt(2) == (int)view.getTag()) || (resultSet1.getInt(3) == (int)view.getTag()) )){
+                        count = count -1;
+                        Context context = getApplicationContext();
+                        Toast toastCreate = Toast.makeText(context,"Please select different businesses", Toast.LENGTH_LONG);
+                        toastCreate.show();
                     }
                     else{
                         Context context = getApplicationContext();
