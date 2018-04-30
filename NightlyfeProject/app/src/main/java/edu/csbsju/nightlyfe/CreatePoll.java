@@ -92,15 +92,15 @@ public class CreatePoll extends AppCompatActivity {
                     if(count<4 && ((resultSet1.getInt(1) != (int)view.getTag()) && (resultSet1.getInt(2) != (int)view.getTag()) && (resultSet1.getInt(3) != (int)view.getTag()) )){
                         addToPoll((int)view.getTag(), count);
                     }
-                    else if(((resultSet1.getInt(1) == (int)view.getTag()) || (resultSet1.getInt(2) == (int)view.getTag()) || (resultSet1.getInt(3) == (int)view.getTag()) )){
+                    else if(count <4 && ((resultSet1.getInt(1) == (int)view.getTag()) || (resultSet1.getInt(2) == (int)view.getTag()) || (resultSet1.getInt(3) == (int)view.getTag()) )){
                         count = count -1;
                         Context context = getApplicationContext();
-                        Toast toastCreate = Toast.makeText(context,"Please select 3 different businesses", Toast.LENGTH_LONG);
+                        Toast toastCreate = Toast.makeText(context,"Please select different businesses", Toast.LENGTH_LONG);
                         toastCreate.show();
                     }
                     else{
                         Context context = getApplicationContext();
-                        Toast toastCreate = Toast.makeText(context,"Please select 3 different businesses", Toast.LENGTH_LONG);
+                        Toast toastCreate = Toast.makeText(context,"Please select only 3 businesses", Toast.LENGTH_LONG);
                         toastCreate.show();
                     }
                 }
