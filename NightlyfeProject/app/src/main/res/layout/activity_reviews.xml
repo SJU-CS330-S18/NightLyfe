@@ -30,10 +30,9 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/submitReviewBtn"
         android:layout_toStartOf="@+id/submitReviewBtn"
+        android:background="#ffff"
         android:hint="Write your review here..." />
 
     <Button
