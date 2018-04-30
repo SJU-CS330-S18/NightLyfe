@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.LinearLayout;
@@ -185,6 +186,7 @@ public class Restaurant_Page extends AppCompatActivity {
             //LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             claimContainer.addView(claimTxt);
             claimContainer.addView(claimBtn);
+            claimContainer.setGravity(Gravity.CENTER_HORIZONTAL);
 
             //rp.addRule(RelativeLayout.ABOVE, R.id.listBtn);
             rp.addRule(RelativeLayout.BELOW, R.id.BusinessHours);

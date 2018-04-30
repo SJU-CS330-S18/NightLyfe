@@ -8,6 +8,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import java.util.*;
+import android.view.View;
+import android.widget.*;
+import android.widget.TextView;
+import android.graphics.Color;
+import android.graphics.*;
+import android.view.Gravity;
+import android.content.Context;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -50,11 +57,45 @@ public class MyFriendMap extends FragmentActivity implements OnMapReadyCallback 
         resultSet.moveToFirst();
         int destination = resultSet.getInt(4);
         if (destination != 0){
-            Cursor resultSet2 = mydatabase.rawQuery("Select b.latitude, b.longitude, u.username from users u, business b where u.username = '" + friend + "' and u.destination = b.id;", null);
+            Cursor resultSet2 = mydatabase.rawQuery("Select b.latitude, b.longitude, b.name from users u, business b where u.username = '" + friend + "' and u.destination = b.id;", null);
             resultSet2.moveToFirst();
             // Adds a business marker and moves/zooms the camera
             LatLng business = new LatLng(resultSet2.getFloat(0), resultSet2.getFloat(1));
-            marker = new MarkerOptions().position(business).title(friend);
+            String name = resultSet2.getString(2);
+            //marker = new MarkerOptions().position(business).title(friend);
+            marker = new MarkerOptions().position(business).title(name).snippet(friend);
+
+            mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+
+                @Override
+                public View getInfoWindow(Marker arg0) {
+                    return null;
+                }
+
+                @Override
+                public View getInfoContents(Marker marker) {
+                    Context context = getApplicationContext();
+
+                    LinearLayout info = new LinearLayout(context);
+                    info.setOrientation(LinearLayout.VERTICAL);
+
+                    TextView title = new TextView(context);
+                    title.setTextColor(Color.BLACK);
+                    title.setGravity(Gravity.CENTER);
+                    title.setTypeface(null, Typeface.BOLD);
+                    title.setText(marker.getTitle());
+
+                    TextView snippet = new TextView(context);
+                    snippet.setTextColor(Color.GRAY);
+                    snippet.setText(marker.getSnippet());
+
+                    info.addView(title);
+                    info.addView(snippet);
+
+                    return info;
+                }
+            });
+
             mMap.addMarker(marker);
             resultSet.moveToNext();
         }
