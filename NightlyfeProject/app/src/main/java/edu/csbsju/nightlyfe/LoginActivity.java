@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        populateDatabase();
+        //populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
