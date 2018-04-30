@@ -1,7 +1,6 @@
 package edu.csbsju.nightlyfe;
 /*
 AdminReview class handles functionality allowing administrators permission to delete inappropriate reviews
-
 @author Grant Salk
  */
 import android.graphics.Paint;
@@ -101,9 +100,8 @@ public class AdminReview extends AppCompatActivity {
             //adds the view to layout
             ll.addView(businessView);
 
-
+            //Creates businessLayout (linear layout)
             LinearLayout businessLayout = findViewById(R.id.businessLayout);
-
 
             for (int j = 0; j < reviewSize; j++) {
                 //System.out.println("In inner for loop");
@@ -116,12 +114,12 @@ public class AdminReview extends AppCompatActivity {
                 mName.setText(username);
                 mName.setTextSize(15);
 
-
                 mReview.setText("\t\t\t" + resultSet2.getString(3));
                 mReview.setTextColor(Color.BLACK);
                 mReview.setTextSize(20);
                 mReview.setTypeface(null, Typeface.ITALIC);
 
+                //Future implementation for scrollview for business reviews
                 //LinearLayout adminReviewWindow = new LinearLayout(this);
                 //ScrollView sv = new ScrollView(this);
                 //adminReviewWindow.setOrientation(LinearLayout.VERTICAL);

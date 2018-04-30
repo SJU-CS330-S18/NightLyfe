@@ -1,7 +1,6 @@
 /*
 BusinessLocation class is used to dynamically locate each restaurant that the user is interested in and
 display in googleMaps
-
 @author Grant Salk
  */
 
