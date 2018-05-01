@@ -26,7 +26,6 @@ public class AdminReview extends AppCompatActivity {
     public SQLiteDatabase mydatabase;
     public String user;
     public String business;
-    public String aUser;
 
 
     @Override
@@ -70,7 +69,6 @@ public class AdminReview extends AppCompatActivity {
         for (int i = 0; i < size; i++) {
             //System.out.println("In outer for loop");
 
-
             //Gets username of entry in resultset
             String name = resultSet.getString(1);
 
@@ -82,20 +80,16 @@ public class AdminReview extends AppCompatActivity {
 
             resultSet2.moveToFirst();
 
-            //System.out.println(reviewSize);
-
             //creates and formats textview to display businesses
             TextView businessView = new TextView(this);
             businessView.setTextSize(30);
             businessView.setTextColor(Color.BLACK);
-
 
             //sets text of textview
             businessView.setText(name + " Reviews");
             businessView.setGravity(Gravity.CENTER);
             //businessView.setBackgroundColor(getResources().getColor(R.color.colorAccentOrange));
             businessView.setPaintFlags(businessView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
 
             //adds the view to layout
             ll.addView(businessView);
@@ -120,25 +114,32 @@ public class AdminReview extends AppCompatActivity {
                 mReview.setTypeface(null, Typeface.ITALIC);
 
                 //Future implementation for scrollview for business reviews
-                //LinearLayout adminReviewWindow = new LinearLayout(this);
-                //ScrollView sv = new ScrollView(this);
-                //adminReviewWindow.setOrientation(LinearLayout.VERTICAL);
-                //sv.addView(businessLayout);
+                    //LinearLayout adminReviewWindow = new LinearLayout(this);
+                    //ScrollView sv = new ScrollView(this);
+                    //adminReviewWindow.setOrientation(LinearLayout.VERTICAL);
+                    //sv.addView(businessLayout);
 
+                //Add name and review to the business linear layout
                 businessLayout.addView(mName);
                 businessLayout.addView(mReview);
 
+                //Dynamically produce delete buttons tagged with business key and username
                 btnDelete.setText("Delete Review");
                 btnDelete.setTextColor(getResources().getColor(R.color.dangerRed));
                 btnDelete.setId(key);
                 btnDelete.setTag(username);
+
+                //add the delete buttons to the business layout
                 businessLayout.addView(btnDelete);
+
+                //gets the id of the tagged delete button
                 final int aBusiness = btnDelete.getId();
 
+                //onclick listener to pass username and business key to the deleteReview method
                 btnDelete.setOnClickListener(new View.OnClickListener() {
                                             public void onClick(View view) {
                                                 Toast.makeText(view.getContext(),
-                                                        "Button clicked index = " + aBusiness, Toast.LENGTH_SHORT)
+                                                        "Successfully deleted " + username + "'s review", Toast.LENGTH_LONG)
                                                         .show();
                                                         deleteReview(username, aBusiness);
                                             }
@@ -162,6 +163,7 @@ public class AdminReview extends AppCompatActivity {
         }
     }
 
+    //deleteReview method will delete the correct entry in the DB that corresponds to tagged info of deleteBtn clicked
     private void deleteReview(String aUser, int aBusiness) {
         Cursor deletion = mydatabase.rawQuery("DELETE FROM reviews WHERE username = '" + aUser + "' AND id = " + aBusiness + ";", null);
         System.out.println(aUser);

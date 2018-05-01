@@ -39,7 +39,7 @@ public class AdminHomescreen extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_homescreen);
-
+git
         user = getIntent().getStringExtra("user");
 
         TextView mUsernameView = findViewById(R.id.userTxt);
@@ -64,6 +64,16 @@ public class AdminHomescreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent goToNextActivity = new Intent(getApplicationContext(), AdminReview.class);
+                goToNextActivity.putExtra("user", user);
+                startActivity(goToNextActivity);
+            }
+        });
+
+        Button userBtn = (Button) findViewById(R.id.userBtn);
+        userBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToNextActivity = new Intent(getApplicationContext(), AccountActivity.class);
                 goToNextActivity.putExtra("user", user);
                 startActivity(goToNextActivity);
             }
