@@ -42,6 +42,9 @@ public class ReviewsActivity extends AppCompatActivity {
         user = getIntent().getStringExtra("user");
         key = getIntent().getIntExtra("key", 0);
 
+        MultiAutoCompleteTextView reviewEntry = findViewById(R.id.mReviewEntry);
+        reviewEntry.bringToFront();
+
         ScrollView mScroll = findViewById(R.id.scrollView);
         mScroll.scrollTo(0, mScroll.getBottom());
 
@@ -102,15 +105,36 @@ public class ReviewsActivity extends AppCompatActivity {
             resultSetReviews.moveToNext();
         }
 
+        Cursor resultSetUser = mydatabase.rawQuery("Select * from users where username = '" + user + "'", null);
+        resultSetUser.moveToFirst();
+        int type = resultSetUser.getInt(2);
+
+        if(type == 2 || type == 4 || type == 5){
+            LinearLayout mBottomBar = findViewById(R.id.BottomBar);
+            mBottomBar.setVisibility(View.INVISIBLE);
+        }
+
         Button mHome = (Button) findViewById(R.id.btnHome);
-        mHome.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
-                goToNextActivity.putExtra("user", user);
-                startActivity(goToNextActivity);
-            }
-        }));
+        if(type == 1) {
+            mHome.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), Homescreen.class);
+                    goToNextActivity.putExtra("user", user);
+                    startActivity(goToNextActivity);
+                }
+            }));
+        }
+        else if(type == 2 || type == 4 || type == 5){
+            mHome.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goToNextActivity = new Intent(getApplicationContext(), OwnerHomescreen.class);
+                    goToNextActivity.putExtra("user", user);
+                    startActivity(goToNextActivity);
+                }
+            }));
+        }
 
         final DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override

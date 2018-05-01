@@ -48,7 +48,7 @@ public class OwnerBulletinBoard extends AppCompatActivity {
         bName.setText(name);
         postsWithDate = buildArrayWithDate(resultSet);
         posts = buildArray(resultSet);
-        System.out.print(postsWithDate);
+        System.out.println(postsWithDate);
         final ListView ownerPosts = (ListView)findViewById(R.id.ownerListView);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, postsWithDate);
         ownerPosts.setAdapter(adapter);
@@ -98,10 +98,11 @@ public class OwnerBulletinBoard extends AppCompatActivity {
         int size = list.getCount();
         int temp = 0;
         list.moveToFirst();
-        for(temp=0; temp<=size; temp++) {
+        for(temp=0; temp<size; temp++) {
+            list.moveToPosition(temp);
             output.add(list.getString(2)+"\n"+"Date: "+list.getString(3));
             postId.add(list.getInt(0));
-            list.moveToPosition(temp);
+
         }
         Collections.reverse(output);
         Collections.reverse(postId);
@@ -114,13 +115,24 @@ public class OwnerBulletinBoard extends AppCompatActivity {
         int size = list.getCount();
         int temp = 0;
         list.moveToFirst();
-        for(temp=0; temp<=size; temp++) {
-            output.add(list.getString(2));
+        for(temp=0; temp<size; temp++) {
             list.moveToPosition(temp);
+            output.add(list.getString(2));
+
         }
         Collections.reverse(output);
         return(output);
 
+    }
+    @Override
+    public void onBackPressed() {
+
+        finish();
+        Intent goToNextActivity = new Intent(getApplicationContext(), Restaurant_Page.class);
+        goToNextActivity.putExtra("user", user);
+        goToNextActivity.putExtra("name", name);
+        goToNextActivity.putExtra("key", key);
+        startActivity(goToNextActivity);
     }
 }
 

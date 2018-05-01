@@ -110,7 +110,7 @@ public class AddMembers extends AppCompatActivity {
     @param String username of friend to add to the group
      */
     public void addFriend(String username){
-        mydatabase.execSQL("INSERT INTO groupmember VALUES ("+id+", '"+username+"');");
+        mydatabase.execSQL("INSERT INTO groupmember VALUES ("+id+", '"+username+"', 0);");
 
         Intent goToNextActivity = new Intent(getApplicationContext(), Group.class);
         goToNextActivity.putExtra("user", user);

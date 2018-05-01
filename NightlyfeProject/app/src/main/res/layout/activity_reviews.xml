@@ -7,7 +7,8 @@
     tools:context="edu.csbsju.nightlyfe.ReviewsActivity"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp">
 
         <TextView
         android:id="@+id/labelBarName"
@@ -24,29 +25,6 @@
         android:layout_below="@+id/labelBarName">
 
     </ScrollView>
-
-    <MultiAutoCompleteTextView
-        android:id="@+id/mReviewEntry"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/submitReviewBtn"
-        android:layout_toStartOf="@+id/submitReviewBtn"
-        android:hint="Write your review here..." />
-
-    <Button
-        android:id="@+id/submitReviewBtn"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_alignBaseline="@+id/mReviewEntry"
-        android:layout_alignBottom="@+id/mReviewEntry"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="Submit Review"
-        android:textSize="10dp" />
-
     <LinearLayout
         android:id="@+id/reviewWindow"
         android:layout_width="match_parent"
@@ -64,5 +42,39 @@
         android:layout_centerHorizontal="true"
         android:text="Return Home"
         android:textSize="10dp" />
+
+    <LinearLayout
+        android:id="@+id/BottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal">
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/mReviewEntry"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/submitReviewBtn"
+            android:layout_toStartOf="@+id/submitReviewBtn"
+            android:layout_weight="1"
+            android:hint="Write your review here..." />
+        <Button
+            android:id="@+id/submitReviewBtn"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_alignBaseline="@+id/mReviewEntry"
+            android:layout_alignBottom="@+id/mReviewEntry"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:text="Submit Review"
+            android:textSize="10dp" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -38,7 +38,7 @@ public class FriendSearch extends AppCompatActivity {
         mResults.setText("Results found for '"+search+"'");
 
         //Finds all friends associated with active user
-        Cursor resultSet = mydatabase.rawQuery("Select * from users where (username LIKE '%"+search+"%' OR name LIKE '%"+search+"%') AND NOT username = '"+user+"'",null);
+        Cursor resultSet = mydatabase.rawQuery("Select * from users where (username LIKE '%"+search+"%' OR name LIKE '%"+search+"%') AND NOT username = '"+user+"' AND type = 1",null);
 
         //gets number of friends and moves the cursor to the first entry in ResultSet
         int size = resultSet.getCount();

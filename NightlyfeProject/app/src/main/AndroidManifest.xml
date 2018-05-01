@@ -103,7 +103,9 @@
         <activity android:name=".UserDocument" />
         <activity android:name=".AdminReview" />
         <activity android:name=".PremiumRequests" />
-        <activity android:name=".OwnerBulletinBoard" />
+        <activity
+            android:name=".OwnerBulletinBoard"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".CreatePoll" />
         <activity android:name=".Poll" />
         <activity android:name=".FriendsMap" />

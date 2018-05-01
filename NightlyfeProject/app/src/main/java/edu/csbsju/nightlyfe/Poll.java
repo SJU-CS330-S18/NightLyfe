@@ -163,6 +163,8 @@ public class Poll extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mydatabase.execSQL("DELETE FROM polls WHERE groupID = " + id + ";");
+                Cursor resultSet3 = mydatabase.rawQuery("Update groupmember set voted = 0  where groupID = '"+id+"'", null);
+                resultSet3.moveToFirst();
                 Intent goToNextActivity = new Intent(getApplicationContext(), Group.class);
                 goToNextActivity.putExtra("user", user);
                 goToNextActivity.putExtra("id", id);
