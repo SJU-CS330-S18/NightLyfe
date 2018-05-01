@@ -9,16 +9,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="60dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <LinearLayout
             android:id="@+id/topBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
@@ -35,10 +32,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/logoutBtn"
-                android:layout_toRightOf="@+id/userBtn"
                 android:layout_toLeftOf="@+id/logoutBtn"
-                android:gravity="center"
+                android:layout_toRightOf="@+id/userBtn"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="username"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -60,6 +57,16 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="69dp"
             android:text="Manage Reviews" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/reviewsBtn"
+            android:layout_marginTop="32dp"
+            app:srcCompat="@drawable/logocrop" />
 
         <Button
             android:id="@+id/premiumBtn"

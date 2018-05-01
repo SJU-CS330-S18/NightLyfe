@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase = openOrCreateDatabase("NightLyfe",MODE_PRIVATE,null);
 
         //populates database with default data
-        //populateDatabase();
+        populateDatabase();
         //addToDB();
 
         super.onCreate(savedInstanceState);
@@ -450,6 +450,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mydatabase.execSQL("INSERT INTO reviews VALUES ('dfritz', 1, 0, '\"A great place to meet up on a Wednesday to grab a big mug and wings.\"');");
         mydatabase.execSQL("INSERT INTO reviews VALUES ('tdrichmond', 1, 1, '\"All you can drink, more like all you can dance!!! This place rocks!\"');");
         mydatabase.execSQL("INSERT INTO reviews VALUES ('kjbecker', 1, 2, '\"The owner is kind of a jerk, but overall fun place to a drink.\"');");
+        mydatabase.execSQL("INSERT INTO reviews VALUES ('dfritz', 2, 0, '\"Great atmosphere and employees\"');");
+        mydatabase.execSQL("INSERT INTO reviews VALUES ('kjbecker', 2, 1, '\"Spacious layout but bummed they did not have food\"');");
 
         mydatabase.execSQL("INSERT INTO specials VALUES (0,1, 'Big Mugs!! Come get your drink on here at Sals!', '04-04-2018', '04-04-2018');");
         mydatabase.execSQL("INSERT INTO specials VALUES (1,1, 'AYCD!! Get as many drinks as you want, just $10!', '04-05-2018', '04-05-2018');");

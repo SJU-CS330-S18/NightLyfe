@@ -39,7 +39,7 @@ public class AdminHomescreen extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_homescreen);
-git
+
         user = getIntent().getStringExtra("user");
 
         TextView mUsernameView = findViewById(R.id.userTxt);
